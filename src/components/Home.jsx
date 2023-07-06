@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div name="home" className="w-full h-screen bg-black ">
       {/* Container */}
-      <div className="max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full">
+      <div className="max-w-[1400px] mx-auto px-8 flex flex-col justify-center h-full">
         <p className="text-gray-300 text-2xl">Hi, my name is</p>
         <h1 className="text-4xl sm:text-7xl py-4 font-bold text-pink-600">
           Agostina Boris

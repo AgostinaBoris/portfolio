@@ -1,5 +1,6 @@
 import React from "react";
 
+
 function About() {
   return (
     <div name="about" className="w-full h-screen bg-black text-gray-300">
@@ -10,9 +11,8 @@ function About() {
               About
         </p>
           </div>
-          <div></div>
     </div>
-    <div className="max-w-[1000px] w-full grid sm:grid-cols-2 gap-8 px-4">
+    <div className="max-w-[1400px] w-full grid sm:grid-cols-2 py-20 gap-8 px-4">
         <div className="sm:text-right text-4xl font-bold">
             <p>Hi. I'm Agostina, nice to meet you. Please take a look around.</p>
         </div>

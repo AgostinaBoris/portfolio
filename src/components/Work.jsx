@@ -9,9 +9,9 @@ import Sushi from "../assets/sushi.jpg";
 
 const Work = () => {
   return (
-    <div name="work" className="w-full md: h-screen text-gray-300 bg-black">
-      <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full">
-        <div className="pb-8">
+    <div name="work" className="w-full h-screen mt-40 text-gray-300 bg-black">
+      <div className="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8 ">
+        <div className="py-8">
           <p className="text-4xl font-bold inline border-b-4 text-gray-300 border-pink-600">
             Work
           </p>
@@ -19,13 +19,16 @@ const Work = () => {
         </div>
 
         {/* Container */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
           <div
-            style={{ backgroundImage: `url(${pic})` }}
-            className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto content-div"
+            style={{ background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${pic})`,
+            }}
+
+            className="shadow-lg shadow-[#040c16]  group container rounded-md flex justify-center items-center m-auto  content-div"
           >
-       
-            <div className="opacity-0 group-hover:opacity-100">
+
+
+            <div className="opacity-95 group-hover:opacity-25">
               <span className="text-2xl font-bold text-white tracking-wider">
                 Ecommerce NextJS-Tailwind
               </span>
@@ -45,13 +48,14 @@ const Work = () => {
           </div>
 
           <div
-            style={{ backgroundImage: `url(${Sushi})` }}
-            className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto content-div"
+            style={{ background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${Sushi})`
+          }}
+            className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >
             {/* Hover effects */}
-            <div className="opacity-0 group-hover:opacity-100">
+            <div className="opacity-95 group-hover:opacity-25">
               <span className="text-2xl font-bold text-white tracking-wider">
-               Sushi Website - React Js
+                Sushi Website - React Js
               </span>
               <div>
                 <a href="https://sushi-web-eight.vercel.app/">
@@ -69,11 +73,11 @@ const Work = () => {
           </div>
 
           <div
-            style={{ backgroundImage: `url(${Nikko})` }}
-            className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto content-div"
+            style={{ background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${Nikko})`}}
+            className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >
             {/* Hover effects */}
-            <div className="opacity-0 group-hover:opacity-100">
+            <div className="opacity-95 group-hover:opacity-25">
               <span className="text-2xl font-bold text-white tracking-wider">
                 NextJs Website
               </span>
@@ -93,11 +97,11 @@ const Work = () => {
           </div>
 
           <div
-            style={{ backgroundImage: `url(${Tesla})` }}
-            className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto content-div"
+            style={{ background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${Tesla})`}}
+            className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >
             {/* Hover effects */}
-            <div className="opacity-0 group-hover:opacity-100">
+            <div className="opacity-95 group-hover:opacity-25">
               <span className="text-2xl font-bold text-white tracking-wider">
                 Tesla Landing Page - Tailwind Css
               </span>
@@ -117,11 +121,11 @@ const Work = () => {
           </div>
 
           <div
-            style={{ backgroundImage: `url(${Ecommerce2})` }}
-            className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto content-div"
+            style={{ background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${Ecommerce2})`}}
+            className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >
             {/* Hover effects */}
-            <div className="opacity-0 group-hover:opacity-100">
+            <div className="opacity-95 group-hover:opacity-25">
               <span className="text-2xl font-bold text-white tracking-wider">
                 Ecommerce Model - Html Css Javascript
               </span>
@@ -141,11 +145,11 @@ const Work = () => {
           </div>
 
           <div
-            style={{ backgroundImage: `url(${Homepage})` }}
+            style={{ background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${Homepage})`}}
             className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto content-div"
           >
             {/* Hover effects */}
-            <div className="opacity-0 group-hover:opacity-100">
+            <div className="opacity-95 group-hover:opacity-25">
               <span className="text-2xl font-bold text-white tracking-wider">
                 Homepage - Html Css Js
               </span>
@@ -165,13 +169,13 @@ const Work = () => {
           </div>
 
           <div
-            style={{ backgroundImage: `url(${Clima})` }}
+            style={{ background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${Clima})`}}
             className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >
             {/* Hover effects */}
-            <div className="opacity-0 group-hover:opacity-100">
+            <div className="opacity-95 group-hover:opacity-25">
               <span className="text-2xl font-bold text-white tracking-wider">
-                Weather App 
+                Weather App
               </span>
               <div>
                 <a href="https://weather-app-delta-sable.vercel.app/">
