@@ -12,10 +12,10 @@ export default function Home() {
           Agostina Boris
         </h1>
         <h2 className="text-4xl sm:text-7xl py-2 font-bold text-[#8892b0]">
-          I'm a Jr. Front-end Web Developer.
+          I'm a Front-end Web Developer.
         </h2>
         <p className="text-[#8892b0] text-xl py-4 max-w-[700px]">
-          I'm a junior front-end developer with a passion for creating engaging
+          I'm a front-end developer with a passion for creating engaging
           digital experiences. I'm focused on building responsive web
           applications and continuously expanding my skills in this area.
         </p>
