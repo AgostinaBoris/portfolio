@@ -15,7 +15,7 @@ export default function Navbar() {
   const handleClick = () => setNav(!nav);
 
   return (
-    <div className="fixed w-full h-[90px] flex justify-end items-center px-4 bg-black  text-gray-300 font-bold">
+    <div className=" fixed w-full h-[90px] flex justify-end items-center  bg-black  text-gray-300 font-bold">
       {/* menu */}
 
       <ul className="hidden md:flex">

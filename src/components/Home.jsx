@@ -4,9 +4,9 @@ import { Link } from "react-scroll";
 
 export default function Home() {
   return (
-    <div name="home" className="w-full h-screen bg-black ">
+    <div name="home" className="w-full h-screen pt-20 bg-black ">
       {/* Container */}
-      <div className="max-w-[1400px] mx-auto px-8 flex flex-col justify-center h-full">
+      <div className=" mx-auto px-8 flex flex-col justify-center h-full">
         <p className="text-gray-300 text-2xl">Hi, my name is</p>
         <h1 className="text-4xl sm:text-7xl py-4 font-bold text-pink-600">
           Agostina Boris
@@ -31,3 +31,5 @@ export default function Home() {
     </div>
   );
 }
+
+// SACAR LOS PADDING Y MAXWIDTH XL Y CENTRAR 
