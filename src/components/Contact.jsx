@@ -2,8 +2,8 @@ import React from 'react'
 
 const Contact = () => {
   return (
-    <div name='contact' className=' w-full mt-80 h-screen bg-black flex flex-col justify-center items-center  p-4'>
-           <div className="max-w-7xl mx-auto  sm:text-center px-6">
+    <div name='contact' className=' w-full  h-screen bg-black flex flex-col justify-center items-center  p-4'>
+           <div className="max-w-[600px] mx-auto  sm:text-center px-6">
         <form method='POST' action='https://getform.io/f/95a8f5c1-0589-4af6-af8e-0c42b1ad03a8' 
         className='flex flex-col max-w-[600px] w-full'>
             <div className='pb-8 '>
@@ -22,4 +22,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default Contact;

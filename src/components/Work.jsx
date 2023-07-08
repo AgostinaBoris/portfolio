@@ -2,8 +2,6 @@ import React from "react";
 import Tesla from "../assets/tesla.jpg";
 import Ecommerce2 from "../assets/ecommerce.jpg";
 import Nikko from "../assets/nikko.jpg";
-import Clima from "../assets/clima.jpg";
-import Homepage from "../assets/homePage.jpg";
 import pic from "../assets/sugar.jpg";
 import Sushi from "../assets/sushi.jpg";
 
@@ -144,53 +142,7 @@ const Work = () => {
             </div>
           </div>
 
-          <div
-            style={{ background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${Homepage})`}}
-            className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto content-div"
-          >
-            {/* Hover effects */}
-            <div className="opacity-95 group-hover:opacity-25">
-              <span className="text-2xl font-bold text-white tracking-wider">
-                Homepage - Html Css Js
-              </span>
-              <div>
-                <a href="https://homepage-main-iota.vercel.app/">
-                  <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-                    Demo
-                  </button>
-                </a>
-                <a href="https://github.com/AgostinaBoris/Homepage_main.git">
-                  <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-                    Code
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div
-            style={{ background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${Clima})`}}
-            className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
-          >
-            {/* Hover effects */}
-            <div className="opacity-95 group-hover:opacity-25">
-              <span className="text-2xl font-bold text-white tracking-wider">
-                Weather App
-              </span>
-              <div>
-                <a href="https://weather-app-delta-sable.vercel.app/">
-                  <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-                    Demo
-                  </button>
-                </a>
-                <a href="https://github.com/AgostinaBoris/Weather_app.git">
-                  <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
-                    Code
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
+    
         </div>
       </div>
     </div>
