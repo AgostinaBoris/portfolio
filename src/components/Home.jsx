@@ -22,9 +22,9 @@ export default function Home() {
         <div>
           <Link
             to="work"
-            className="text-white button-style border-2 px-6 py-3 my-2 flex items-center hover:bg-amber-400 w-1/6 hover:border-amber-400"
+            className="text-white button-style border-2 px-6 py-3 my-2 flex items-center hover:bg-amber-400 w-1/4 hover:border-amber-400"
           >
-            View Work <HiArrowNarrowRight />{" "}
+            View Work <HiArrowNarrowRight  className="mx-4"/>{" "}
           </Link>
         </div>
       </div>
