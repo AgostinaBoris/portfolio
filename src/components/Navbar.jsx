@@ -54,7 +54,7 @@ export default function Navbar() {
       {/* Mobile menu */}
 
       {nav && (
-        <ul className="fixed  w-full h-screen flex-col flex justify-center text-gray-300 items-center sm:flex-row bg-pink-700">
+        <ul className="fixed  w-full h-screen flex-col flex justify-center text-gray-300 items-center sm:flex-row bg-pink-700" style={{ zIndex: 10 }}>
           <li className="py-6 text-4xl">
             <Link to="/" onClick={handleClick}>
               Home
@@ -85,9 +85,9 @@ export default function Navbar() {
 
       {/* social icons */}
 
-      <div className=" hidden lg:flex fixed flex-col top-[35%] left-0">
+      <div className="sm:flex fixed flex-col top-[35%] left-0">
         <ul>
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-blue-600">
+          <li className="w-auto h-20 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-blue-600">
             <a
               className="flex justify-between items-center w-full text-gray-300"
               href="https://www.linkedin.com/in/agostinaboris/"
@@ -95,7 +95,7 @@ export default function Navbar() {
               Linkedin <FaLinkedin size={30} />
             </a>
           </li>
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#333333]">
+          <li className="w-auto h-20 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#333333]">
             <a
               className="flex justify-between items-center w-full text-gray-300"
               href="https://github.com/AgostinaBoris"
@@ -103,7 +103,7 @@ export default function Navbar() {
               Github <FaGithub size={30} />
             </a>
           </li>
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#ffb703]">
+          <li className="w-auto h-20 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#ffb703]">
             <a
               className="flex justify-between items-center w-full text-gray-300"
               href="mailto:agostinaboris@protonmail.com"
@@ -111,7 +111,7 @@ export default function Navbar() {
               Email <HiOutlineMail size={30} />
             </a>
           </li>
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#f01fa0]">
+          <li className="w-auto h-20 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#f01fa0]">
             <a
               className="flex justify-between items-center w-full text-gray-300"
               href={CV}

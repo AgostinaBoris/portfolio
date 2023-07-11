@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div name="home" className="w-full h-full pt-20 bg-black pb-20 ">
+    <div name="home" className="w-full h-full pt-20 pl-10 bg-black pb-20 ">
       {/* Container */}
       <div className=" mx-auto pt-20 px-8 flex flex-col justify-center h-full">
         <p className="text-gray-300 text-2xl">Hi, my name is</p>

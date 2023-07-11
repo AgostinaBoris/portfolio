@@ -7,8 +7,8 @@ import Sushi from "../assets/sushi.jpg";
 
 const Work = () => {
   return (
-    <div name="work" className="{`w-full h-full text-gray-300 bg-black pb-20">
-      <div className="max-w-7xl mx-auto pt-20 sm:px-6 lg:px-8 ">
+    <div name='work' className='w-full h-full text-gray-300 bg-black pb-20'>
+      <div className="max-w-7xl mx-auto pt-20 pl-10 sm:px-6 lg:px-8 ">
         <div className="py-8 mt-20">
           <p className="text-4xl font-bold inline border-b-4  border-pink-600">
             Work
@@ -56,6 +56,7 @@ const Work = () => {
               borderRadius: "8px",
               backgroundSize: "cover",
               animation: "pulse-border 2s infinite",
+  
             }}
             className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >
@@ -87,6 +88,7 @@ const Work = () => {
               borderRadius: "8px",
               backgroundSize: "cover",
               animation: "pulse-border 2s infinite",
+       
             }}
             className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >
@@ -118,6 +120,7 @@ const Work = () => {
               borderRadius: "8px",
               backgroundSize: "cover",
               animation: "pulse-border 2s infinite",
+        
             }}
             className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >
@@ -149,6 +152,7 @@ const Work = () => {
               borderRadius: "8px",
               backgroundSize: "cover",
               animation: "pulse-border 2s infinite",
+    
             }}
             className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >

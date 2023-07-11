@@ -35,7 +35,7 @@ import YO from '../assets/yop.jpg';
 
 function About() {
   return (
-    <div name="about" className="w-full h-full pt-20 bg-black text-gray-300">
+    <div name="about" className="w-full h-full pt-20 pl-10 bg-black text-gray-300">
       <div className="flex flex-col justify-center items-center w-full h-full">
         <div className="max-w-[1000px] w-full grid grid-cols-2 gap-8">
           <div className="sm:text-right mt-20 pb-8 pl-4">
