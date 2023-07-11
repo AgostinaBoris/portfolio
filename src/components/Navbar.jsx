@@ -13,7 +13,7 @@ export default function Navbar() {
 
   return (
     <div
-      className=" fixed top-0 w-full h-[90px] justify-end items-center text-gray-300 
+      className=" z-10 fixed top-0 w-full h-[90px] justify-end items-center text-gray-300 
     font-bold inset-x-0 flex-col  sm:flex sm:flex-row bg-pink-700"
     >
       {/* menu */}
@@ -47,14 +47,13 @@ export default function Navbar() {
       </ul>
 
       {/* Hamburger menu */}
-      <div onClick={handleClick} className="md:hidden z-20 fixed w-12 top-0 right-0 py-8">
+      <div onClick={handleClick} className="md:hidden fixed w-12 top-0 right-0 py-8">
         {!nav ? <FaBars /> : <FaTimes />}
       </div>
 
       {/* Mobile menu */}
-
       {nav && (
-        <ul className="fixed  w-full h-screen flex-col flex justify-center text-gray-300 items-center sm:flex-row bg-pink-700" style={{ zIndex: 10 }}>
+        <ul className= "sm:hidden w-full h-screen flex-col flex justify-center text-gray-300 items-center bg-pink-700" >
           <li className="py-6 text-4xl">
             <Link to="/" onClick={handleClick}>
               Home

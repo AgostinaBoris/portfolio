@@ -17,15 +17,12 @@ const Work = () => {
         </div>
 
         {/* Container */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-12">
-        <EcommerceNext />
-        <Sushi />
-        <Nikko />
-        <EcommerceJs />
-        <Tesla />
-
-
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-12 relative z-0">
+          <EcommerceNext />
+          <Sushi />
+          <Nikko />
+          <EcommerceJs />
+          <Tesla />
         </div>
       </div>
     </div>
