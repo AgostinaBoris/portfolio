@@ -1,0 +1,12 @@
+.content-div{
+    background-repeat: no-repeat;
+    height: 250px; 
+    background: url(../../assets/sugar.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7));
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.6);
+    border: 2px solid transparent;
+    borderRadius: 8px;
+    background-size: cover;
+    animation: pulse-border 2s infinite;
+}
+
