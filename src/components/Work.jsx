@@ -7,20 +7,25 @@ import Sushi from "../assets/sushi.jpg";
 
 const Work = () => {
   return (
-    <div name="work" className="w-full h-full mt-40 text-gray-300 bg-black">
-      <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
-        <div className="py-8">
-          <p className="text-4xl font-bold inline border-b-4 text-gray-300 border-pink-600">
+    <div name="work" className="{`w-full h-full text-gray-300 bg-black pb-20">
+      <div className="max-w-7xl mx-auto pt-20 sm:px-6 lg:px-8 ">
+        <div className="py-8 mt-20">
+          <p className="text-4xl font-bold inline border-b-4  border-pink-600">
             Work
           </p>
-          <p className="py-6">Check out some of my recent work</p>
+          <p className="py-6 text-3xl">Check out some of my recent work</p>
         </div>
 
         {/* Container */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-12">
           <div
             style={{
-              background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${pic})`, backgroundSize: 'cover',
+              background: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url(${pic})`,
+              backgroundSize: "cover",
+              boxShadow: "0 0 10px 5px rgba(255, 255, 255, 0.6)",
+              border: "2px solid transparent",
+              borderRadius: "8px",
+              animation: "pulse-border 2s infinite",
             }}
             className="shadow-lg shadow-[#040c16]  group container rounded-md flex justify-center items-center m-auto  content-div"
           >
@@ -45,7 +50,12 @@ const Work = () => {
 
           <div
             style={{
-              background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${Sushi})`,
+              background: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url(${Sushi})`,
+              boxShadow: "0 0 10px 5px rgba(255, 255, 255, 0.6)",
+              border: "2px solid transparent",
+              borderRadius: "8px",
+              backgroundSize: "cover",
+              animation: "pulse-border 2s infinite",
             }}
             className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >
@@ -71,7 +81,12 @@ const Work = () => {
 
           <div
             style={{
-              background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${Nikko})`,
+              background: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url(${Nikko})`,
+              boxShadow: "0 0 10px 5px rgba(255, 255, 255, 0.6)",
+              border: "2px solid transparent",
+              borderRadius: "8px",
+              backgroundSize: "cover",
+              animation: "pulse-border 2s infinite",
             }}
             className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >
@@ -97,7 +112,12 @@ const Work = () => {
 
           <div
             style={{
-              background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${Tesla})`,
+              background: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url(${Tesla})`,
+              boxShadow: "0 0 10px 5px rgba(255, 255, 255, 0.6)",
+              border: "2px solid transparent",
+              borderRadius: "8px",
+              backgroundSize: "cover",
+              animation: "pulse-border 2s infinite",
             }}
             className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >
@@ -123,11 +143,15 @@ const Work = () => {
 
           <div
             style={{
-              background: `linear-gradient(rgba(127, 0, 178, 0.5), rgba(127, 0, 178, 0.4)), url(${Ecommerce2})`,
+              background: `linear-gradient(rgba(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url(${Ecommerce2})`,
+              boxShadow: "0 0 10px 5px rgba(255, 255, 255, 0.6)",
+              border: "2px solid transparent",
+              borderRadius: "8px",
+              backgroundSize: "cover",
+              animation: "pulse-border 2s infinite",
             }}
             className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center m-auto  content-div"
           >
-            {/* Hover effects */}
             <div className="opacity-95 group-hover:opacity-25">
               <span className="text-2xl font-bold text-white tracking-wider">
                 Ecommerce Model - Html Css Javascript
@@ -149,6 +173,7 @@ const Work = () => {
         </div>
       </div>
     </div>
+  
   );
 };
 
