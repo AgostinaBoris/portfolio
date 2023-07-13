@@ -7,13 +7,13 @@ import Tesla from "./Works/Tesla";
 
 const Work = () => {
   return (
-    <div name="work" className="w-full h-full text-gray-300 bg-black pb-20">
+    <div name="work" className="w-full h-full bg-black pb-20">
       <div className="max-w-7xl mx-auto pt-20 pl-10 sm:px-6 lg:px-8 ">
         <div className="py-8 mt-20">
-          <p className="text-4xl font-bold inline border-b-4  border-pink-600">
+          <p className="text-5xl font-bold inline border-b-4 text-blue-300 border-blue-600">
             Work
           </p>
-          <p className="py-6 text-3xl">Check out some of my recent work</p>
+          <p className="py-12 text-3xl text-white">Check out some of my recent work</p>
         </div>
 
         {/* Container */}

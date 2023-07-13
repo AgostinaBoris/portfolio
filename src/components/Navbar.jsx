@@ -13,8 +13,8 @@ export default function Navbar() {
 
   return (
     <div
-      className=" z-10 fixed top-0 w-full h-[90px] justify-end items-center text-gray-300 
-    font-bold inset-x-0 flex-col  sm:flex sm:flex-row bg-pink-700"
+      className=" z-10 fixed top-0 w-full h-[90px] justify-end items-center text-black 
+    font-bold inset-x-0 flex-col text-xl sm:flex sm:flex-row bg-blue-400"
     >
       {/* menu */}
 
