@@ -1,5 +1,5 @@
 import React from "react";
-import YO from '../assets/yop.jpg';
+import YO from '../assets/yop.jpg'
 
 
 function About() {

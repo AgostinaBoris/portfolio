@@ -35,4 +35,3 @@ export default function Home() {
   );
 }
 
-// SACAR LOS PADDING Y MAXWIDTH XL Y CENTRAR 
