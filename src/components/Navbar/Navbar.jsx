@@ -3,7 +3,7 @@ import { FaBars, FaTimes, FaGithub, FaLinkedin } from "react-icons/fa";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { HiOutlineMail } from "react-icons/hi";
 import { Link } from "react-router-dom";
-import CV from "../assets/cv/cv boris agostina.pdf";
+
 
 export default function Navbar() {
   const [nav, setNav] = useState(false);
@@ -111,12 +111,9 @@ export default function Navbar() {
             </a>
           </li>
           <li className="w-auto h-20 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#f01fa0]">
-            <a
-              className="flex justify-between items-center w-full text-gray-300"
-              href={CV}
-            >
+         
               Resume <BsFillPersonLinesFill size={30} />
-            </a>
+            
           </li>
         </ul>
       </div>
