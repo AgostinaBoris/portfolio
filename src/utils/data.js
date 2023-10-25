@@ -1,6 +1,6 @@
 import nikko from '../assets/nikko.jpg';
 import sushi from '../assets/sushi.jpg';
-import landing from '../assets/landing.jpg';
+import training from '../assets/training.jpg';
 import tesla from '../assets/tesla.jpg';
 
 const data = [{
@@ -20,12 +20,12 @@ const data = [{
     img: sushi,
 },
 {
-    name: 'Landing Page',
+    name: 'Training Landing Page',
     id: 3,
-    codigo: "https://github.com/AgostinaBoris/Landing_page.git",
-    deploy: "https://tailwind-dz85asx9r-agostinaboris.vercel.app/",
+    codigo: "https://github.com/AgostinaBoris/Training_LandingPage",
+    deploy: "https://training-team.vercel.app/",
     tecnologias: "Javascript Css Html",
-    img: landing,
+    img: training,
 },
 {
     name: 'Tesla Landing Page',
