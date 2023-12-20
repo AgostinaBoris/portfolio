@@ -28,7 +28,7 @@ export default function Home() {
         <div>
           <Link
             to="work" exact="true"
-            className="text-white w-1/6 border-2 px-6 py-3 my-2 flex font-bold items-center hover:bg-pink-300 hover:border-pink-400"
+            className="text-white w-1/4 border-2 px-4 py-4 my-2 flex font-bold items-center rounded-lg hover:bg-pink-300 hover:border-pink-400"
           >
             View Work <HiArrowNarrowRight className="mx-4 w-12"/>{" "}
           </Link>
