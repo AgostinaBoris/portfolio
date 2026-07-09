@@ -1,39 +1,50 @@
-import nikko from '../assets/nikko.jpg';
-import sushi from '../assets/sushi.jpg';
-import training from '../assets/training.jpg';
-import tesla from '../assets/tesla.jpg';
+import akariSushi from '../assets/akari-sushi.webp';
+import frameo from '../assets/frameo-prototype.webp';
+import frameoCaseStudy from '../assets/case-studies/frameo-case-study.pdf';
+import onetap from '../assets/onetap-prototype.webp';
+import onetapCaseStudy from '../assets/case-studies/onetap-case-study.pdf';
+import sophiesBoutique from '../assets/sophies-boutique.webp';
+import inFocusStudio from '../assets/in-focus-studio.webp';
 
 const data = [{
-    name: 'Nikko',
+    name: 'Akari Sushi',
     id: 1,
-    codigo: "https://github.com/AgostinaBoris/NextJs_Web.git",
-    deploy: "https://next-js-web-one.vercel.app",
-    tecnologias: "NextJs Tailwind React MongoDb NodeJs Javascript Express",
-    img: nikko,
-},
-{
-    name: 'Sushi Web',
-    id: 2,
     codigo: "https://github.com/AgostinaBoris/Sushi_web",
-    deploy: "https://sushi-web-eight.vercel.app/",
+    deploy: "https://sushi-web-gilt.vercel.app/",
     tecnologias: "React Javascript Css Full Responsive",
-    img: sushi,
+    img: akariSushi,
 },
 {
-    name: 'Training Landing Page',
+    name: 'Frameo',
+    id: 2,
+    deploy: "https://frameo-two.vercel.app/",
+    caseStudy: frameoCaseStudy,
+    tecnologias: "Figma Prototyping UX Research UI Design",
+    img: frameo,
+},
+{
+    name: 'OneTap',
     id: 3,
-    codigo: "https://github.com/AgostinaBoris/Training_LandingPage",
-    deploy: "https://training-team.vercel.app/",
-    tecnologias: "Javascript Css Html",
-    img: training,
+    deploy: "https://onetaphelp-alpha.vercel.app/",
+    caseStudy: onetapCaseStudy,
+    tecnologias: "Figma Prototyping UX Research UI Design",
+    img: onetap,
 },
 {
-    name: 'Tesla Landing Page',
+    name: "Sophie's Boutique",
     id: 4,
-    codigo: "https://github.com/AgostinaBoris/Tailwind_css",
-    deploy: "https://tailwind-css-five.vercel.app/",
-    tecnologias: "Javascript Css Html",
-    img: tesla,
+    codigo: "https://github.com/AgostinaBoris/Ecommerce_html-Css-Js",
+    deploy: "https://ecommerce-html-css-js.vercel.app/",
+    tecnologias: "React Next.js Tailwind Full Responsive",
+    img: sophiesBoutique,
+},
+{
+    name: 'In Focus Studio',
+    id: 5,
+    codigo: "https://github.com/AgostinaBoris/NextJs_Web",
+    deploy: "https://next-js-web-one.vercel.app/",
+    tecnologias: "Next.js React Tailwind Full Responsive",
+    img: inFocusStudio,
 },
 
 ];

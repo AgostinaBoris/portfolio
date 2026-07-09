@@ -20,11 +20,19 @@ const Projects = () => {
               Demo
             </button>
           </a>
-          <a href={c.codigo} target="_blank" rel="noopener noreferrer">
-            <button className="text-center rounded-lg px-4 py-3 m-2 bg-primary hover:bg-primary-dark text-white font-bold text-lg duration-300">
-              Code
-            </button>
-          </a>
+          {c.codigo ? (
+            <a href={c.codigo} target="_blank" rel="noopener noreferrer">
+              <button className="text-center rounded-lg px-4 py-3 m-2 bg-primary hover:bg-primary-dark text-white font-bold text-lg duration-300">
+                Code
+              </button>
+            </a>
+          ) : c.caseStudy ? (
+            <a href={c.caseStudy} target="_blank" rel="noopener noreferrer">
+              <button className="text-center rounded-lg px-4 py-3 m-2 bg-primary hover:bg-primary-dark text-white font-bold text-lg duration-300">
+                Case Study
+              </button>
+            </a>
+          ) : null}
         </div>
       </div>
     );
