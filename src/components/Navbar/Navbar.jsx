@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <div
-      className=" z-10 fixed top-0 w-full h-[90px] justify-end items-center text-text
+      className=" z-50 fixed top-0 w-full h-[90px] justify-end items-center text-text
     font-bold inset-x-0 flex-col text-xl sm:flex sm:flex-row bg-surface border-b border-border"
     >
       {/* menu */}
