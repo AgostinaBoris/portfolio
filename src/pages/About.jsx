@@ -4,7 +4,7 @@ import YO from '../assets/yop.jpg'
 
 function About() {
   return (
-    <div name="about" className="relative w-full h-full pt-20 pl-10 bg-background overflow-hidden">
+    <div name="about" className="relative w-full h-full pt-20 bg-background overflow-hidden">
       {/* Decorative background blobs: soft, blurred, layered for a delicate 3D depth feel */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-24 -left-24 w-80 h-80 bg-accent/40 rounded-full blur-3xl" />

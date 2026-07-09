@@ -33,8 +33,16 @@ const Contact = () => {
   };
 
   return (
-    <div name='contact' className='w-full min-h-screen pt-20 pl-10 bg-background flex flex-col justify-center items-center p-4 '>
-           <div className=" mx-auto pt-20 md:flex-wrap sm:text-center px-6">
+    <div name='contact' className='relative w-full min-h-screen pt-20 bg-background overflow-hidden flex flex-col justify-center items-center p-4 '>
+      {/* Decorative background blobs: soft, blurred, layered for a delicate 3D depth feel */}
+      <div className='pointer-events-none absolute inset-0 overflow-hidden'>
+        <div className='absolute -top-24 -left-24 w-80 h-80 bg-accent/40 rounded-full blur-3xl' />
+        <div className='absolute top-1/3 -right-32 w-96 h-96 bg-primary/15 rounded-full blur-3xl' />
+        <div className='absolute bottom-[-6rem] left-1/4 w-72 h-72 bg-accent/30 rounded-full blur-3xl' />
+        <div className='absolute bottom-10 right-1/3 w-64 h-64 bg-primary-dark/10 rounded-full blur-3xl' />
+      </div>
+
+           <div className="relative z-10 mx-auto pt-20 md:flex-wrap sm:text-center px-6">
         <form onSubmit={handleSubmit}
         className='flex flex-col max-w-[600px] w-full'>
             <div className='pb-8'>
