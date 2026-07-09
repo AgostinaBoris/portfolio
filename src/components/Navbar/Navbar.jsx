@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaBars, FaTimes, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaBars, FaTimes, FaGithub, FaLinkedin, FaBehance } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
@@ -107,6 +107,16 @@ export default function Navbar() {
             >
               <HiOutlineMail size={28} />
             </a>
+            <a
+              aria-label="Behance"
+              href="https://www.behance.net/borisagostina"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleClick}
+              className="hover:text-accent duration-300"
+            >
+              <FaBehance size={28} />
+            </a>
           </li>
         </ul>
       )}
@@ -141,6 +151,16 @@ export default function Navbar() {
               href="mailto:borisagostina@gmail.com"
             >
               Email <HiOutlineMail size={30} />
+            </a>
+          </li>
+          <li className="w-auto h-20 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-primary-dark">
+            <a
+              className="flex justify-between items-center w-full text-white px-4"
+              href="https://www.behance.net/borisagostina"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Behance <FaBehance size={30} />
             </a>
           </li>
         </ul>

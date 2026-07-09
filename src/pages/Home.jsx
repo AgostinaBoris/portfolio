@@ -9,7 +9,7 @@ import mockupBoutiqueCollection from "../assets/mockups/mockup-boutique-collecti
 import mockupInFocusGallery from "../assets/mockups/mockup-infocus-gallery.webp";
 import mockupSushi from "../assets/mockups/mockup-sushi.webp";
 import mockupSushiGallery from "../assets/mockups/mockup-sushi-gallery.webp";
-import CV from "../assets/cv/cv boris agostina.pdf";
+import CV from "../assets/cv/boris-agostina-cv.pdf";
 
 const skillTags = [
   "HTML",
@@ -75,11 +75,22 @@ function Fan({ cards, className = "", open }) {
 
 export default function Home() {
   const [fansOpen, setFansOpen] = useState(false);
+  const [heroIn, setHeroIn] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setFansOpen(true), 150);
-    return () => clearTimeout(t);
+    const t1 = setTimeout(() => setHeroIn(true), 50);
+    const t2 = setTimeout(() => setFansOpen(true), 150);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
   }, []);
+
+  const titleClass = () =>
+    `transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`;
+  const nameClass = () =>
+    `transition-all duration-[900ms] ease-out ${heroIn ? "opacity-100 translate-y-0 scale-100 blur-none" : "opacity-0 translate-y-12 scale-90 blur-sm"}`;
+  const titleStyle = (delay) => ({ transitionDelay: `${delay}ms` });
 
   return (
     <div name="home" className="relative w-full min-h-screen pt-[90px] bg-background overflow-x-hidden">
@@ -95,17 +106,17 @@ export default function Home() {
       <div className="relative z-10 mx-auto max-w-[1360px] px-8 flex flex-col lg:flex-row lg:items-center lg:justify-center gap-10 lg:gap-14 min-h-[calc(100vh-90px)] py-10">
         {/* Text content */}
         <div className="flex flex-col justify-center lg:w-2/5 lg:shrink-0 lg:pl-4 xl:pl-6">
-          <span className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary bg-accent/20 border border-border rounded-full px-4 py-1.5 mb-6">
+          <span style={titleStyle(0)} className={`inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary bg-accent/20 border border-border rounded-full px-4 py-1.5 mb-6 ${titleClass(0)}`}>
             <HiSparkles /> UX/UI DESIGNER · FRONT-END DEVELOPER
           </span>
-          <p className="text-muted text-2xl mb-1">Hi, my name is</p>
-          <h1 className="text-5xl sm:text-7xl py-3 font-bold text-primary-dark">
+          <p style={titleStyle(90)} className={`text-muted text-2xl mb-1 ${titleClass(90)}`}>Hi, my name is</p>
+          <h1 style={titleStyle(180)} className={`text-5xl sm:text-7xl py-3 font-bold text-primary-dark ${nameClass()}`}>
             Agostina
           </h1>
-          <h1 className="text-5xl sm:text-7xl py-3 font-bold text-primary">
+          <h1 style={titleStyle(320)} className={`text-5xl sm:text-7xl py-3 font-bold text-primary ${nameClass()}`}>
             Aldana Boris
           </h1>
-          <h2 className="text-3xl sm:text-5xl py-3 mt-2 font-bold text-primary-dark max-w-[900px]">
+          <h2 style={titleStyle(360)} className={`text-3xl sm:text-5xl py-3 mt-2 font-bold text-primary-dark max-w-[900px] ${titleClass(360)}`}>
            UX/UI Designer &amp; Front-End Developer
           </h2>
           <p className="text-muted text-xl py-6 max-w-[650px]">
