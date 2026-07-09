@@ -38,22 +38,30 @@ const skills = [
 
 export default function Skills() {
   return (
-    <div name='skills' className='w-full min-h-screen pt-20 pl-10 bg-background'>
-        <div className='mx-auto pt-20 '>
+    <div name='skills' className='relative w-full min-h-screen pt-20 bg-background overflow-hidden flex flex-col items-center'>
+        {/* Decorative background blobs: soft, blurred, layered for a delicate 3D depth feel */}
+        <div className='pointer-events-none absolute inset-0 overflow-hidden'>
+            <div className='absolute -top-24 -right-24 w-80 h-80 bg-accent/40 rounded-full blur-3xl' />
+            <div className='absolute top-1/3 -left-32 w-96 h-96 bg-primary/15 rounded-full blur-3xl' />
+            <div className='absolute bottom-[-6rem] right-1/4 w-72 h-72 bg-accent/30 rounded-full blur-3xl' />
+            <div className='absolute bottom-10 left-1/3 w-64 h-64 bg-primary-dark/10 rounded-full blur-3xl' />
+        </div>
+
+        <div className='relative z-10 pt-20 text-center'>
             <p className='text-5xl font-bold text-primary-dark inline border-b-4 border-primary'>Skills</p>
             <p className='py-8 text-2xl text-muted'> These are the technologies I've worked with</p>
         </div>
-        <div className='w-full grid grid-cols-2 sm:grid-cols-4 gap-4 text-center py-6'>
+        <div className='relative z-10 w-full max-w-5xl mx-auto grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-5 text-center py-6'>
             {skills.map(({ name, icon, invert, Comp, color }) => (
-                <div key={name} className='bg-primary rounded-lg shadow-md hover:scale-110 hover:shadow-lg hover:bg-primary-dark duration-300 p-4 flex flex-col items-center'>
-                    <div className='w-20 h-20 flex items-center justify-center'>
+                <div key={name} className='aspect-square bg-primary rounded-lg shadow-md hover:scale-110 hover:shadow-lg hover:bg-primary-dark duration-300 p-4 flex flex-col items-center justify-center'>
+                    <div className='w-14 h-14 flex items-center justify-center'>
                         {Comp ? (
                             <Comp className='w-full h-full' style={{ color }} aria-label={`${name} icon`} />
                         ) : (
                             <img className={`max-w-full max-h-full object-contain ${invert ? 'filter invert' : ''}`} src={icon} alt={`${name} icon`} />
                         )}
                     </div>
-                    <p className='mt-4 text-white font-bold'>{name}</p>
+                    <p className='mt-3 text-sm text-white font-bold'>{name}</p>
                 </div>
             ))}
         </div>

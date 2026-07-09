@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HiArrowNarrowRight, HiSparkles, HiOutlineDownload } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import mockupFrameoSplash from "../assets/mockups/mockup-frameo-splash.webp";
@@ -41,21 +41,23 @@ const fanB = [
   { img: mockupSushiGallery, label: "Akari Sushi", sub: "Signature Gallery", x: 108, angle: 16, z: 40 },
 ];
 
-function Fan({ cards, className = "" }) {
+function Fan({ cards, className = "", open }) {
   return (
     <div className={`grid grid-cols-2 gap-x-4 gap-y-6 md:block md:relative md:h-[260px] lg:h-[300px] xl:h-[340px] md:w-[340px] lg:w-[400px] xl:w-[480px] ${className}`}>
-      {cards.map(({ img, label, sub, x, angle, z }) => (
+      {cards.map(({ img, label, sub, x, angle, z }, i) => (
         <div
           key={`${label}-${sub}`}
           style={{
             zIndex: z,
             transformOrigin: "bottom center",
-            "--x": `${x}px`,
-            "--angle": `${angle}deg`,
+            "--x": `${open ? x : 0}px`,
+            "--angle": `${open ? angle : 0}deg`,
+            transitionDelay: `${i * 110}ms`,
           }}
-          className="group relative bg-surface border border-border rounded-2xl shadow-2xl p-2 sm:p-3 duration-300
+          className="group relative bg-surface border border-border rounded-2xl shadow-2xl p-2 sm:p-3
             md:absolute md:left-1/2 md:bottom-0 md:w-32 lg:w-40 xl:w-52
             md:[transform:translateX(calc(-50%_+_var(--x)))_rotate(var(--angle))]
+            md:transition-transform md:duration-700 md:ease-out
             hover:z-50"
         >
           <p className="text-xs font-bold text-primary-dark truncate">{label}</p>
@@ -72,6 +74,13 @@ function Fan({ cards, className = "" }) {
 }
 
 export default function Home() {
+  const [fansOpen, setFansOpen] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setFansOpen(true), 150);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <div name="home" className="relative w-full min-h-screen pt-[90px] bg-background overflow-x-hidden">
       {/* Decorative background blobs: soft, blurred, layered for a delicate 3D depth feel */}
@@ -138,8 +147,8 @@ export default function Home() {
             bottom-right) within the mockups column. Falls back to plain
             2-column grids on mobile, where there's no room to fan out. */}
         <div className="lg:w-3/5 flex flex-col gap-10 md:gap-6 items-center">
-          <Fan cards={fanA} className="max-w-xs md:max-w-none mx-auto md:-translate-x-6 lg:translate-x-0 xl:-translate-x-8" />
-          <Fan cards={fanB} className="max-w-xs md:max-w-none mx-auto md:translate-x-6 lg:translate-x-0 xl:translate-x-8" />
+          <Fan cards={fanA} open={fansOpen} className="max-w-xs md:max-w-none mx-auto md:-translate-x-6 lg:translate-x-0 xl:-translate-x-8" />
+          <Fan cards={fanB} open={fansOpen} className="max-w-xs md:max-w-none mx-auto md:translate-x-6 lg:translate-x-0 xl:translate-x-8" />
         </div>
       </div>
     </div>
