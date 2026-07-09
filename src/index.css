@@ -7,13 +7,8 @@
 
 @layer base{
     body{
-        
         @apply font-[Raleway];
         background-color: #FFF7FB;
-        @apply max-w-sm lg:max-w-5xl;
-        align-items: center;
-        justify-content: center;
-        @apply mx-auto;
     }
 
     li{

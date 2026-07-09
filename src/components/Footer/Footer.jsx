@@ -29,7 +29,7 @@ export const Footer = (props) => {
           </a>
           <a
             aria-label="Email"
-            href="mailto:agostinaboris@protonmail.com"
+            href="mailto:borisagostina@gmail.com"
             className="text-primary hover:text-primary-dark duration-300"
           >
             <CiMail size={22} />

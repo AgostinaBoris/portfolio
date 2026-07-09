@@ -14,24 +14,33 @@ function About() {
           </div>
         </div>
         <div className="max-w-[1400px] w-full grid sm:grid-cols-2 py-20 gap-8 px-4">
-          <div className="sm:text-right text-primary-dark text-4xl font-bold">
-            <p>Hi. I'm Agostina nice to meet you. Please take a look around.</p>
-          </div>
-          <div>
-            <p className="text-2xl text-muted">
-              I am passionate about building software that improves the lives
-              of those around me. Together, we can create transformative
-              solutions that address your unique needs and drive your success
-              forward. Let's embark on this exciting journey of innovation and
-              collaboration.
+          <div className="flex flex-col items-end">
+            <p className="sm:text-right text-primary-dark text-4xl font-bold">
+              Hi, I&rsquo;m Agostina.
             </p>
-          </div>
-          <div className="flex justify-start pb-20 pl-20">
             <img
               src={YO}
               alt="Agostina Aldana Boris"
-              className="rounded-full max-w-auto w-full h-auto border-4 border-border"
+              className="mt-8 rounded-full w-full max-w-[320px] h-auto border-4 border-border"
             />
+          </div>
+          <div className="space-y-6">
+            <p className="text-2xl text-muted">
+              I&rsquo;m a UX/UI Designer and Front-End Developer focused on
+              creating clear, accessible, and visually polished digital
+              experiences.
+            </p>
+            <p className="text-2xl text-muted">
+              My work combines user research, interface design, prototyping,
+              and responsive development. I enjoy turning ideas into
+              functional products, designing interfaces that are not only
+              beautiful, but also intuitive, structured, and easy to use.
+            </p>
+            <p className="text-2xl text-muted">
+              With a background in frontend development, I design with real
+              implementation in mind — creating experiences that are
+              thoughtful, feasible, and ready to grow.
+            </p>
           </div>
         </div>
       </div>

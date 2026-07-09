@@ -103,7 +103,7 @@ export default function Navbar() {
             </a>
             <a
               aria-label="Email"
-              href="mailto:agostinaboris@protonmail.com"
+              href="mailto:borisagostina@gmail.com"
               onClick={handleClick}
               className="hover:text-accent duration-300"
             >
@@ -150,7 +150,7 @@ export default function Navbar() {
           <li className="w-auto h-20 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-primary">
             <a
               className="flex justify-between items-center w-full text-white px-4"
-              href="mailto:agostinaboris@protonmail.com"
+              href="mailto:borisagostina@gmail.com"
             >
               Email <HiOutlineMail size={30} />
             </a>

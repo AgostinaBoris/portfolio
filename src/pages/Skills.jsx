@@ -1,4 +1,5 @@
 import React from 'react'
+import { SiFigma, SiMiro, SiAdobexd, SiSketch } from 'react-icons/si';
 import CSS from '../assets/css.png';
 import GIT from '../assets/git.png';
 import GITHUB from '../assets/github.png';
@@ -29,6 +30,10 @@ const skills = [
     { name: 'VITE-JS', icon: VITE },
     { name: 'MONGO DB', icon: MONGO },
     { name: 'MYSQL', icon: MYSQL },
+    { name: 'FIGMA', Comp: SiFigma, color: '#F24E1E' },
+    { name: 'MIRO', Comp: SiMiro, color: '#050038' },
+    { name: 'ADOBE XD', Comp: SiAdobexd, color: '#FF61F6' },
+    { name: 'SKETCH', Comp: SiSketch, color: '#F7B500' },
 ];
 
 export default function Skills() {
@@ -39,10 +44,16 @@ export default function Skills() {
             <p className='py-8 text-2xl text-muted'> These are the technologies I've worked with</p>
         </div>
         <div className='w-full grid grid-cols-2 sm:grid-cols-4 gap-4 text-center py-6'>
-            {skills.map(({ name, icon, invert }) => (
-                <div key={name} className='bg-surface border border-border rounded-lg shadow-md hover:scale-110 hover:shadow-lg duration-300 p-4'>
-                    <img className={`w-20 mx-auto ${invert ? 'filter invert' : ''}`} src={icon} alt={`${name} icon`} />
-                    <p className='my-4 text-text font-medium'>{name}</p>
+            {skills.map(({ name, icon, invert, Comp, color }) => (
+                <div key={name} className='bg-primary rounded-lg shadow-md hover:scale-110 hover:shadow-lg hover:bg-primary-dark duration-300 p-4 flex flex-col items-center'>
+                    <div className='w-20 h-20 flex items-center justify-center'>
+                        {Comp ? (
+                            <Comp className='w-full h-full' style={{ color }} aria-label={`${name} icon`} />
+                        ) : (
+                            <img className={`max-w-full max-h-full object-contain ${invert ? 'filter invert' : ''}`} src={icon} alt={`${name} icon`} />
+                        )}
+                    </div>
+                    <p className='mt-4 text-white font-bold'>{name}</p>
                 </div>
             ))}
         </div>
