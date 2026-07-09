@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const GETFORM_ENDPOINT = 'https://getform.io/f/95a8f5c1-0589-4af6-af8e-0c42b1ad03a8';
+const FORMINIT_ENDPOINT = 'https://forminit.com/f/bassww60aqs';
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -14,12 +14,17 @@ const Contact = () => {
     e.preventDefault();
     setStatus('sending');
     try {
-      const res = await fetch(GETFORM_ENDPOINT, {
+      const res = await fetch(FORMINIT_ENDPOINT, {
         method: 'POST',
         headers: { Accept: 'application/json' },
-        body: new URLSearchParams(form),
+        body: new URLSearchParams({
+          'fi-sender-fullName': form.name,
+          'fi-sender-email': form.email,
+          'fi-text-message': form.message,
+        }),
       });
-      if (!res.ok) throw new Error('Request failed');
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error('Request failed');
       setStatus('sent');
       setForm({ name: '', email: '', message: '' });
     } catch (err) {
