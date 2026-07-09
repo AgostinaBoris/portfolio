@@ -6,29 +6,30 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div name="home" className="w-full h-full pt-20 pl-10 bg-black pb-20 ">
+    <div name="home" className="w-full min-h-screen pt-[90px] pl-10 bg-background">
       {/* Container */}
-      <div className=" mx-auto pt-20 px-8 flex flex-col justify-center h-full">
-        <p className="text-white text-2xl">Hi, my name is</p>
-        <h1 className="text-4xl sm:text-7xl py-4 font-bold text-blue-300">
+      <div className="mx-auto px-8 flex flex-col justify-center min-h-[calc(100vh-90px)]">
+        <p className="text-muted text-xl">Hi, my name is</p>
+        <h1 className="text-4xl sm:text-6xl py-2 font-bold text-primary-dark">
           Agostina
         </h1>
-        <h1 className="text-4xl sm:text-7xl py-4 font-bold text-blue-500">
-          Boris
+        <h1 className="text-4xl sm:text-6xl py-2 font-bold text-primary">
+          Aldana Boris
         </h1>
-        <h2 className="text-4xl sm:text-7xl py-2 font-bold text-white">
-         FullStack Web Developer.
+        <h2 className="text-2xl sm:text-4xl py-2 font-bold text-primary-dark max-w-[900px]">
+         UX/UI Designer &amp; Front-End Developer
         </h2>
-        <p className="text-white text-2xl py-4 max-w-[700px]">
-          I'm a fullStack web developer with a passion for creating engaging
-          digital experiences. I'm focused on the frontEnd, building responsive web
-          applications and continuously expanding my skills in this area.
-          
+        <p className="text-muted text-lg py-4 max-w-[650px]">
+          I'm a UX/UI Designer and Front-End Developer focused on creating
+          intuitive, accessible, and visually refined digital products. My
+          work combines user research, interface design, prototyping, and
+          front-end development to build experiences that are clear,
+          functional, and engaging.
         </p>
         <div>
           <Link
             to="work" exact="true"
-            className="text-white w-1/4 border-2 px-4 py-4 my-2 flex font-bold items-center rounded-lg hover:bg-pink-300 hover:border-pink-400"
+            className="text-white bg-primary w-1/4 px-4 py-4 my-2 flex font-bold items-center rounded-lg hover:bg-primary-dark duration-300"
           >
             View Work <HiArrowNarrowRight className="mx-4 w-12"/>{" "}
           </Link>
@@ -37,4 +38,3 @@ export default function Home() {
     </div>
   );
 }
-

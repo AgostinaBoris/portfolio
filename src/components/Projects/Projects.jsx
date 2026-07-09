@@ -7,30 +7,24 @@ const Projects = () => {
     return (
       <div
         key={c.id}
-        className=" group container rounded-md flex justify-center items-center m-auto  content-div"
+        className="group container rounded-lg bg-surface border border-border shadow-md hover:shadow-lg duration-300 overflow-hidden flex flex-col items-center m-auto content-div"
       >
-        {/* Hover effects */}
-        <div className="opacity-80 group-hover:opacity-40">
-         
-          <img className="h-auto w-auto flex justify-center items-center m-auto bg-cover overflow-hidden" src={c.img} alt="/"></img>
-           <span className="text-2xl font-bold flex justify-center items-center text-white tracking-wider py-4">
+        <img className="w-full h-auto object-cover" src={c.img} alt={c.name}></img>
+        <span className="text-2xl font-bold flex justify-center items-center text-text tracking-wider py-4">
           {c.name}
-          </span>
+        </span>
 
-          <div className="flex justify-center items-center py-4">
-            <a href={c.deploy}>
-      
-              <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg ">
-                Demo
-              </button>
-              
-            </a>
-            <a href={c.codigo}>
-              <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg ">
-                Code
-              </button>
-            </a>
-          </div>
+        <div className="flex justify-center items-center pb-6">
+          <a href={c.deploy} target="_blank" rel="noopener noreferrer">
+            <button className="text-center rounded-lg px-4 py-3 m-2 bg-primary hover:bg-primary-dark text-white font-bold text-lg duration-300">
+              Demo
+            </button>
+          </a>
+          <a href={c.codigo} target="_blank" rel="noopener noreferrer">
+            <button className="text-center rounded-lg px-4 py-3 m-2 bg-primary hover:bg-primary-dark text-white font-bold text-lg duration-300">
+              Code
+            </button>
+          </a>
         </div>
       </div>
     );
