@@ -7,16 +7,8 @@ import sophiesBoutique from '../assets/sophies-boutique.webp';
 import inFocusStudio from '../assets/in-focus-studio.webp';
 
 const data = [{
-    name: 'Akari Sushi',
-    id: 1,
-    codigo: "https://github.com/AgostinaBoris/Sushi_web",
-    deploy: "https://sushi-web-gilt.vercel.app/",
-    tecnologias: "React Javascript Css Full Responsive",
-    img: akariSushi,
-},
-{
     name: 'Frameo',
-    id: 2,
+    id: 1,
     deploy: "https://frameo-two.vercel.app/",
     caseStudy: frameoCaseStudy,
     tecnologias: "Figma Prototyping UX Research UI Design",
@@ -24,11 +16,19 @@ const data = [{
 },
 {
     name: 'OneTap',
-    id: 3,
+    id: 2,
     deploy: "https://onetaphelp-alpha.vercel.app/",
     caseStudy: onetapCaseStudy,
     tecnologias: "Figma Prototyping UX Research UI Design",
     img: onetap,
+},
+{
+    name: 'Akari Sushi',
+    id: 3,
+    codigo: "https://github.com/AgostinaBoris/Sushi_web",
+    deploy: "https://sushi-web-gilt.vercel.app/",
+    tecnologias: "React Javascript Css Full Responsive",
+    img: akariSushi,
 },
 {
     name: "Sophie's Boutique",

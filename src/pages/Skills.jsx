@@ -52,9 +52,13 @@ export default function Skills() {
             <p className='py-8 text-2xl text-muted'> These are the technologies I've worked with</p>
         </div>
         <div className='relative z-10 w-full max-w-5xl mx-auto grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-5 text-center py-6'>
-            {skills.map(({ name, icon, invert, Comp, color }) => (
-                <div key={name} className='aspect-square bg-primary rounded-lg shadow-md hover:scale-110 hover:shadow-lg hover:bg-primary-dark duration-300 p-4 flex flex-col items-center justify-center'>
-                    <div className='w-14 h-14 flex items-center justify-center'>
+            {skills.map(({ name, icon, invert, Comp, color }, i) => (
+                <div
+                    key={name}
+                    style={{ animationDelay: `${i * 150}ms` }}
+                    className='group aspect-square bg-primary rounded-lg shadow-md hover:shadow-lg hover:bg-primary-dark duration-300 p-4 flex flex-col items-center justify-center animate-[tilt_3.5s_ease-in-out_infinite] hover:animate-none'
+                >
+                    <div className='w-14 h-14 flex items-center justify-center transition-transform duration-300 group-hover:scale-110'>
                         {Comp ? (
                             <Comp className='w-full h-full' style={{ color }} aria-label={`${name} icon`} />
                         ) : (
