@@ -43,8 +43,8 @@ function About() {
           <div className="space-y-8 sm:mt-20">
             {points.map((text) => (
               <div key={text} className="flex items-start gap-3">
-                <HiSparkles className="text-accent shrink-0 mt-1.5" size={18} />
-                <p className="text-xl text-muted leading-relaxed">{text}</p>
+                <HiSparkles className="text-accent shrink-0 mt-2" size={20} />
+                <p className="text-2xl text-muted leading-relaxed">{text}</p>
               </div>
             ))}
           </div>

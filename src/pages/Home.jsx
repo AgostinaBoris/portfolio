@@ -18,19 +18,20 @@ const skillTags = [
 
 // Single fan of 4 cards, staggered diagonally within the mockups column.
 const fanA = [
-  { img: mockupFrameoSplash, label: "Frameo", sub: "Streaming Splash", x: -165, angle: -18, z: 10 },
-  { img: mockupOnetapSplash, label: "OneTap", sub: "Finance Splash", x: -55, angle: -7, z: 20 },
-  { img: mockupInFocus, label: "In Focus Studio", sub: "Photography Hero", x: 55, angle: 7, z: 30 },
-  { img: mockupBoutiqueHero, label: "Sophie's Boutique", sub: "Home Hero", x: 165, angle: 18, z: 40 },
+  { img: mockupFrameoSplash, label: "Frameo", sub: "Streaming Splash", x: -205, y: 0, angle: -10, z: 10 },
+  { img: mockupOnetapSplash, label: "OneTap", sub: "Finance Splash", x: -70, y: 40, angle: -6, z: 20 },
+  { img: mockupInFocus, label: "In Focus Studio", sub: "Photography Hero", x: 70, y: 80, angle: -2, z: 30 },
+  { img: mockupBoutiqueHero, label: "Sophie's Boutique", sub: "Home Hero", x: 205, y: 120, angle: 2, z: 40 },
 ];
 
-function Fan({ cards, className = "", open }) {
+function Fan({ cards, className = "", open, onToggle }) {
   return (
     <div
       style={{ perspective: "1600px" }}
-      className={`grid grid-cols-2 gap-x-4 gap-y-6 md:block md:relative md:h-[360px] lg:h-[420px] xl:h-[470px] md:w-[480px] lg:w-[560px] xl:w-[660px] ${className}`}
+      onClick={onToggle}
+      className={`cursor-pointer grid grid-cols-2 gap-x-4 gap-y-6 md:block md:relative md:h-[460px] lg:h-[540px] xl:h-[600px] md:w-[600px] lg:w-[700px] xl:w-[820px] ${className}`}
     >
-      {cards.map(({ img, label, sub, x, angle, z }, i) => (
+      {cards.map(({ img, label, sub, x, y, angle, z }, i) => (
         <div
           key={`${label}-${sub}`}
           style={{
@@ -38,20 +39,21 @@ function Fan({ cards, className = "", open }) {
             transformOrigin: "bottom center",
             transformStyle: "preserve-3d",
             "--x": `${open ? x : 0}px`,
+            "--y": `${open ? y : 0}px`,
             "--angle": `${open ? angle : 0}deg`,
             "--rotY": `${open ? angle * 0.9 : 0}deg`,
             "--z": `${open ? Math.abs(angle) * 2 : 0}px`,
             transitionDelay: `${i * 110}ms`,
           }}
-          className="group relative bg-surface border border-border rounded-2xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.45)] p-3 sm:p-4
-            md:absolute md:left-1/2 md:bottom-0 md:w-52 lg:w-64 xl:w-72
-            md:[transform:translateX(calc(-50%_+_var(--x)))_rotateZ(var(--angle))_rotateY(var(--rotY))_translateZ(var(--z))]
-            md:hover:[transform:translateX(calc(-50%_+_var(--x)))_rotateZ(var(--angle))_rotateY(0deg)_translateZ(60px)_translateY(-18px)]
+          className="group relative bg-surface border border-border rounded-2xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.45)] p-4 sm:p-5
+            md:absolute md:left-1/2 md:bottom-0 md:w-64 lg:w-80 xl:w-96
+            md:[transform:translateX(calc(-50%_+_var(--x)))_translateY(var(--y))_rotateZ(var(--angle))_rotateY(var(--rotY))_translateZ(var(--z))]
+            md:hover:[transform:translateX(calc(-50%_+_var(--x)))_translateY(calc(var(--y)_-_18px))_rotateZ(var(--angle))_rotateY(0deg)_translateZ(60px)]
             md:transition-transform md:duration-700 md:ease-out
             hover:z-50"
         >
-          <p className="text-sm font-bold text-primary-dark truncate">{label}</p>
-          <p className="text-xs text-muted mb-2 truncate">{sub}</p>
+          <p className="text-base font-bold text-primary-dark truncate">{label}</p>
+          <p className="text-sm text-muted mb-2 truncate">{sub}</p>
           <img
             src={img}
             alt={`${label} ${sub} mockup`}
@@ -93,14 +95,14 @@ export default function Home() {
       </div>
 
       {/* Container */}
-      <div className="relative z-10 mx-auto max-w-[1360px] px-8 flex flex-col lg:flex-row lg:items-center lg:justify-center gap-10 lg:gap-14 min-h-[calc(100vh-90px)] py-10">
+      <div className="relative z-10 mx-auto max-w-[1680px] px-8 xl:px-12 flex flex-col lg:flex-row lg:items-center lg:justify-center gap-14 lg:gap-20 min-h-[calc(100vh-90px)] py-10">
         {/* Text content */}
-        <div className="flex flex-col justify-center lg:w-2/5 lg:shrink-0 lg:pl-4 xl:pl-6">
-          <span style={titleStyle(0)} className={`inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary bg-accent/20 border border-border rounded-full px-4 py-1.5 mb-6 ${titleClass(0)}`}>
+        <div className="flex flex-col justify-center lg:w-[38%] lg:shrink-0">
+          <span style={titleStyle(0)} className={`inline-flex w-fit items-center gap-2 text-base font-semibold text-primary bg-accent/20 border border-border rounded-full px-5 py-2 mb-6 ${titleClass(0)}`}>
             <HiSparkles /> PRODUCT DESIGN · FRONT-END · DIGITAL EXPERIENCES
           </span>
           <p style={titleStyle(90)} className={`text-muted text-2xl mb-1 ${titleClass(90)}`}>Hi, my name is</p>
-          <h1 className="text-5xl sm:text-7xl py-3 font-bold whitespace-nowrap">
+          <h1 className="text-6xl sm:text-8xl py-3 font-bold whitespace-nowrap">
             <span style={titleStyle(180)} className={`inline-block mr-4 text-primary-dark ${nameClass()}`}>
               Agostina
             </span>
@@ -108,10 +110,10 @@ export default function Home() {
               Boris
             </span>
           </h1>
-          <h2 style={titleStyle(360)} className={`text-3xl sm:text-5xl py-3 mt-2 font-bold text-primary-dark max-w-[900px] ${titleClass(360)}`}>
+          <h2 style={titleStyle(360)} className={`text-4xl sm:text-6xl py-3 mt-2 font-bold text-primary-dark max-w-[900px] ${titleClass(360)}`}>
            Product Designer &amp; Front-End Developer
           </h2>
-          <p className="text-muted text-xl py-6 max-w-[650px]">
+          <p className="text-muted text-2xl py-6 max-w-[700px]">
             I design clear, accessible digital products and build responsive
             front-end experiences. My work combines research, interface
             design, prototyping, and development to turn ideas into
@@ -120,7 +122,7 @@ export default function Home() {
           <div className="flex flex-wrap gap-4 mt-2">
             <Link
               to="work" exact="true"
-              className="text-white bg-primary w-fit whitespace-nowrap px-6 py-4 my-2 flex font-bold items-center rounded-lg hover:bg-primary-dark duration-300"
+              className="text-white text-lg bg-primary w-fit whitespace-nowrap px-8 py-5 my-2 flex font-bold items-center rounded-lg hover:bg-primary-dark duration-300"
             >
               View Work <HiArrowNarrowRight className="mx-4 w-12"/>{" "}
             </Link>
@@ -128,16 +130,16 @@ export default function Home() {
               href={CV}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary border border-primary w-fit whitespace-nowrap px-6 py-4 my-2 flex gap-3 font-bold items-center rounded-lg hover:bg-primary hover:text-white duration-300"
+              className="text-primary text-lg border border-primary w-fit whitespace-nowrap px-8 py-5 my-2 flex gap-3 font-bold items-center rounded-lg hover:bg-primary hover:text-white duration-300"
             >
-              Download CV <HiOutlineDownload size={20} />
+              Download CV <HiOutlineDownload size={22} />
             </a>
           </div>
-          <div className="flex flex-wrap gap-2 pt-4">
+          <div className="flex flex-wrap gap-3 pt-4">
             {skillTags.map((tag) => (
               <span
                 key={tag}
-                className="text-sm text-primary-dark bg-surface border border-border rounded-full px-3 py-1"
+                className="text-base text-primary-dark bg-surface border border-border rounded-full px-4 py-2"
               >
                 {tag}
               </span>
@@ -148,8 +150,13 @@ export default function Home() {
         {/* Project mockups: one fan of 4 cards, staggered diagonally within
             the mockups column. Falls back to a plain 2-column grid on
             mobile, where there's no room to fan out. */}
-        <div className="lg:w-3/5 flex flex-col items-center lg:items-end justify-center">
-          <Fan cards={fanA} open={fansOpen} className="max-w-xs md:max-w-none mx-auto lg:mr-0 lg:translate-x-6 xl:translate-x-12" />
+        <div className="lg:flex-1 flex flex-col items-center justify-center">
+          <Fan
+            cards={fanA}
+            open={fansOpen}
+            onToggle={() => setFansOpen((o) => !o)}
+            className="max-w-sm md:max-w-none mx-auto lg:translate-x-14 xl:translate-x-24 lg:translate-y-8 xl:translate-y-10"
+          />
         </div>
       </div>
     </div>
