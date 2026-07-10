@@ -1,10 +1,16 @@
 import React from "react";
+import { HiSparkles } from "react-icons/hi";
 import YO from '../assets/yop.jpg'
 
+const points = [
+  "I'm a Product Designer and Front-End Developer focused on creating clear, accessible, and visually polished digital experiences.",
+  "My work combines user research, interface design, prototyping, and responsive development to turn ideas into functional, intuitive products.",
+  "With a background in front-end development, I design with real implementation in mind — creating experiences that are thoughtful, feasible, and ready to grow.",
+];
 
 function About() {
   return (
-    <div name="about" className="relative w-full h-full pt-20 bg-background overflow-hidden">
+    <div name="about" className="relative w-full min-h-screen pt-[110px] pb-16 bg-background overflow-hidden">
       {/* Decorative background blobs: soft, blurred, layered for a delicate 3D depth feel */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-24 -left-24 w-80 h-80 bg-accent/40 rounded-full blur-3xl" />
@@ -13,42 +19,34 @@ function About() {
         <div className="absolute bottom-10 right-1/3 w-64 h-64 bg-primary-dark/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 flex flex-col justify-center items-center w-full h-full">
-        <div className="max-w-[1000px] w-full grid grid-cols-2 gap-8">
-          <div className="sm:text-right mt-20 pb-8 pl-4">
-            <p className="text-5xl font-bold inline border-b-4 text-primary-dark border-primary">
-              About
-            </p>
+      <div className="relative z-10 max-w-[1200px] w-full mx-auto px-6">
+        <div className="text-center mb-16">
+          <h1 className="font-serif text-5xl font-bold text-primary-dark">About</h1>
+          <div className="mt-4 flex items-center justify-center gap-3">
+            <span className="h-px w-14 bg-primary-dark/70" />
+            <HiSparkles className="text-primary-dark" />
+            <span className="h-px w-14 bg-primary-dark/70" />
           </div>
         </div>
-        <div className="max-w-[1400px] w-full grid sm:grid-cols-2 py-20 gap-8 px-4">
-          <div className="flex flex-col items-end">
-            <p className="sm:text-right text-primary-dark text-4xl font-bold">
+
+        <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10 items-start">
+          <div className="flex flex-col items-start">
+            <p className="font-serif text-4xl text-primary-dark mb-8">
               Hi, I&rsquo;m Agostina.
             </p>
             <img
               src={YO}
               alt="Agostina Boris"
-              className="mt-8 rounded-full w-full max-w-[320px] h-auto border-4 border-border"
+              className="rounded-full w-full max-w-[400px] h-auto border-4 border-accent/50 shadow-xl"
             />
           </div>
-          <div className="space-y-6">
-            <p className="text-2xl text-muted">
-              I&rsquo;m a Product Designer and Front-End Developer focused on
-              creating clear, accessible, and visually polished digital
-              experiences.
-            </p>
-            <p className="text-2xl text-muted">
-              My work combines user research, interface design, prototyping,
-              and responsive development. I enjoy turning ideas into
-              functional products, designing interfaces that are not only
-              beautiful, but also intuitive, structured, and easy to use.
-            </p>
-            <p className="text-2xl text-muted">
-              With a background in frontend development, I design with real
-              implementation in mind — creating experiences that are
-              thoughtful, feasible, and ready to grow.
-            </p>
+          <div className="space-y-8 sm:mt-20">
+            {points.map((text) => (
+              <div key={text} className="flex items-start gap-3">
+                <HiSparkles className="text-accent shrink-0 mt-1.5" size={18} />
+                <p className="text-xl text-muted leading-relaxed">{text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
