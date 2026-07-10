@@ -11,7 +11,7 @@ import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
   useEffect(() => {
-    document.title = "Agostina Aldana Boris";
+    document.title = "Agostina Boris";
   }, []);
 
   return (

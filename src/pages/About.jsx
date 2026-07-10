@@ -28,13 +28,13 @@ function About() {
             </p>
             <img
               src={YO}
-              alt="Agostina Aldana Boris"
+              alt="Agostina Boris"
               className="mt-8 rounded-full w-full max-w-[320px] h-auto border-4 border-border"
             />
           </div>
           <div className="space-y-6">
             <p className="text-2xl text-muted">
-              I&rsquo;m a UX/UI Designer and Front-End Developer focused on
+              I&rsquo;m a Product Designer and Front-End Developer focused on
               creating clear, accessible, and visually polished digital
               experiences.
             </p>

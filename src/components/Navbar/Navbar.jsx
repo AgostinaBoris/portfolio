@@ -120,51 +120,6 @@ export default function Navbar() {
           </li>
         </ul>
       )}
-
-      {/* social icons */}
-
-      <div className="hidden sm:flex fixed flex-col top-[35%] left-0">
-        <ul>
-          <li className="w-auto h-20 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-primary">
-            <a
-              className="flex justify-between items-center w-full text-white px-4"
-              href="https://www.linkedin.com/in/agostinaboris/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Linkedin <FaLinkedin size={30} />
-            </a>
-          </li>
-          <li className="w-auto h-20 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-primary-dark">
-            <a
-              className="flex justify-between items-center w-full text-white px-4"
-              href="https://github.com/AgostinaBoris"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Github <FaGithub size={30} />
-            </a>
-          </li>
-          <li className="w-auto h-20 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-primary">
-            <a
-              className="flex justify-between items-center w-full text-white px-4"
-              href="mailto:borisagostina@gmail.com"
-            >
-              Email <HiOutlineMail size={30} />
-            </a>
-          </li>
-          <li className="w-auto h-20 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-primary-dark">
-            <a
-              className="flex justify-between items-center w-full text-white px-4"
-              href="https://www.behance.net/borisagostina"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Behance <FaBehance size={30} />
-            </a>
-          </li>
-        </ul>
-      </div>
     </div>
   );
 }
