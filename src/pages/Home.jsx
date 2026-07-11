@@ -132,7 +132,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="text-primary text-lg border border-primary w-fit whitespace-nowrap px-8 py-5 my-2 flex gap-3 font-bold items-center rounded-lg hover:bg-primary hover:text-white duration-300"
             >
-              Download CV <HiOutlineDownload size={22} />
+              Resume <HiOutlineDownload size={22} />
             </a>
           </div>
           <div className="flex flex-wrap gap-3 pt-4">
