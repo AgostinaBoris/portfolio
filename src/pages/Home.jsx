@@ -102,7 +102,7 @@ export default function Home() {
             <HiSparkles /> PRODUCT DESIGN · FRONT-END · DIGITAL EXPERIENCES
           </span>
           <p style={titleStyle(90)} className={`text-muted text-2xl mb-1 ${titleClass(90)}`}>Hi, my name is</p>
-          <h1 className="text-6xl sm:text-8xl py-3 font-bold whitespace-nowrap">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl py-3 font-bold whitespace-normal sm:whitespace-nowrap">
             <span style={titleStyle(180)} className={`inline-block mr-4 text-primary-dark ${nameClass()}`}>
               Agostina
             </span>
