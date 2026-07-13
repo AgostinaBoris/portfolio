@@ -14,12 +14,7 @@ const Projects = () => {
           {c.name}
         </span>
 
-        <div className="flex justify-center items-center pb-6">
-          <a href={c.deploy} target="_blank" rel="noopener noreferrer">
-            <button className="text-center rounded-lg px-4 py-3 m-2 bg-primary hover:bg-primary-dark text-white font-bold text-lg duration-300">
-              Demo
-            </button>
-          </a>
+        <div className="flex justify-center items-center flex-wrap pb-6">
           {c.codigo ? (
             <a href={c.codigo} target="_blank" rel="noopener noreferrer">
               <button className="text-center rounded-lg px-4 py-3 m-2 bg-primary hover:bg-primary-dark text-white font-bold text-lg duration-300">
@@ -33,6 +28,18 @@ const Projects = () => {
               </button>
             </a>
           ) : null}
+          {c.figmaPrototype ? (
+            <a href={c.figmaPrototype} target="_blank" rel="noopener noreferrer">
+              <button className="text-center rounded-lg px-4 py-3 m-2 bg-primary hover:bg-primary-dark text-white font-bold text-lg duration-300">
+                Figma Prototype
+              </button>
+            </a>
+          ) : null}
+          <a href={c.deploy} target="_blank" rel="noopener noreferrer">
+            <button className="text-center rounded-lg px-4 py-3 m-2 bg-primary hover:bg-primary-dark text-white font-bold text-lg duration-300">
+              {c.figmaPrototype ? "Live Demo" : "Demo"}
+            </button>
+          </a>
         </div>
       </div>
     );
