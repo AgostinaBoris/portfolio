@@ -5,6 +5,8 @@ import onetap from '../assets/onetap-prototype.webp';
 import onetapCaseStudy from '../assets/case-studies/onetap-case-study.pdf';
 import sophiesBoutique from '../assets/sophies-boutique.webp';
 import inFocusStudio from '../assets/in-focus-studio.webp';
+import engimattHotel from '../assets/engimatt-hotel.png';
+import engimattCaseStudy from '../assets/case-studies/engimatt-case-study.pdf';
 
 const data = [{
     name: 'Frameo',
@@ -14,6 +16,14 @@ const data = [{
     figmaPrototype: "https://www.figma.com/proto/BdQS574K8EwEeyEiycCnUJ/FRAMEO?node-id=1-2&t=X3bfDuE5Hj5bJr9j-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2",
     tecnologias: "Figma Prototyping UX Research UI Design",
     img: frameo,
+},
+{
+    name: 'Engimatt Hotel — Website Redesign',
+    id: 6,
+    caseStudy: engimattCaseStudy,
+    figmaPrototype: "https://www.figma.com/proto/XbBJkfuVQCL8TkWKUVPWy0/ENGIMATT?node-id=5-19&p=f&t=Qk3rMbIUurXZtl1F-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=5%3A19",
+    tecnologias: "Figma Prototyping UX Research UI Design",
+    img: engimattHotel,
 },
 {
     name: 'OneTap',

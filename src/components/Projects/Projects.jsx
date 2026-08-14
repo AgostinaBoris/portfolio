@@ -35,11 +35,13 @@ const Projects = () => {
               </button>
             </a>
           ) : null}
-          <a href={c.deploy} target="_blank" rel="noopener noreferrer">
-            <button className="text-center rounded-lg px-4 py-3 m-2 bg-primary hover:bg-primary-dark text-white font-bold text-lg duration-300">
-              {c.figmaPrototype ? "Live Demo" : "Demo"}
-            </button>
-          </a>
+          {c.deploy ? (
+            <a href={c.deploy} target="_blank" rel="noopener noreferrer">
+              <button className="text-center rounded-lg px-4 py-3 m-2 bg-primary hover:bg-primary-dark text-white font-bold text-lg duration-300">
+                {c.figmaPrototype ? "Live Demo" : "Demo"}
+              </button>
+            </a>
+          ) : null}
         </div>
       </div>
     );
