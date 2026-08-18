@@ -6,6 +6,7 @@ import mockupOnetapSplash from "../assets/mockups/mockup-onetap-splash.webp";
 import mockupInFocus from "../assets/mockups/mockup-infocus.webp";
 import mockupBoutiqueHero from "../assets/mockups/mockup-boutique-hero.webp";
 import CV from "../assets/cv/boris-agostina-cv.pdf";
+import { ACCENT_COLORS } from "../utils/accents.js";
 
 const skillTags = [
   "React",
@@ -18,10 +19,10 @@ const skillTags = [
 
 // Single fan of 4 cards, staggered diagonally within the mockups column.
 const fanA = [
-  { img: mockupFrameoSplash, label: "Frameo", sub: "Streaming Splash", x: -205, y: 0, angle: -10, z: 10 },
-  { img: mockupOnetapSplash, label: "OneTap", sub: "Finance Splash", x: -70, y: 40, angle: -6, z: 20 },
-  { img: mockupInFocus, label: "In Focus Studio", sub: "Photography Hero", x: 70, y: 80, angle: -2, z: 30 },
-  { img: mockupBoutiqueHero, label: "Sophie's Boutique", sub: "Home Hero", x: 205, y: 120, angle: 2, z: 40 },
+  { img: mockupFrameoSplash, label: "Frameo", sub: "Streaming Splash", x: -205, y: 0, angle: -10, z: 10, accent: "violet" },
+  { img: mockupOnetapSplash, label: "OneTap", sub: "Finance Splash", x: -70, y: 40, angle: -6, z: 20, accent: "blue" },
+  { img: mockupInFocus, label: "In Focus Studio", sub: "Photography Hero", x: 70, y: 80, angle: -2, z: 30, accent: "teal" },
+  { img: mockupBoutiqueHero, label: "Sophie's Boutique", sub: "Home Hero", x: 205, y: 120, angle: 2, z: 40, accent: "gold" },
 ];
 
 function Fan({ cards, className = "", open, onToggle }) {
@@ -31,7 +32,9 @@ function Fan({ cards, className = "", open, onToggle }) {
       onClick={onToggle}
       className={`cursor-pointer grid grid-cols-2 gap-x-4 gap-y-6 md:block md:relative md:h-[460px] lg:h-[540px] xl:h-[600px] md:w-[600px] lg:w-[700px] xl:w-[820px] ${className}`}
     >
-      {cards.map(({ img, label, sub, x, y, angle, z }, i) => (
+      {cards.map(({ img, label, sub, x, y, angle, z, accent }, i) => {
+        const accentColors = ACCENT_COLORS[accent] || ACCENT_COLORS.violet;
+        return (
         <div
           key={`${label}-${sub}`}
           style={{
@@ -45,14 +48,14 @@ function Fan({ cards, className = "", open, onToggle }) {
             "--z": `${open ? Math.abs(angle) * 2 : 0}px`,
             transitionDelay: `${i * 110}ms`,
           }}
-          className="group relative bg-surface border border-border rounded-2xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.45)] p-4 sm:p-5
+          className={`group relative bg-surface border ${accentColors.border} ${accentColors.borderHover} rounded-2xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] ${accentColors.glow} p-4 sm:p-5
             md:absolute md:left-1/2 md:bottom-0 md:w-64 lg:w-80 xl:w-96
             md:[transform:translateX(calc(-50%_+_var(--x)))_translateY(var(--y))_rotateZ(var(--angle))_rotateY(var(--rotY))_translateZ(var(--z))]
             md:hover:[transform:translateX(calc(-50%_+_var(--x)))_translateY(calc(var(--y)_-_18px))_rotateZ(var(--angle))_rotateY(0deg)_translateZ(60px)]
             md:transition-transform md:duration-700 md:ease-out
-            hover:z-50"
+            hover:z-50`}
         >
-          <p className="text-base font-bold text-primary-dark truncate">{label}</p>
+          <p className={`text-base font-bold truncate ${accentColors.text}`}>{label}</p>
           <p className="text-sm text-muted mb-2 truncate">{sub}</p>
           <img
             src={img}
@@ -60,7 +63,8 @@ function Fan({ cards, className = "", open, onToggle }) {
             className="w-full aspect-[9/13] rounded-xl object-cover transition-transform duration-300 group-hover:scale-110"
           />
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -103,14 +107,14 @@ export default function Home() {
           </span>
           <p style={titleStyle(90)} className={`text-muted text-2xl mb-1 ${titleClass(90)}`}>Hi, my name is</p>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl py-3 font-bold whitespace-normal sm:whitespace-nowrap">
-            <span style={titleStyle(180)} className={`inline-block mr-4 text-primary-dark ${nameClass()}`}>
+            <span style={titleStyle(180)} className={`inline-block mr-4 text-text ${nameClass()}`}>
               Agostina
             </span>
             <span style={titleStyle(320)} className={`inline-block text-primary ${nameClass()}`}>
               Boris
             </span>
           </h1>
-          <h2 style={titleStyle(360)} className={`text-4xl sm:text-6xl py-3 mt-2 font-bold text-primary-dark max-w-[900px] ${titleClass(360)}`}>
+          <h2 style={titleStyle(360)} className={`text-4xl sm:text-6xl py-3 mt-2 font-bold text-text max-w-[900px] ${titleClass(360)}`}>
            Product Designer &amp; Front-End Developer
           </h2>
           <p className="text-muted text-2xl py-6 max-w-[700px]">
@@ -140,7 +144,7 @@ export default function Home() {
               <span
                 key={tag}
                 style={titleStyle(420 + i * 70)}
-                className={`text-base text-primary-dark bg-surface border border-border rounded-full px-4 py-2 cursor-default transition-all duration-500 ease-out hover:duration-150 hover:-translate-y-1.5 ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
+                className={`text-base text-text bg-surface border border-border rounded-full px-4 py-2 cursor-default transition-all duration-500 ease-out hover:duration-150 hover:-translate-y-1.5 hover:border-primary/50 ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
               >
                 {tag}
               </span>

@@ -23,7 +23,7 @@ const categories = [
     items: [
       { name: 'React', Comp: SiReact, color: '#61DAFB' },
       { name: 'JavaScript', Comp: SiJavascript, color: '#F7DF1E' },
-      { name: 'Next.js', Comp: SiNextdotjs, color: '#000000' },
+      { name: 'Next.js', Comp: SiNextdotjs, color: '#F5F5F2' },
       { name: 'HTML', Comp: SiHtml5, color: '#E34F26' },
       { name: 'CSS', Comp: SiCss3, color: '#1572B6' },
       { name: 'Tailwind', Comp: SiTailwindcss, color: '#38BDF8' },
@@ -35,12 +35,12 @@ const categories = [
     icon: HiOutlinePencilAlt,
     items: [
       { name: 'Figma', Comp: SiFigma, color: '#A259FF' },
-      { name: 'Product Design', Comp: HiOutlineCube, color: '#9D174D' },
-      { name: 'UX Research', Comp: HiOutlineSearch, color: '#9D174D' },
-      { name: 'UI Design', Comp: HiOutlineTemplate, color: '#9D174D' },
-      { name: 'Wireframing', Comp: HiOutlineViewGrid, color: '#9D174D' },
-      { name: 'Prototyping', Comp: HiOutlineCursorClick, color: '#9D174D' },
-      { name: 'Design Systems', Comp: HiOutlineCollection, color: '#9D174D', full: true },
+      { name: 'Product Design', Comp: HiOutlineCube, color: '#7C5CFC' },
+      { name: 'UX Research', Comp: HiOutlineSearch, color: '#7C5CFC' },
+      { name: 'UI Design', Comp: HiOutlineTemplate, color: '#7C5CFC' },
+      { name: 'Wireframing', Comp: HiOutlineViewGrid, color: '#7C5CFC' },
+      { name: 'Prototyping', Comp: HiOutlineCursorClick, color: '#7C5CFC' },
+      { name: 'Design Systems', Comp: HiOutlineCollection, color: '#7C5CFC', full: true },
     ],
   },
   {
@@ -50,7 +50,7 @@ const categories = [
       { name: 'Node.js', Comp: SiNodedotjs, color: '#339933' },
       { name: 'Vite', Comp: SiVite, color: '#646CFF' },
       { name: 'Sass', Comp: SiSass, color: '#CC6699' },
-      { name: 'Miro', Comp: SiMiro, color: '#050038' },
+      { name: 'Miro', Comp: SiMiro, color: '#F5F5F2' },
     ],
   },
 ];
@@ -77,7 +77,7 @@ export default function Skills() {
         <div
           className={`text-center mb-12 transition-all duration-700 ease-out ${shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          <p className='text-5xl font-bold text-primary-dark inline border-b-4 border-primary'>Skills</p>
+          <p className='text-5xl font-bold text-text inline border-b-4 border-primary'>Skills</p>
           <p className='mt-6 text-2xl text-muted max-w-2xl mx-auto'>
             I work across product design and front-end development, combining
             design thinking with implementation.
@@ -93,10 +93,10 @@ export default function Skills() {
             >
               <div className='flex items-center gap-4 sm:gap-5 mb-6 sm:mb-10'>
                 <div className='w-14 h-14 sm:w-20 sm:h-20 shrink-0 rounded-xl bg-accent/20 flex items-center justify-center transition-transform duration-500 hover:rotate-6 hover:scale-110'>
-                  <Icon className='text-primary-dark' size={26} />
+                  <Icon className='text-primary' size={26} />
                 </div>
                 <div>
-                  <h3 className='text-xl sm:text-3xl font-bold text-primary-dark'>{title}</h3>
+                  <h3 className='text-xl sm:text-3xl font-bold text-text'>{title}</h3>
                   <span className='block mt-2 w-10 h-1.5 rounded-full bg-primary' />
                 </div>
               </div>
@@ -114,7 +114,7 @@ export default function Skills() {
                       className='shrink-0 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6'
                       aria-label={`${name} icon`}
                     />
-                    <p className='text-base sm:text-lg font-bold text-primary-dark leading-snug'>{name}</p>
+                    <p className='text-base sm:text-lg font-bold text-text leading-snug'>{name}</p>
                   </div>
                 ))}
               </div>

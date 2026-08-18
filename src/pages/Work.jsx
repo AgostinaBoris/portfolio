@@ -15,7 +15,7 @@ const Work = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto pt-20 px-6 lg:px-8 ">
         <div className="py-8 mt-20">
-          <p className="text-5xl font-bold inline border-b-4 text-primary-dark border-primary">
+          <p className="text-5xl font-bold inline border-b-4 text-text border-primary">
             Work
           </p>
           <p className="py-12 text-3xl text-muted">Check out some of my recent work</p>

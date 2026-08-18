@@ -4,7 +4,7 @@ import { CiMail } from "react-icons/ci";
 
 export const Footer = (props) => {
   return (
-    <div className="footer w-100 bg-surface text-primary-dark px-8 py-12 border-t border-border">
+    <div className="footer w-100 bg-surface text-text px-8 py-12 border-t border-border">
       <div className="container flex flex-col sm:flex-row items-center justify-between gap-6">
         <h3 className="text-2xl font-semibold">Agostina Boris</h3>
 

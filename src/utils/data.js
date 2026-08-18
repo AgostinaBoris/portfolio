@@ -14,6 +14,7 @@ const data = [{
     figmaPrototype: "https://www.figma.com/proto/BdQS574K8EwEeyEiycCnUJ/FRAMEO?node-id=1-2&t=X3bfDuE5Hj5bJr9j-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2",
     tecnologias: "Figma Prototyping UX Research UI Design",
     img: frameo,
+    accent: 'violet',
 },
 {
     name: 'OneTap',
@@ -23,6 +24,7 @@ const data = [{
     figmaPrototype: "https://www.figma.com/proto/9hmnbqOFCyihkKQc1I5CnO/ONETAP---FINAL-PROTOTYPE?node-id=4623-2634&t=aJq9QVJZjjHGdfeT-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=4623%3A3053",
     tecnologias: "Figma Prototyping UX Research UI Design",
     img: onetap,
+    accent: 'blue',
 },
 {
     name: 'Akari Sushi',
@@ -31,6 +33,7 @@ const data = [{
     deploy: "https://sushi-web-gilt.vercel.app/",
     tecnologias: "React Javascript Css Full Responsive",
     img: akariSushi,
+    accent: 'coral',
 },
 {
     name: "Sophie's Boutique",
@@ -39,6 +42,7 @@ const data = [{
     deploy: "https://ecommerce-html-css-js.vercel.app/",
     tecnologias: "React Next.js Tailwind Full Responsive",
     img: sophiesBoutique,
+    accent: 'gold',
 },
 {
     name: 'In Focus Studio',
@@ -47,6 +51,7 @@ const data = [{
     deploy: "https://next-js-web-one.vercel.app/",
     tecnologias: "Next.js React Tailwind Full Responsive",
     img: inFocusStudio,
+    accent: 'teal',
 },
 
 ];

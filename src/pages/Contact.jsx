@@ -46,22 +46,22 @@ const Contact = () => {
         <form onSubmit={handleSubmit}
         className='flex flex-col max-w-[600px] w-full'>
             <div className='pb-8'>
-                <p className='text-5xl font-bold inline border-b-4 border-primary text-primary-dark'>
+                <p className='text-5xl font-bold inline border-b-4 border-primary text-text'>
                     Contact
                 </p>
                 <p className='text-muted text-2xl py-8'>Submit the form below or shoot me an email - borisagostina@gmail.com</p>
             </div>
-            <input className='bg-surface border border-border rounded-md text-text p-3 my-4' type='text' placeholder='Name' name='name' value={form.name} onChange={handleChange} required />
-            <input className='my-4 p-3 bg-surface border border-border rounded-md text-text' type='email' placeholder='Email' name='email' value={form.email} onChange={handleChange} required />
-            <textarea className='bg-surface border border-border rounded-md text-text p-3 my-4' name='message' rows='10' placeholder='Message' value={form.message} onChange={handleChange} required></textarea>
+            <input className='bg-surface border border-border rounded-md text-text p-3 my-4 focus:outline-none focus:border-primary/60 transition-colors duration-300' type='text' placeholder='Name' name='name' value={form.name} onChange={handleChange} required />
+            <input className='my-4 p-3 bg-surface border border-border rounded-md text-text focus:outline-none focus:border-primary/60 transition-colors duration-300' type='email' placeholder='Email' name='email' value={form.email} onChange={handleChange} required />
+            <textarea className='bg-surface border border-border rounded-md text-text p-3 my-4 focus:outline-none focus:border-primary/60 transition-colors duration-300' name='message' rows='10' placeholder='Message' value={form.message} onChange={handleChange} required></textarea>
             <button type="submit" disabled={status === 'sending'} className='text-white bg-primary hover:bg-primary-dark rounded-lg px-6 py-3 my-2 mx-auto flex items-center font-bold duration-300 disabled:opacity-60'>
               {status === 'sending' ? 'Sending...' : 'Send'}
             </button>
             {status === 'sent' && (
-              <p className='text-center text-primary-dark font-semibold mt-2'>Message sent! I'll get back to you soon.</p>
+              <p className='text-center text-teal font-semibold mt-2'>Message sent! I'll get back to you soon.</p>
             )}
             {status === 'error' && (
-              <p className='text-center text-red-600 font-semibold mt-2'>Something went wrong — please try again or email me directly.</p>
+              <p className='text-center text-coral font-semibold mt-2'>Something went wrong — please try again or email me directly.</p>
             )}
         </form>
         </div>

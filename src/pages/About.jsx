@@ -21,17 +21,17 @@ function About() {
 
       <div className="relative z-10 max-w-[1200px] w-full mx-auto px-6">
         <div className="text-center mb-16">
-          <h1 className="font-serif text-5xl font-bold text-primary-dark">About</h1>
+          <h1 className="font-serif text-5xl font-bold text-text">About</h1>
           <div className="mt-4 flex items-center justify-center gap-3">
-            <span className="h-px w-14 bg-primary-dark/70" />
-            <HiSparkles className="text-primary-dark" />
-            <span className="h-px w-14 bg-primary-dark/70" />
+            <span className="h-px w-14 bg-primary/70" />
+            <HiSparkles className="text-primary" />
+            <span className="h-px w-14 bg-primary/70" />
           </div>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10 items-start">
           <div className="flex flex-col items-start">
-            <p className="font-serif text-4xl text-primary-dark mb-8">
+            <p className="font-serif text-4xl text-primary mb-8">
               Hi, I&rsquo;m Agostina.
             </p>
             <img
