@@ -19,10 +19,10 @@ const skillTags = [
 
 // Single fan of 4 cards, staggered diagonally within the mockups column.
 const fanA = [
-  { img: mockupFrameoSplash, label: "Frameo", sub: "Streaming Splash", x: -205, y: 0, angle: -10, z: 10, accent: "violet" },
-  { img: mockupOnetapSplash, label: "OneTap", sub: "Finance Splash", x: -70, y: 40, angle: -6, z: 20, accent: "blue" },
-  { img: mockupInFocus, label: "In Focus Studio", sub: "Photography Hero", x: 70, y: 80, angle: -2, z: 30, accent: "teal" },
-  { img: mockupBoutiqueHero, label: "Sophie's Boutique", sub: "Home Hero", x: 205, y: 120, angle: 2, z: 40, accent: "gold" },
+  { img: mockupFrameoSplash, label: "Frameo", sub: "Streaming Splash", x: -205, y: 0, angle: -10, z: 10, accent: "violet", deploy: "https://frameo-two.vercel.app/" },
+  { img: mockupOnetapSplash, label: "OneTap", sub: "Finance Splash", x: -70, y: 40, angle: -6, z: 20, accent: "blue", deploy: "https://onetaphelp-alpha.vercel.app/" },
+  { img: mockupInFocus, label: "In Focus Studio", sub: "Photography Hero", x: 70, y: 80, angle: -2, z: 30, accent: "teal", deploy: "https://next-js-web-one.vercel.app/" },
+  { img: mockupBoutiqueHero, label: "Sophie's Boutique", sub: "Home Hero", x: 205, y: 120, angle: 2, z: 40, accent: "gold", deploy: "https://ecommerce-html-css-js.vercel.app/" },
 ];
 
 function Fan({ cards, className = "", open, onToggle }) {
@@ -32,7 +32,7 @@ function Fan({ cards, className = "", open, onToggle }) {
       onClick={onToggle}
       className={`cursor-pointer grid grid-cols-2 gap-x-4 gap-y-6 md:block md:relative md:h-[460px] lg:h-[540px] xl:h-[600px] md:w-[600px] lg:w-[700px] xl:w-[820px] ${className}`}
     >
-      {cards.map(({ img, label, sub, x, y, angle, z, accent }, i) => {
+      {cards.map(({ img, label, sub, x, y, angle, z, accent, deploy }, i) => {
         const accentColors = ACCENT_COLORS[accent] || ACCENT_COLORS.violet;
         return (
         <div
@@ -55,13 +55,22 @@ function Fan({ cards, className = "", open, onToggle }) {
             md:transition-transform md:duration-700 md:ease-out
             hover:z-50`}
         >
-          <p className={`text-base font-bold truncate ${accentColors.text}`}>{label}</p>
-          <p className="text-sm text-muted mb-2 truncate">{sub}</p>
-          <img
-            src={img}
-            alt={`${label} ${sub} mockup`}
-            className="w-full aspect-[9/13] rounded-xl object-cover transition-transform duration-300 group-hover:scale-110"
-          />
+          <a
+            href={deploy}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="block"
+            aria-label={`Open ${label} live app`}
+          >
+            <p className={`text-base font-bold truncate ${accentColors.text}`}>{label}</p>
+            <p className="text-sm text-muted mb-2 truncate">{sub}</p>
+            <img
+              src={img}
+              alt={`${label} ${sub} mockup`}
+              className="w-full aspect-[9/13] rounded-xl object-cover transition-transform duration-300 group-hover:scale-110"
+            />
+          </a>
         </div>
         );
       })}
