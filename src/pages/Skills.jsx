@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { HiCode, HiOutlinePencilAlt, HiOutlineBriefcase } from 'react-icons/hi';
 import {
   SiReact,
@@ -22,8 +22,8 @@ const categories = [
     icon: HiCode,
     items: [
       { name: 'React', Comp: SiReact, color: '#61DAFB' },
-      { name: 'JavaScript', Comp: SiJavascript, color: '#F7DF1E' },
-      { name: 'Next.js', Comp: SiNextdotjs, color: '#F5F5F2' },
+      { name: 'JavaScript', Comp: SiJavascript, color: '#F0C419' },
+      { name: 'Next.js', Comp: SiNextdotjs, color: '#202124' },
       { name: 'HTML', Comp: SiHtml5, color: '#E34F26' },
       { name: 'CSS', Comp: SiCss3, color: '#1572B6' },
       { name: 'Tailwind', Comp: SiTailwindcss, color: '#38BDF8' },
@@ -35,12 +35,12 @@ const categories = [
     icon: HiOutlinePencilAlt,
     items: [
       { name: 'Figma', Comp: SiFigma, color: '#A259FF' },
-      { name: 'Product Design', Comp: HiOutlineCube, color: '#7C5CFC' },
-      { name: 'UX Research', Comp: HiOutlineSearch, color: '#7C5CFC' },
-      { name: 'UI Design', Comp: HiOutlineTemplate, color: '#7C5CFC' },
-      { name: 'Wireframing', Comp: HiOutlineViewGrid, color: '#7C5CFC' },
-      { name: 'Prototyping', Comp: HiOutlineCursorClick, color: '#7C5CFC' },
-      { name: 'Design Systems', Comp: HiOutlineCollection, color: '#7C5CFC', full: true },
+      { name: 'Product Design', Comp: HiOutlineCube, color: '#202124' },
+      { name: 'UX Research', Comp: HiOutlineSearch, color: '#202124' },
+      { name: 'UI Design', Comp: HiOutlineTemplate, color: '#202124' },
+      { name: 'Wireframing', Comp: HiOutlineViewGrid, color: '#202124' },
+      { name: 'Prototyping', Comp: HiOutlineCursorClick, color: '#202124' },
+      { name: 'Design Systems', Comp: HiOutlineCollection, color: '#202124', full: true },
     ],
   },
   {
@@ -50,71 +50,41 @@ const categories = [
       { name: 'Node.js', Comp: SiNodedotjs, color: '#339933' },
       { name: 'Vite', Comp: SiVite, color: '#646CFF' },
       { name: 'Sass', Comp: SiSass, color: '#CC6699' },
-      { name: 'Miro', Comp: SiMiro, color: '#F5F5F2' },
+      { name: 'Miro', Comp: SiMiro, color: '#F2C94C' },
     ],
   },
 ];
 
 export default function Skills() {
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setShown(true), 80);
-    return () => clearTimeout(t);
-  }, []);
-
   return (
-    <div name='skills' className='relative w-full pt-[110px] pb-20 bg-background overflow-hidden'>
-      {/* Decorative background blobs: soft, blurred, layered for a delicate 3D depth feel */}
-      <div className='pointer-events-none absolute inset-0 overflow-hidden'>
-        <div className='absolute -top-24 -right-24 w-80 h-80 bg-accent/40 rounded-full blur-3xl' />
-        <div className='absolute top-1/3 -left-32 w-96 h-96 bg-primary/15 rounded-full blur-3xl' />
-        <div className='absolute bottom-[-6rem] right-1/4 w-72 h-72 bg-accent/30 rounded-full blur-3xl' />
-        <div className='absolute bottom-10 left-1/3 w-64 h-64 bg-primary-dark/10 rounded-full blur-3xl' />
-      </div>
-
-      <div className='relative z-10 max-w-[1600px] w-full mx-auto px-6'>
-        <div
-          className={`text-center mb-12 transition-all duration-700 ease-out ${shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-        >
-          <p className='text-5xl font-bold text-text inline border-b-4 border-primary'>Skills</p>
-          <p className='mt-6 text-2xl text-muted max-w-2xl mx-auto'>
+    <div name='skills' className='relative w-full pt-[90px] pb-24 bg-background'>
+      <div className='max-w-6xl w-full mx-auto px-6 pt-20'>
+        <div className='text-center mb-16'>
+          <h1 className='text-5xl sm:text-6xl font-bold text-text'>Skills</h1>
+          <p className='mt-6 text-xl text-muted max-w-2xl mx-auto'>
             I work across product design and front-end development, combining
             design thinking with implementation.
           </p>
         </div>
 
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
-          {categories.map(({ title, icon: Icon, items }, catIndex) => (
-            <div
-              key={title}
-              style={{ transitionDelay: `${150 + catIndex * 150}ms` }}
-              className={`bg-surface/60 border border-border rounded-2xl p-6 sm:p-12 transition-all duration-700 ease-out hover:shadow-lg hover:-translate-y-1 ${shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-            >
-              <div className='flex items-center gap-4 sm:gap-5 mb-6 sm:mb-10'>
-                <div className='w-14 h-14 sm:w-20 sm:h-20 shrink-0 rounded-xl bg-accent/20 flex items-center justify-center transition-transform duration-500 hover:rotate-6 hover:scale-110'>
-                  <Icon className='text-primary' size={26} />
+          {categories.map(({ title, icon: Icon, items }) => (
+            <div key={title} className='bg-surface rounded-2xl p-6 sm:p-10'>
+              <div className='flex items-center gap-4 mb-8'>
+                <div className='w-12 h-12 shrink-0 rounded-xl bg-background flex items-center justify-center'>
+                  <Icon className='text-text' size={22} />
                 </div>
-                <div>
-                  <h3 className='text-xl sm:text-3xl font-bold text-text'>{title}</h3>
-                  <span className='block mt-2 w-10 h-1.5 rounded-full bg-primary' />
-                </div>
+                <h3 className='text-xl sm:text-2xl font-bold text-text'>{title}</h3>
               </div>
 
-              <div className='grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5'>
-                {items.map(({ name, Comp, color, full }, itemIndex) => (
+              <div className='grid grid-cols-1 gap-3'>
+                {items.map(({ name, Comp, color }) => (
                   <div
                     key={name}
-                    style={{ transitionDelay: `${300 + catIndex * 150 + itemIndex * 60}ms` }}
-                    className={`group flex items-center gap-4 bg-surface border border-border rounded-xl px-5 py-4 sm:px-6 sm:py-7 hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 hover:scale-[1.03] transition-all duration-300 ease-out ${full ? 'sm:col-span-2' : ''} ${shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+                    className='flex items-center gap-3 bg-background border border-border rounded-xl px-4 py-3.5'
                   >
-                    <Comp
-                      size={28}
-                      style={{ color }}
-                      className='shrink-0 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6'
-                      aria-label={`${name} icon`}
-                    />
-                    <p className='text-base sm:text-lg font-bold text-text leading-snug'>{name}</p>
+                    <Comp size={22} style={{ color }} className='shrink-0' aria-label={`${name} icon`} />
+                    <p className='text-base font-semibold text-text leading-snug'>{name}</p>
                   </div>
                 ))}
               </div>

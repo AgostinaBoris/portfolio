@@ -12,41 +12,41 @@ export default function Navbar() {
 
   return (
     <div
-      className=" z-50 fixed top-0 w-full h-[90px] justify-end items-center text-text
-    font-bold inset-x-0 flex-col text-xl sm:flex sm:flex-row bg-surface border-b border-border"
+      className=" z-50 fixed top-0 w-full h-[90px] justify-end items-center text-white
+    font-bold inset-x-0 flex-col text-xl sm:flex sm:flex-row bg-text border-b border-text"
     >
       {/* menu */}
 
       <ul className="hidden md:flex">
-        <li>
-          <Link to="/" exact="true" className="hover:text-primary duration-300">
+        <li className="px-4">
+          <Link to="/" exact="true" className="hover:text-white/70 duration-300">
             Home
           </Link>
         </li>
-        <li>
-          <Link to="about" exact="true" className="hover:text-primary duration-300">
+        <li className="px-4">
+          <Link to="/#about" className="hover:text-white/70 duration-300">
             About
           </Link>
         </li>
-        <li>
-          <Link to="skills" exact="true" className="hover:text-primary duration-300">
+        <li className="px-4">
+          <Link to="/skills" exact="true" className="hover:text-white/70 duration-300">
             Skills
           </Link>
         </li>
-        <li>
-          <Link to="work" exact="true" className="hover:text-primary duration-300">
+        <li className="px-4">
+          <Link to="/#work" className="hover:text-white/70 duration-300">
             Work
           </Link>
         </li>
-        <li>
-          <Link to="contact" exact="true" className="hover:text-primary duration-300">
+        <li className="px-4">
+          <Link to="/#contact" className="hover:text-white/70 duration-300">
             Contact
           </Link>
         </li>
       </ul>
 
       {/* Hamburger menu */}
-      <div onClick={handleClick} className="md:hidden fixed w-12 top-0 right-0 py-8 text-text">
+      <div onClick={handleClick} className="md:hidden fixed w-12 top-0 right-0 py-8 text-white px-6">
         {!nav ? <FaBars /> : <FaTimes />}
       </div>
 
@@ -59,7 +59,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="py-6 text-4xl">
-            <Link to="/about" onClick={handleClick}>
+            <Link to="/#about" onClick={handleClick}>
               About
             </Link>
           </li>
@@ -69,12 +69,12 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="py-6 text-4xl">
-            <Link to="/work" onClick={handleClick}>
+            <Link to="/#work" onClick={handleClick}>
               Work
             </Link>
           </li>
           <li className="py-6 text-4xl">
-            <Link to="/contact" onClick={handleClick}>
+            <Link to="/#contact" onClick={handleClick}>
               Contact
             </Link>
           </li>
@@ -85,7 +85,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleClick}
-              className="hover:text-accent duration-300"
+              className="hover:text-white/70 duration-300"
             >
               <FaLinkedin size={28} />
             </a>
@@ -95,7 +95,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleClick}
-              className="hover:text-accent duration-300"
+              className="hover:text-white/70 duration-300"
             >
               <FaGithub size={28} />
             </a>
@@ -103,7 +103,7 @@ export default function Navbar() {
               aria-label="Email"
               href="mailto:borisagostina@gmail.com"
               onClick={handleClick}
-              className="hover:text-accent duration-300"
+              className="hover:text-white/70 duration-300"
             >
               <HiOutlineMail size={28} />
             </a>
@@ -113,7 +113,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleClick}
-              className="hover:text-accent duration-300"
+              className="hover:text-white/70 duration-300"
             >
               <FaBehance size={28} />
             </a>
