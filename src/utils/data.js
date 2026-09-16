@@ -7,8 +7,20 @@ import sophiesBoutique from '../assets/sophies-boutique.webp';
 import inFocusStudio from '../assets/in-focus-studio.webp';
 import velora from '../assets/velora-prototype.webp';
 import veloraCaseStudy from '../assets/case-studies/velora-case-study.pdf';
+import nino from '../assets/mockups/nino-prototype.webp';
+import ninoCaseStudy from '../assets/case-studies/nino-case-study.pdf';
 
 const data = [{
+    name: 'Contenedores Nino',
+    id: 7,
+    category: 'Container Rental Management System',
+    blurb: 'A digital workspace for a family-owned construction container rental business.',
+    caseStudy: ninoCaseStudy,
+    figmaPrototype: "https://www.figma.com/proto/xsqWpPyWprLwaPjA16RXfW/NINO?node-id=2-362&t=KkV2iGxJqqNnKuMW-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A362",
+    tecnologias: "Figma Prototyping UX Research UI Design",
+    img: nino,
+},
+{
     name: 'Velora',
     id: 6,
     category: 'Hotel UX Audit',
