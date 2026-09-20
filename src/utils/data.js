@@ -48,7 +48,7 @@ const data = [{
     category: 'Landing Page',
     blurb: 'A scroll-driven landing page for an industrial energy orchestration company.',
     codigo: "https://github.com/AgostinaBoris/savergy",
-    figmaPrototype: "https://www.figma.com/design/XORHsaJjeIUDS3ZWyrvIYn/SAVERGY?node-id=0-1&t=peGX2XWdGO0YrC9A-1",
+    figmaPrototype: "https://www.figma.com/proto/XORHsaJjeIUDS3ZWyrvIYn/SAVERGY?node-id=2-2203&t=DNbpDE3vNg0rYeBE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2203",
     deploy: "https://savergy-landing.vercel.app/",
     tecnologias: "React Vite Full Responsive",
     img: savergy,
