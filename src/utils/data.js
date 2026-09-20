@@ -9,6 +9,7 @@ import velora from '../assets/velora-prototype.webp';
 import veloraCaseStudy from '../assets/case-studies/velora-case-study.pdf';
 import nino from '../assets/mockups/nino-prototype.webp';
 import ninoCaseStudy from '../assets/case-studies/nino-case-study.pdf';
+import savergy from '../assets/savergy-hero.jpg';
 
 const data = [{
     name: 'Contenedores Nino',
@@ -31,17 +32,6 @@ const data = [{
     img: velora,
 },
 {
-    name: 'Frameo',
-    id: 1,
-    category: 'AI Streaming Assistant',
-    blurb: 'A guided way to decide what to watch, based on mood, time and platform.',
-    deploy: "https://frameo-two.vercel.app/",
-    caseStudy: frameoCaseStudy,
-    figmaPrototype: "https://www.figma.com/proto/BdQS574K8EwEeyEiycCnUJ/FRAMEO?node-id=1-2&t=X3bfDuE5Hj5bJr9j-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2",
-    tecnologias: "Figma Prototyping UX Research UI Design",
-    img: frameo,
-},
-{
     name: 'OneTap',
     id: 2,
     category: 'Mobile Finance App',
@@ -51,6 +41,28 @@ const data = [{
     figmaPrototype: "https://www.figma.com/proto/9hmnbqOFCyihkKQc1I5CnO/ONETAP---FINAL-PROTOTYPE?node-id=4623-2634&t=aJq9QVJZjjHGdfeT-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=4623%3A3053",
     tecnologias: "Figma Prototyping UX Research UI Design",
     img: onetap,
+},
+{
+    name: 'Savergy',
+    id: 8,
+    category: 'Landing Page',
+    blurb: 'A scroll-driven landing page for an industrial energy orchestration company.',
+    codigo: "https://github.com/AgostinaBoris/savergy",
+    figmaPrototype: "https://www.figma.com/design/XORHsaJjeIUDS3ZWyrvIYn/SAVERGY?node-id=0-1&t=peGX2XWdGO0YrC9A-1",
+    deploy: "https://savergy-landing.vercel.app/",
+    tecnologias: "React Vite Full Responsive",
+    img: savergy,
+},
+{
+    name: 'Frameo',
+    id: 1,
+    category: 'AI Streaming Assistant',
+    blurb: 'A guided way to decide what to watch, based on mood, time and platform.',
+    deploy: "https://frameo-two.vercel.app/",
+    caseStudy: frameoCaseStudy,
+    figmaPrototype: "https://www.figma.com/proto/BdQS574K8EwEeyEiycCnUJ/FRAMEO?node-id=1-2&t=X3bfDuE5Hj5bJr9j-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2",
+    tecnologias: "Figma Prototyping UX Research UI Design",
+    img: frameo,
 },
 {
     name: "Sophie's Boutique",

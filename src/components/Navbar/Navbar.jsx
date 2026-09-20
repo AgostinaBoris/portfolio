@@ -34,7 +34,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="px-4">
-          <Link to="/#work" className="hover:text-white/70 duration-300">
+          <Link to="/work" className="hover:text-white/70 duration-300">
             Work
           </Link>
         </li>
@@ -69,7 +69,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="py-6 text-4xl">
-            <Link to="/#work" onClick={handleClick}>
+            <Link to="/work" onClick={handleClick}>
               Work
             </Link>
           </li>

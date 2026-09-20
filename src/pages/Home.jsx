@@ -85,7 +85,7 @@ export default function Home() {
       {/* Hero — minimal and typography-led: no background artwork, no
           texture, just generous space and one confident headline. */}
       <div className="w-full bg-surface pt-[90px]">
-        <div className="min-h-[85vh] flex flex-col items-center justify-center px-6 py-16 text-center">
+        <div className="min-h-[55vh] flex flex-col items-center justify-center px-6 py-12 text-center">
           <h1 className="flex flex-wrap items-center justify-center gap-5 sm:gap-6 text-[clamp(44px,5.5vw,100px)] font-extrabold text-text leading-[1] tracking-tight">
             <span>{renderLetters("Hi,", 0)}</span>
             <span
@@ -123,7 +123,7 @@ export default function Home() {
               Resume <HiOutlineDownload className="hero-btn-icon" size={18} />
             </a>
           </div>
-          <span className="opacity-0 animate-fade-up [animation-delay:1250ms] inline-block mt-16">
+          <span className="opacity-0 animate-fade-up [animation-delay:1250ms] inline-block mt-10">
             <HiArrowDown className="hero-arrow-bounce mx-auto text-muted" size={22} />
           </span>
         </div>
@@ -142,7 +142,7 @@ export default function Home() {
           Selected Work
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-[clamp(32px,2vw,40px)]">
-          <Projects />
+          <Projects limit={4} />
         </div>
       </div>
 
