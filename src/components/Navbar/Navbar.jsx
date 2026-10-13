@@ -46,13 +46,13 @@ export default function Navbar() {
       </ul>
 
       {/* Hamburger menu */}
-      <div onClick={handleClick} className="md:hidden fixed w-12 top-0 right-0 py-8 text-white px-6">
+      <div onClick={handleClick} className="md:hidden fixed w-12 top-0 right-0 py-8 text-white px-6 cursor-pointer">
         {!nav ? <FaBars /> : <FaTimes />}
       </div>
 
       {/* Mobile menu */}
       {nav && (
-        <ul className= "sm:hidden w-full h-screen flex-col flex justify-center text-white items-center bg-primary-dark" >
+        <ul className="md:hidden fixed inset-x-0 top-[90px] h-[calc(100vh-90px)] flex flex-col justify-center items-center text-white bg-primary-dark">
           <li className="py-6 text-4xl">
             <Link to="/" onClick={handleClick}>
               Home
