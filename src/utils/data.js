@@ -10,8 +10,20 @@ import veloraCaseStudy from '../assets/case-studies/velora-case-study.pdf';
 import nino from '../assets/mockups/nino-prototype.webp';
 import ninoCaseStudy from '../assets/case-studies/nino-case-study.pdf';
 import savergy from '../assets/savergy-hero.jpg';
+import savergyCaseStudy from '../assets/case-studies/savergy-case-study.pdf';
 
 const data = [{
+    name: 'Savergy',
+    id: 8,
+    category: 'Landing Page',
+    blurb: 'A scroll-driven landing page for an industrial energy orchestration company.',
+    caseStudy: savergyCaseStudy,
+    figmaPrototype: "https://www.figma.com/proto/XORHsaJjeIUDS3ZWyrvIYn/SAVERGY?node-id=2-2203&t=DNbpDE3vNg0rYeBE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2203",
+    deploy: "https://savergy-landing.vercel.app/",
+    tecnologias: "React Vite Full Responsive",
+    img: savergy,
+},
+{
     name: 'Contenedores Nino',
     id: 7,
     category: 'Container Rental Management System',
@@ -41,17 +53,6 @@ const data = [{
     figmaPrototype: "https://www.figma.com/proto/BdQS574K8EwEeyEiycCnUJ/FRAMEO?node-id=1-2&t=X3bfDuE5Hj5bJr9j-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2",
     tecnologias: "Figma Prototyping UX Research UI Design",
     img: frameo,
-},
-{
-    name: 'Savergy',
-    id: 8,
-    category: 'Landing Page',
-    blurb: 'A scroll-driven landing page for an industrial energy orchestration company.',
-    codigo: "https://github.com/AgostinaBoris/savergy",
-    figmaPrototype: "https://www.figma.com/proto/XORHsaJjeIUDS3ZWyrvIYn/SAVERGY?node-id=2-2203&t=DNbpDE3vNg0rYeBE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2203",
-    deploy: "https://savergy-landing.vercel.app/",
-    tecnologias: "React Vite Full Responsive",
-    img: savergy,
 },
 {
     name: 'OneTap',
