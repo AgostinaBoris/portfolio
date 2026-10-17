@@ -11,17 +11,18 @@ import nino from '../assets/mockups/nino-prototype.webp';
 import ninoCaseStudy from '../assets/case-studies/nino-case-study.pdf';
 import savergy from '../assets/savergy-hero.jpg';
 import savergyCaseStudy from '../assets/case-studies/savergy-case-study.pdf';
+import bondly from '../assets/mockups/bondly-prototype.webp';
+import bondlyCaseStudy from '../assets/case-studies/bondly-case-study.pdf';
 
 const data = [{
-    name: 'Savergy',
-    id: 8,
-    category: 'Landing Page',
-    blurb: 'A scroll-driven landing page for an industrial energy orchestration company.',
-    caseStudy: savergyCaseStudy,
-    figmaPrototype: "https://www.figma.com/proto/XORHsaJjeIUDS3ZWyrvIYn/SAVERGY?node-id=2-2203&t=DNbpDE3vNg0rYeBE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2203",
-    deploy: "https://savergy-landing.vercel.app/",
-    tecnologias: "React Vite Full Responsive",
-    img: savergy,
+    name: 'Bondly',
+    id: 9,
+    category: 'Social Meetup App',
+    blurb: 'A mobile app for small-group meetups that can turn into ongoing groups.',
+    caseStudy: bondlyCaseStudy,
+    figmaPrototype: "https://www.figma.com/proto/e19IsuAANmdJvuClAm37Pm/BONDLY?node-id=266-2182&t=FOEQxFAVW5BdYR9P-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=266%3A2182&show-proto-sidebar=1",
+    tecnologias: "Figma Prototyping UX Research UI Design",
+    img: bondly,
 },
 {
     name: 'Contenedores Nino',
@@ -32,6 +33,17 @@ const data = [{
     figmaPrototype: "https://www.figma.com/proto/xsqWpPyWprLwaPjA16RXfW/NINO?node-id=2-362&t=KkV2iGxJqqNnKuMW-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A362",
     tecnologias: "Figma Prototyping UX Research UI Design",
     img: nino,
+},
+{
+    name: 'Savergy',
+    id: 8,
+    category: 'Landing Page',
+    blurb: 'A scroll-driven landing page for an industrial energy orchestration company.',
+    caseStudy: savergyCaseStudy,
+    figmaPrototype: "https://www.figma.com/proto/XORHsaJjeIUDS3ZWyrvIYn/SAVERGY?node-id=2-2203&t=DNbpDE3vNg0rYeBE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2203",
+    deploy: "https://savergy-landing.vercel.app/",
+    tecnologias: "React Vite Full Responsive",
+    img: savergy,
 },
 {
     name: 'Velora',
