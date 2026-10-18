@@ -25,7 +25,7 @@ const data = [{
     img: bondly,
 },
 {
-    name: 'Contenedores Nino',
+    name: 'NINO',
     id: 7,
     category: 'Container Rental Management System',
     blurb: 'A digital workspace for a family-owned construction container rental business.',
