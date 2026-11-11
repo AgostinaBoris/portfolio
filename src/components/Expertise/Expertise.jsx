@@ -39,7 +39,7 @@ export default function Expertise() {
         <div key={b.label} className={`${blockGap} border-t border-text pt-6 md:pt-8`}>
           <h3 className={eyebrowClass}>{b.label}</h3>
           <ul
-            className={`mt-6 md:mt-8 grid ${b.mobileCols} sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 md:gap-y-4 text-xl md:text-2xl leading-snug`}
+            className={`mt-6 md:mt-8 grid ${b.mobileCols} sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 md:gap-y-4 text-[length:clamp(20px,18.51px+0.381vw,24px)] leading-snug`}
           >
             {b.items.map((item) => (
               <li key={item}>{item}</li>

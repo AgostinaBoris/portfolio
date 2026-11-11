@@ -14,11 +14,16 @@ export default function SiteName() {
       {/* Inner pages: a white strip behind the name and menu button so page
           text doesn't run under them while scrolling. Under the menu (z-50). */}
       {pathname !== "/" && (
-        <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[45] h-[72px] md:h-[88px] bg-background" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-x-0 top-0 z-[45] h-[calc(72px+env(safe-area-inset-top))] md:h-[calc(88px+env(safe-area-inset-top))] bg-background"
+        />
       )}
       <Link
       to="/"
-      className={`fixed top-6 left-6 z-[55] text-[23px] leading-none whitespace-nowrap text-white mix-blend-difference hover:underline underline-offset-4`}
+      // 11px vertical padding makes a 45px tap target; top is offset by the
+      // same amount so the text stays 24px from the edge (or below a notch).
+      className={`fixed top-[calc(13px+env(safe-area-inset-top))] left-[max(1.5rem,env(safe-area-inset-left))] z-[55] py-[11px] text-[23px] leading-none whitespace-nowrap text-white mix-blend-difference hover:underline underline-offset-4`}
     >
       Agostina Boris
       </Link>

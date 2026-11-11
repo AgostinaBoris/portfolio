@@ -8,7 +8,7 @@ export default function About() {
   }, []);
 
   return (
-    <PageColumn className={`min-h-screen ${pageY}`}>
+    <PageColumn className={`min-h-fill ${pageY}`}>
       <AboutSection />
     </PageColumn>
   );

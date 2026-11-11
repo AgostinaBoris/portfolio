@@ -43,13 +43,13 @@ function Step({ step, open, onToggle, isLast }) {
           aria-expanded={open}
           aria-controls={panelId}
           onClick={onToggle}
-          className="group flex w-full items-center py-6 md:py-8 text-left font-medium text-2xl md:text-[32px] leading-tight text-text focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-text"
+          className="group flex w-full items-center py-6 md:py-8 text-left font-medium text-[length:clamp(24px,21.03px+0.762vw,32px)] leading-tight text-text focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-text"
         >
           <span className={`${NUM_COL} shrink-0`}>{step.n}</span>
           <span className="flex-1 min-w-0">{step.title}</span>
           <span
             aria-hidden="true"
-            className={`ml-4 shrink-0 text-3xl md:text-4xl font-light leading-none transition-transform duration-300 ease-out motion-reduce:transition-none ${
+            className={`ml-4 shrink-0 text-[length:clamp(30px,27.77px+0.571vw,36px)] font-light leading-none transition-transform duration-300 ease-out motion-reduce:transition-none ${
               open ? "rotate-45" : "rotate-0"
             }`}
           >

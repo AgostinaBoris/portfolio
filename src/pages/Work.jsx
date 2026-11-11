@@ -4,7 +4,7 @@ import PageColumn, { bodyClass, headingClass, pageY } from "../components/Layout
 
 const Work = () => {
   return (
-    <PageColumn className={`min-h-screen ${pageY}`}>
+    <PageColumn className={`min-h-fill ${pageY}`}>
       <div name="work">
         <h1 className={headingClass}>Work</h1>
         <p className={`mt-6 md:mt-8 ${bodyClass}`}>Check out some of my recent work</p>

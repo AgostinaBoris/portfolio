@@ -9,7 +9,7 @@ export default function Expertise() {
   }, []);
 
   return (
-    <PageColumn className={`min-h-screen ${pageY}`}>
+    <PageColumn className={`min-h-fill ${pageY}`}>
       <ExpertiseSection />
     </PageColumn>
   );

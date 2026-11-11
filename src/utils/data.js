@@ -15,6 +15,9 @@ import bondly from '../assets/mockups/bondly-prototype.webp';
 import bondlyCaseStudy from '../assets/case-studies/bondly-case-study.pdf';
 
 // Reel frames (Home "Selected Work"): screens cropped from each case study.
+// Optional mobile versions: add `mobileFrames: [...]` to a project, in the
+// same order as `frames` (e.g. bondly-01-mobile.webp). On narrow or portrait
+// screens they replace the matching frame through <picture>.
 import bondlyFrame1 from '../assets/frames/bondly-01.webp';
 import bondlyFrame2 from '../assets/frames/bondly-02.webp';
 import bondlyFrame3 from '../assets/frames/bondly-03.webp';
@@ -58,10 +61,8 @@ const data = [{
     ],
     frameFit: 'cover',
     // Responsive fit (ProjectReel fitSlide): the three phones span the middle
-    // 66% of the slide; on narrow phones (aspect <= 0.6) the middle phone alone
-    // fills the screen as a clean cover crop.
+    // 66% of the slide.
     focusWidth: 0.66,
-    portraitCoverBelow: 0.6,
     role: ['UX Research', 'Product Concept', 'UX/UI Design', 'Usability Testing'],
 },
 {

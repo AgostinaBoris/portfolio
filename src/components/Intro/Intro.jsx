@@ -55,7 +55,7 @@ export default function Intro() {
       }`}
     >
       <div className={`${columnMax} w-full`}>
-        <p className="intro-line font-normal italic text-4xl md:text-6xl leading-[1.1] tracking-tight text-text">
+        <p className="intro-line font-normal italic text-[length:clamp(36px,27.09px+2.286vw,60px)] leading-[1.1] tracking-tight text-text">
           Designing products that ship.
         </p>
       </div>

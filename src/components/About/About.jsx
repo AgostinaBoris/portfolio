@@ -1,6 +1,6 @@
 import React from "react";
 import { HiOutlineDownload } from "react-icons/hi";
-import { bodyClass, eyebrowClass } from "../Layout/PageColumn";
+import { bodyClass, closingClass, eyebrowClass, statementClass } from "../Layout/PageColumn";
 import CV from "../../assets/cv/boris-agostina-cv.pdf";
 import photo from "../../assets/yop.jpg";
 import useReveal from "../../hooks/useReveal";
@@ -16,7 +16,7 @@ export default function About() {
     <section id="about" ref={ref} className={`reveal ${inView ? "reveal-in" : ""} text-text`}>
       <p className={eyebrowClass}>About</p>
 
-      <p className="mt-4 md:mt-6 text-2xl md:text-[2.25rem] font-normal leading-[1.3] text-text">
+      <p className={`mt-4 md:mt-6 ${statementClass}`}>
         Most products don't fail because of how they look. They fail in the gaps: between what users need and what
         gets prioritized, between what's designed and what actually gets built. Every handoff loses something — a
         state nobody designed, an edge case nobody tested, a decision nobody explained.
@@ -29,7 +29,7 @@ export default function About() {
         explaining the why behind every decision.
       </p>
 
-      <p className="mt-12 md:mt-20 text-[25px] md:text-[33px] font-normal leading-[1.3] text-text">
+      <p className={`mt-12 md:mt-20 ${closingClass}`}>
         Clear products, built the way they were designed. That is what I do.
       </p>
 
@@ -46,6 +46,10 @@ export default function About() {
       <img
         src={photo}
         alt="Agostina Boris"
+        width={1254}
+        height={1254}
+        loading="lazy"
+        decoding="async"
         className="mt-16 md:mt-24 block w-full max-w-[400px] md:w-[320px] h-auto grayscale"
       />
     </section>

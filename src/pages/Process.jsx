@@ -9,7 +9,7 @@ export default function Process() {
   }, []);
 
   return (
-    <PageColumn className={`min-h-screen ${pageY}`}>
+    <PageColumn className={`min-h-fill ${pageY}`}>
       <ProcessSection />
     </PageColumn>
   );

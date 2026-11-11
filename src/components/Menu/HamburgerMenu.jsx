@@ -15,8 +15,12 @@ const links = [
 ];
 
 // White items; hovering one (or keyboard-focusing one) dims the others to 50%.
+// Size: 9vw on phones up to 66px, and never taller than the screen allows
+// (landscape phones), so all five fit; the list scrolls if they still don't.
 const itemClass =
-  "pointer-events-auto inline-block text-[42px] md:text-[66px] font-normal leading-[1.05] tracking-tight text-white transition-opacity duration-200 group-hover/list:opacity-50 group-[:has(:focus-visible)]/list:opacity-50 hover:!opacity-100 focus-visible:!opacity-100 focus:outline-none focus-visible:underline underline-offset-8 decoration-2";
+  "pointer-events-auto inline-block text-[length:clamp(32px,min(9vw,10svh),66px)] font-normal leading-[1.05] tracking-tight text-white transition-opacity duration-200 group-hover/list:opacity-50 group-[:has(:focus-visible)]/list:opacity-50 hover:!opacity-100 focus-visible:!opacity-100 focus:outline-none focus-visible:underline underline-offset-8 decoration-2";
+
+const footerLink = "inline-flex min-h-[44px] items-center hover:underline underline-offset-4";
 
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -92,7 +96,7 @@ export default function HamburgerMenu() {
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         aria-controls="site-menu"
-        className="fixed top-4 right-4 md:top-6 md:right-6 z-[60] h-11 w-11 mix-blend-difference"
+        className="fixed top-[calc(1rem+env(safe-area-inset-top))] right-[max(1rem,env(safe-area-inset-right))] md:top-[calc(1.5rem+env(safe-area-inset-top))] md:right-[max(1.5rem,env(safe-area-inset-right))] z-[60] h-11 w-11 mix-blend-difference"
       >
         <span className={`${line} ${open ? "top-1/2 rotate-45" : "top-[14px]"}`} />
         <span className={`${line} top-1/2 ${open ? "opacity-0" : "opacity-100"}`} />
@@ -105,11 +109,13 @@ export default function HamburgerMenu() {
           role="dialog"
           aria-modal="true"
           aria-label="Menu"
-          className="fixed inset-0 z-50 flex flex-col bg-[#111] text-white"
+          className="fixed inset-0 z-50 flex flex-col bg-[#111] text-white pt-[calc(72px+env(safe-area-inset-top))]"
         >
-          {/* Items centred in the overlay, horizontally and vertically. */}
-          <nav className="flex flex-1 flex-col items-center justify-center px-6 text-center" aria-label="Main">
-            <ul className="group/list pointer-events-none space-y-3 md:space-y-5">
+          {/* Items centred in the overlay, horizontally and vertically; the
+              area scrolls (and the list keeps clear of the name/close button)
+              when the screen is too short for them. */}
+          <nav className="flex min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 text-center" aria-label="Main">
+            <ul className="group/list pointer-events-none m-auto space-y-[clamp(8px,2.5svh,20px)]">
               {links.map((l, i) => (
                 <li key={l.label}>
                   <Link
@@ -127,11 +133,14 @@ export default function HamburgerMenu() {
           </nav>
 
           {/* Footer row, same corners and style as the site name and menu button. */}
-          <div className={`flex items-end justify-between gap-6 px-6 pb-6 ${siteTextClass}`}>
-            <a href={CV} target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">
+          {/* Wraps onto two lines if it doesn't fit; 44px tall tap targets. */}
+          <div
+            className={`flex flex-wrap items-end justify-between gap-x-6 pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] pb-[max(0.75rem,env(safe-area-inset-bottom))] ${siteTextClass}`}
+          >
+            <a href={CV} target="_blank" rel="noopener noreferrer" className={footerLink}>
               Resume
             </a>
-            <a href={`mailto:${EMAIL}`} className="hover:underline underline-offset-4">
+            <a href={`mailto:${EMAIL}`} className={footerLink}>
               {EMAIL}
             </a>
           </div>

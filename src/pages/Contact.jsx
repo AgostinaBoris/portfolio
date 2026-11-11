@@ -84,7 +84,7 @@ export default function Contact() {
   }, []);
 
   return (
-    <PageColumn className={`min-h-screen ${pageY}`}>
+    <PageColumn className={`min-h-fill ${pageY}`}>
       <div className="space-y-24 md:space-y-32">
         <Group title="Contact">
           <EmailRow />

@@ -1,6 +1,8 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import data from "../../utils/data.js";
+import { columnPad } from "../Layout/PageColumn";
+import useReveal from "../../hooks/useReveal";
 
 const FRAME_MS = 2500;
 const FADE_MS = 600;
@@ -18,15 +20,17 @@ const clamp01 = (v) => Math.min(1, Math.max(0, v));
 // edge like on desktop, and enlarged until its subject (the middle
 // `focusWidth` of the slide) spans the screen, but never past a cover fit.
 // Any space left above stays black, and the labels/counter move up into it.
-// `portraitCoverBelow`: on screens narrower than this aspect ratio, use a
-// plain cover crop instead (Bondly: the middle phone alone fills a phone).
-const SLIDE_RATIO = 3296 / 1516;
+// Only used by the pinned reel (landscape screens >= 1024px wide); narrow or
+// portrait screens get ReelList instead.
+const SLIDE_W = 3296;
+const SLIDE_H = 1516;
+const SLIDE_RATIO = SLIDE_W / SLIDE_H;
 const LABEL_GAP = 24;
 function fitSlide(project, W, H) {
   const A = W / H;
   const cover = { mode: "cover", scale: 1, imageH: H, labelsBottom: LABEL_GAP };
   if (project.frameFit !== "cover") return null; // contain-on-black slides: untouched
-  if (A >= SLIDE_RATIO || (project.portraitCoverBelow && A <= project.portraitCoverBelow)) return cover;
+  if (A >= SLIDE_RATIO) return cover;
   const maxScale = 1 / (project.focusWidth || 0.74);
   const toCover = SLIDE_RATIO / A;
   if (maxScale >= toCover) return cover;
@@ -47,6 +51,48 @@ function usePrefersReducedMotion() {
     return () => mq.removeEventListener("change", onChange);
   }, []);
   return reduced;
+}
+
+// Narrow or portrait screens (phones, tablets held upright, landscape phones)
+// get a stacked list instead of the pinned full-screen reel: the wide slides
+// would otherwise be cropped or tiny. Also the <picture> breakpoint for
+// optional mobile assets.
+const COMPACT_MQ = "(max-width: 1023px), (orientation: portrait)";
+
+function useMediaQuery(query) {
+  const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const onChange = () => setMatches(mq.matches);
+    onChange();
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, [query]);
+  return matches;
+}
+
+// Data saver on: videos don't autoplay, the poster shows instead.
+function saveDataOn() {
+  try {
+    return Boolean(navigator.connection && navigator.connection.saveData);
+  } catch {
+    return false;
+  }
+}
+
+// One slide frame. If the project lists a mobile asset for it
+// (project.mobileFrames[i], e.g. bondly-01-mobile.webp) it's served on
+// compact screens through <picture>; otherwise a plain <img>.
+function FrameImg({ src, mobileSrc, ...imgProps }) {
+  // eslint-disable-next-line jsx-a11y/alt-text
+  const img = <img src={src} width={SLIDE_W} height={SLIDE_H} {...imgProps} />;
+  if (!mobileSrc) return img;
+  return (
+    <picture className="contents">
+      <source media={COMPACT_MQ} srcSet={mobileSrc} />
+      {img}
+    </picture>
+  );
 }
 
 function ArrowLink({ href, children }) {
@@ -164,6 +210,7 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
   const hasVideo = Boolean(project.video && (project.video.mp4 || project.video.webm));
   const frames = project.frames && project.frames.length ? project.frames : [project.img];
   const animate = !reducedMotion;
+  const playVideo = animate && !saveDataOn();
 
   // The video element is on screen (the reel stage isn't scrolled away). All
   // slides share one sticky stage, so `active` (below) picks which slide plays.
@@ -185,7 +232,7 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
     if (!hasVideo) return;
     const video = videoRef.current;
     if (!video) return;
-    if (!active || !animate || !videoOnScreen) {
+    if (!active || !playVideo || !videoOnScreen) {
       video.pause();
       return;
     }
@@ -199,7 +246,7 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [active, animate, hasVideo, videoOnScreen]);
+  }, [active, playVideo, hasVideo, videoOnScreen]);
 
   // Frames: advance every FRAME_MS while visible, keep elapsed time when paused.
   useEffect(() => {
@@ -253,7 +300,7 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
           <video
             ref={videoRef}
             className={`absolute inset-0 w-full h-full ${fitClass}`}
-            autoPlay={animate}
+            autoPlay={playVideo}
             muted
             loop
             playsInline
@@ -280,8 +327,9 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
                   transition: animate ? `opacity ${FADE_MS}ms ease` : "none",
                 }}
               >
-                <img
+                <FrameImg
                   src={src}
+                  mobileSrc={project.mobileFrames?.[i]}
                   alt={project.frameAlts?.[i] ?? (i === 0 ? project.name : "")}
                   loading={index === 0 && i === 0 ? "eager" : "lazy"}
                   decoding="async"
@@ -343,7 +391,137 @@ function Counter({ index, total, direction, visible, reducedMotion }) {
   );
 }
 
+// Compact layout, one project after another: the media at full width with
+// its own aspect ratio (nothing cropped), then the name and links below it,
+// left-aligned. Frames cross-fade and the video plays only while on screen;
+// each project fades in once as it enters (no scroll-linked motion).
+function ReelCard({ project, index, isLast, reducedMotion }) {
+  const [revealRef, revealed] = useReveal(0.1);
+  const mediaRef = useRef(null);
+  const videoRef = useRef(null);
+  const [onScreen, setOnScreen] = useState(false);
+  const [current, setCurrent] = useState(0);
+
+  const hasVideo = Boolean(project.video && (project.video.mp4 || project.video.webm));
+  const frames = project.frames && project.frames.length ? project.frames : [project.img];
+  const animate = !reducedMotion;
+  const playVideo = animate && !saveDataOn();
+
+  useEffect(() => {
+    const el = mediaRef.current;
+    if (!el || !("IntersectionObserver" in window)) {
+      setOnScreen(true);
+      return;
+    }
+    const io = new IntersectionObserver(([e]) => setOnScreen(e.isIntersecting), { threshold: 0.5 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!hasVideo || !video) return;
+    if (onScreen && playVideo) video.play().catch(() => {});
+    else video.pause();
+  }, [hasVideo, onScreen, playVideo]);
+
+  useEffect(() => {
+    if (hasVideo || !animate || !onScreen || frames.length < 2) return;
+    const t = setInterval(() => setCurrent((c) => (c + 1) % frames.length), FRAME_MS);
+    return () => clearInterval(t);
+  }, [hasVideo, animate, onScreen, frames.length]);
+
+  const shown = animate ? current : 0;
+  const link = "inline-flex min-h-[44px] items-center hover:underline underline-offset-4";
+  const ext = (href, label) => (
+    <li key={label}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className={link}>
+        {label}
+      </a>
+    </li>
+  );
+
+  return (
+    <article
+      ref={revealRef}
+      aria-label={`${project.name} — ${project.category}`}
+      className={`reveal ${revealed ? "reveal-in" : ""}`}
+    >
+      <div ref={mediaRef} className="relative w-full overflow-hidden bg-black">
+        {hasVideo ? (
+          <video
+            ref={videoRef}
+            className="block w-full h-auto"
+            width={SLIDE_W}
+            height={SLIDE_H}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={project.video.poster || frames[0]}
+            aria-label={project.video.label || project.name}
+          >
+            {project.video.webm && <source src={project.video.webm} type="video/webm" />}
+            {project.video.mp4 && <source src={project.video.mp4} type="video/mp4" />}
+          </video>
+        ) : (
+          // The first frame sets the box (natural ratio); the rest sit on top.
+          frames.map((src, i) => (
+            <FrameImg
+              key={i}
+              src={src}
+              mobileSrc={project.mobileFrames?.[i]}
+              alt={project.frameAlts?.[i] ?? (i === 0 ? project.name : "")}
+              aria-hidden={i !== shown}
+              loading={index === 0 && i === 0 ? "eager" : "lazy"}
+              decoding="async"
+              className={i === 0 ? "block w-full h-auto" : "absolute inset-0 w-full h-full object-cover"}
+              style={{ opacity: i === shown ? 1 : 0, transition: animate ? `opacity ${FADE_MS}ms ease` : "none" }}
+            />
+          ))
+        )}
+      </div>
+
+      <div className={`${columnPad} pt-4 text-[18px] leading-none text-white`}>
+        <h2 className="py-3 font-normal">{project.name}</h2>
+        <ul>
+          {project.figmaPrototype && ext(project.figmaPrototype, "Figma Prototype →")}
+          {project.deploy && ext(project.deploy, "See Demo here →")}
+          {project.caseStudy && ext(project.caseStudy, "Read case study →")}
+          {isLast && (
+            <li>
+              <Link to="/work" className={link}>
+                All projects ({data.length}) →
+              </Link>
+            </li>
+          )}
+        </ul>
+      </div>
+    </article>
+  );
+}
+
+function ReelList() {
+  const projects = data.slice(0, REEL_COUNT);
+  const reducedMotion = usePrefersReducedMotion();
+  return (
+    <div className="reel-list bg-black pb-16 space-y-14 md:space-y-20">
+      {projects.map((p, i) => (
+        <ReelCard key={p.id} project={p} index={i} isLast={i === projects.length - 1} reducedMotion={reducedMotion} />
+      ))}
+    </div>
+  );
+}
+
+// Pinned full-screen reel on wide screens; the stacked list (ReelList) on
+// narrow or portrait ones. /new's fullbleed variant always uses the reel.
 export default function ProjectReel({ variant = "default" }) {
+  const compact = useMediaQuery(COMPACT_MQ);
+  if (compact && variant !== "fullbleed") return <ReelList />;
+  return <ReelStage variant={variant} />;
+}
+
+function ReelStage({ variant }) {
   const fullbleed = variant === "fullbleed";
   const projects = data.slice(0, REEL_COUNT);
   const count = projects.length;

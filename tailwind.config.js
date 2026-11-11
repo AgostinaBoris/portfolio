@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  // hover: utilities apply only on devices that can hover (mouse/trackpad),
+  // so touch screens never get stuck hover states.
+  future: { hoverOnlyWhenSupported: true },
   theme: {
     extend: {
       colors: {

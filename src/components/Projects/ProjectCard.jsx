@@ -18,6 +18,8 @@ export default function ProjectCard({ c, delay = 0 }) {
           className="block w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
           src={c.img}
           alt={c.name}
+          loading="lazy"
+          decoding="async"
         />
       </div>
 
@@ -26,7 +28,7 @@ export default function ProjectCard({ c, delay = 0 }) {
           {c.category}
         </p>
       )}
-      <h3 className="mt-2 text-2xl sm:text-3xl font-bold text-text">{c.name}</h3>
+      <h3 className="mt-2 text-[length:clamp(24px,21.77px+0.571vw,30px)] font-bold text-text">{c.name}</h3>
       {c.blurb && <p className="mt-3 text-lg text-muted leading-relaxed">{c.blurb}</p>}
 
       <div className="flex flex-wrap gap-3 mt-6">

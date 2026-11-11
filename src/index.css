@@ -103,17 +103,20 @@
     background-color 0.2s, border-color 0.2s;
 }
 
-.hero-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px -10px rgba(32, 33, 36, 0.4);
+/* Hover lifts only where hovering exists (not on touch screens). */
+@media (hover: hover) and (pointer: fine) {
+  .hero-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px -10px rgba(32, 33, 36, 0.4);
+  }
+
+  .hero-btn:hover .hero-btn-icon {
+    transform: translateY(2px);
+  }
 }
 
 .hero-btn-icon {
   transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-btn:hover .hero-btn-icon {
-  transform: translateY(2px);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -170,6 +173,30 @@
 
 .reel-stage {
   height: 100vh;
+}
+
+/* Touch screens on the pinned reel (e.g. a tablet in landscape): 44px tap
+   targets for the label links, same visual position. */
+@media (pointer: coarse) {
+  .reel-labels {
+    gap: 26px;
+  }
+  .reel-labels a {
+    padding-block: 13px;
+    margin-block: -13px;
+  }
+}
+
+/* Compact home list: starts below the fixed site name. */
+.reel-list {
+  padding-top: calc(72px + env(safe-area-inset-top, 0px));
+}
+
+/* Full-height blocks: small-viewport height so mobile browser bars never
+   cut content (vh fallback first). */
+.min-h-fill {
+  min-height: 100vh;
+  min-height: 100svh;
 }
 
 @supports (height: 100svh) {
