@@ -17,8 +17,7 @@ const clamp01 = (v) => Math.min(1, Math.max(0, v));
 // (contain), anchored to the bottom so the window still runs off the screen
 // edge like on desktop, and enlarged until its subject (the middle
 // `focusWidth` of the slide) spans the screen, but never past a cover fit.
-// Any space left above is filled with the slide's own top band (brand
-// colour, .reel-backdrop), and the labels/counter move up into it.
+// Any space left above stays black, and the labels/counter move up into it.
 // `portraitCoverBelow`: on screens narrower than this aspect ratio, use a
 // plain cover crop instead (Bondly: the middle phone alone fills a phone).
 const SLIDE_RATIO = 3296 / 1516;
@@ -26,7 +25,7 @@ const LABEL_GAP = 24;
 function fitSlide(project, W, H) {
   const A = W / H;
   const cover = { mode: "cover", scale: 1, imageH: H, labelsBottom: LABEL_GAP };
-  if (project.frameFit !== "cover") return null; // contain-on-#111 slides: untouched
+  if (project.frameFit !== "cover") return null; // contain-on-black slides: untouched
   if (A >= SLIDE_RATIO || (project.portraitCoverBelow && A <= project.portraitCoverBelow)) return cover;
   const maxScale = 1 / (project.focusWidth || 0.74);
   const toCover = SLIDE_RATIO / A;
@@ -229,10 +228,9 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
   const shown = animate ? current : 0;
   const cover = fullbleed || project.frameFit === "cover";
   // Slides that get the responsive fit (see fitSlide); the parent applies it
-  // to the .reel-media / .reel-backdrop / .reel-labels elements on resize.
+  // to the .reel-media / .reel-labels elements on resize.
   const responsiveFit = !fullbleed && project.frameFit === "cover";
   const fitClass = `${cover ? "object-cover" : "object-contain"} ${responsiveFit ? "reel-media" : ""}`;
-  const backdropSrc = hasVideo ? project.video.poster || frames[0] : frames[0];
 
   // Two layers so the reveal is a pure transform: the outer box slides up
   // from the bottom (overflow hidden) while the inner layer counter-slides,
@@ -248,20 +246,9 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
     >
       <div
         ref={innerRef}
-        className={`${fullbleed ? "bg-black" : "bg-[#111]"} absolute inset-0 will-change-transform`}
+        className={`bg-black absolute inset-0 will-change-transform`}
         style={{ transformOrigin: "center center" }}
       >
-        {responsiveFit && (
-          <img
-            src={backdropSrc}
-            alt=""
-            aria-hidden="true"
-            loading={index === 0 ? "eager" : "lazy"}
-            decoding="async"
-            className="reel-backdrop absolute inset-0 w-full h-full object-cover"
-            style={{ display: "none" }}
-          />
-        )}
         {hasVideo ? (
           <video
             ref={videoRef}
@@ -278,7 +265,7 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
             {project.video.mp4 && <source src={project.video.mp4} type="video/mp4" />}
           </video>
         ) : (
-          // Default: every frame shown whole (contain) on #111.
+          // Default: every frame shown whole (contain) on black.
           // fullbleed / frameFit "cover": frames fill the slide edge to edge.
           frames.map((src, i) => {
             const visible = i === shown;
@@ -400,8 +387,6 @@ export default function ProjectReel({ variant = "default" }) {
           el.style.transformOrigin = contain ? "center bottom" : "";
           el.style.transform = contain ? `scale(${fit.scale})` : "";
         });
-        const backdrop = inner.querySelector(".reel-backdrop");
-        if (backdrop) backdrop.style.display = contain ? "block" : "none";
         const labels = inner.querySelector(".reel-labels");
         if (labels) labels.style.bottom = `${fit.labelsBottom}px`;
         labelsBottomRef.current[i] = fit.labelsBottom;
@@ -538,7 +523,7 @@ export default function ProjectReel({ variant = "default" }) {
       <div ref={trackRef} className="reel-track relative w-full" style={{ "--reel-count": count }}>
         <div
           ref={stageRef}
-          className={`reel-stage sticky top-0 w-full overflow-hidden ${fullbleed ? "bg-black" : "bg-[#111]"}`}
+          className={`reel-stage sticky top-0 w-full overflow-hidden bg-black`}
         >
           {projects.map((p, i) => (
             <ReelItem

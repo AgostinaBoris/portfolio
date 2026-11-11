@@ -244,12 +244,3 @@
   [class*="reel-count-"] { animation: none !important; }
 }
 
-/* Home reel colour fill: the slide's top band (pure brand gradient, above
-   the browser window) stretched and blurred to fill the space above a
-   contained slide. Shown/hidden by ProjectReel's responsive fit. */
-.reel-backdrop {
-  object-position: center top;
-  transform-origin: center top;
-  transform: scaleY(12);
-  filter: blur(12px);
-}
