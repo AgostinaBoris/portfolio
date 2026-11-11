@@ -14,7 +14,10 @@ module.exports = {
         "primary-dark": "#000000",
       },
       fontFamily: {
-        sans: ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // Whole site is set in one serif. `sans` is Tailwind's default body
+        // family, so pointing it (and `serif`) at EB Garamond covers every page.
+        sans: ['"EB Garamond"', 'ui-serif', 'Georgia', 'serif'],
+        serif: ['"EB Garamond"', 'ui-serif', 'Georgia', 'serif'],
       },
       keyframes: {
         fadeUp: {

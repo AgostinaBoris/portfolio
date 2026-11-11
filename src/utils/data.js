@@ -9,10 +9,30 @@ import velora from '../assets/velora-prototype.webp';
 import veloraCaseStudy from '../assets/case-studies/velora-case-study.pdf';
 import nino from '../assets/mockups/nino-prototype.webp';
 import ninoCaseStudy from '../assets/case-studies/nino-case-study.pdf';
-import savergy from '../assets/savergy-hero.jpg';
+import savergy from '../assets/frames/savergy-hero.webp';
 import savergyCaseStudy from '../assets/case-studies/savergy-case-study.pdf';
 import bondly from '../assets/mockups/bondly-prototype.webp';
 import bondlyCaseStudy from '../assets/case-studies/bondly-case-study.pdf';
+
+// Reel frames (Home "Selected Work"): screens cropped from each case study.
+import bondlyFrame1 from '../assets/frames/bondly-01.webp';
+import bondlyFrame2 from '../assets/frames/bondly-02.webp';
+import bondlyFrame3 from '../assets/frames/bondly-03.webp';
+import bondlyFrame4 from '../assets/frames/bondly-04.webp';
+import bondlyFrame5 from '../assets/frames/bondly-05.webp';
+import bondlyFrame6 from '../assets/frames/bondly-06.webp';
+import ninoFrame1 from '../assets/frames/nino-01.webp';
+import ninoFrame2 from '../assets/frames/nino-02.webp';
+import ninoFrame3 from '../assets/frames/nino-03.webp';
+import ninoFrame4 from '../assets/frames/nino-04.webp';
+import ninoFrame5 from '../assets/frames/nino-05.webp';
+import savergyFrame1 from '../assets/frames/savergy-01.webp';
+import savergyFrame2 from '../assets/frames/savergy-02.webp';
+import veloraFrame1 from '../assets/frames/velora-01.webp';
+import veloraFrame2 from '../assets/frames/velora-02.webp';
+import veloraFrame3 from '../assets/frames/velora-03.webp';
+import veloraFrame4 from '../assets/frames/velora-04.webp';
+import veloraFrame5 from '../assets/frames/velora-05.webp';
 
 const data = [{
     name: 'Bondly',
@@ -23,6 +43,20 @@ const data = [{
     figmaPrototype: "https://www.figma.com/proto/e19IsuAANmdJvuClAm37Pm/BONDLY?node-id=266-2182&t=FOEQxFAVW5BdYR9P-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=266%3A2182&show-proto-sidebar=1",
     tecnologias: "Figma Prototyping UX Research UI Design",
     img: bondly,
+    number: '01',
+    video: { mp4: null, webm: null, poster: null },
+    frames: [bondlyFrame1, bondlyFrame2, bondlyFrame3, bondlyFrame4, bondlyFrame5, bondlyFrame6],
+    // Order: 01 Hero, 02 Discover, 03 Join, 04 Group, 05 Meetup day, 06 After the meetup.
+    frameAlts: [
+        'Bondly',
+        'Bondly – exploring meetups on the map',
+        'Bondly – joining a meetup',
+        'Bondly – group chat',
+        'Bondly – meetup day check-in',
+        'Bondly – after the meetup',
+    ],
+    frameFit: 'cover',
+    role: ['UX Research', 'Product Concept', 'UX/UI Design', 'Usability Testing'],
 },
 {
     name: 'NINO',
@@ -33,6 +67,19 @@ const data = [{
     figmaPrototype: "https://www.figma.com/proto/xsqWpPyWprLwaPjA16RXfW/NINO?node-id=2-362&t=KkV2iGxJqqNnKuMW-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A362",
     tecnologias: "Figma Prototyping UX Research UI Design",
     img: nino,
+    number: '02',
+    video: { mp4: null, webm: null, poster: null },
+    frames: [ninoFrame1, ninoFrame2, ninoFrame3, ninoFrame4, ninoFrame5],
+    // Order: 01 Dashboard, 02 Rentals list, 03 New rental, 04 Assign truck, 05 Register payment.
+    frameAlts: [
+        'NINO',
+        'NINO – rentals list with filters',
+        'NINO – creating a new rental',
+        'NINO – assigning a truck and driver',
+        'NINO – registering a payment',
+    ],
+    frameFit: 'cover',
+    role: ['Product Concept', 'UX/UI Design', 'Prototyping'],
 },
 {
     name: 'Savergy',
@@ -44,6 +91,17 @@ const data = [{
     deploy: "https://savergy-landing.vercel.app/",
     tecnologias: "React Vite Full Responsive",
     img: savergy,
+    number: '03',
+    video: { mp4: null, webm: null, poster: null },
+    frames: [savergy, savergyFrame1, savergyFrame2],
+    // Order: hero, 01 Platform, 02 Sectors.
+    frameAlts: [
+        'Savergy',
+        'Savergy – platform overview on the landing page',
+        'Savergy – industry sectors section',
+    ],
+    frameFit: 'cover',
+    role: ['Product Design', 'UI Design', 'Front-End Development'],
 },
 {
     name: 'Velora',
@@ -54,6 +112,19 @@ const data = [{
     figmaPrototype: "https://www.figma.com/proto/XbBJkfuVQCL8TkWKUVPWy0/Velora?node-id=5-19&t=hVHa2wXuC8zvuRIR-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=5%3A19",
     tecnologias: "Figma Prototyping UX Audit UI Redesign",
     img: velora,
+    number: '04',
+    video: { mp4: null, webm: null, poster: null },
+    frames: [veloraFrame1, veloraFrame2, veloraFrame3, veloraFrame4, veloraFrame5],
+    // Order: 01 Homepage, 02 Rooms & Suites, 03 Room detail, 04 Restaurant, 05 Available rooms.
+    frameAlts: [
+        'Velora',
+        'Velora – rooms and suites overview',
+        'Velora – room detail with gallery and booking',
+        'Velora – restaurant page',
+        'Velora – available rooms with filters',
+    ],
+    frameFit: 'cover',
+    role: ['UX Audit', 'Information Architecture', 'UI Redesign', 'Design System'],
 },
 {
     name: 'Frameo',

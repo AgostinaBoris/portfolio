@@ -1,11 +1,21 @@
 import React from "react";
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar.jsx";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import HamburgerMenu from "./components/Menu/HamburgerMenu.jsx";
+import SiteName from "./components/Menu/SiteName.jsx";
 import Home from "./pages/Home.jsx";
-import Skills from "./pages/Skills.jsx";
 import Work from "./pages/Work.jsx";
-import Footer from "./components/Footer/Footer.jsx";
+import Expertise from "./pages/Expertise.jsx";
+import About from "./pages/About.jsx";
+import HomeNew from "./pages/HomeNew.jsx";
+import Contact from "./pages/Contact.jsx";
+import Process from "./pages/Process.jsx";
+
+// /new (temporary new-home skeleton) has its own header and footer.
+function ClassicChrome({ children }) {
+  const { pathname } = useLocation();
+  return pathname === "/new" ? null : children;
+}
 
 function App() {
   useEffect(() => {
@@ -21,14 +31,22 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <ClassicChrome>
+          <SiteName />
+          <HamburgerMenu />
+        </ClassicChrome>
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/skills" element={<Skills />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/expertise" element={<Expertise />} />
+          {/* Old Skills URL now goes to Expertise. */}
+          <Route path="/skills" element={<Navigate to="/expertise" replace />} />
           <Route path="/work" element={<Work />} />
+          <Route path="/process" element={<Process />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/new" element={<HomeNew />} />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </div>
   );

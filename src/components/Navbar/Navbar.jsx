@@ -19,23 +19,13 @@ export default function Navbar() {
 
       <ul className="hidden md:flex">
         <li className="px-4">
-          <Link to="/" exact="true" className="hover:text-white/70 duration-300">
-            Home
+          <Link to="/work" className="hover:text-white/70 duration-300">
+            Work
           </Link>
         </li>
         <li className="px-4">
           <Link to="/#about" className="hover:text-white/70 duration-300">
             About
-          </Link>
-        </li>
-        <li className="px-4">
-          <Link to="/skills" exact="true" className="hover:text-white/70 duration-300">
-            Skills
-          </Link>
-        </li>
-        <li className="px-4">
-          <Link to="/work" className="hover:text-white/70 duration-300">
-            Work
           </Link>
         </li>
         <li className="px-4">
@@ -54,23 +44,13 @@ export default function Navbar() {
       {nav && (
         <ul className="md:hidden fixed inset-x-0 top-[90px] h-[calc(100vh-90px)] flex flex-col justify-center items-center text-white bg-primary-dark">
           <li className="py-6 text-4xl">
-            <Link to="/" onClick={handleClick}>
-              Home
+            <Link to="/work" onClick={handleClick}>
+              Work
             </Link>
           </li>
           <li className="py-6 text-4xl">
             <Link to="/#about" onClick={handleClick}>
               About
-            </Link>
-          </li>
-          <li className="py-6 text-4xl">
-            <Link to="/skills" onClick={handleClick}>
-              Skills
-            </Link>
-          </li>
-          <li className="py-6 text-4xl">
-            <Link to="/work" onClick={handleClick}>
-              Work
             </Link>
           </li>
           <li className="py-6 text-4xl">

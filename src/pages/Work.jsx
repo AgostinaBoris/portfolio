@@ -1,21 +1,19 @@
 import React from "react";
-import Projects from './../components/Projects/Projects';
-
+import Projects from "./../components/Projects/Projects";
+import PageColumn, { bodyClass, headingClass, pageY } from "../components/Layout/PageColumn";
 
 const Work = () => {
   return (
-    <div name="work" className="relative w-full min-h-screen bg-background pt-[90px] pb-24">
-      <div className="mb-16 text-center px-[clamp(24px,2.5vw,48px)] pt-16">
-        <h1 className="text-5xl sm:text-6xl font-bold text-text">Work</h1>
-        <p className="mt-4 text-xl text-muted">Check out some of my recent work</p>
-      </div>
+    <PageColumn className={`min-h-screen ${pageY}`}>
+      <div name="work">
+        <h1 className={headingClass}>Work</h1>
+        <p className={`mt-6 md:mt-8 ${bodyClass}`}>Check out some of my recent work</p>
 
-      <div className="w-full max-w-none px-[clamp(24px,2.5vw,48px)]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-[clamp(32px,2vw,40px)]">
+        <div className="mt-16 md:mt-24 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-16">
           <Projects />
         </div>
       </div>
-    </div>
+    </PageColumn>
   );
 };
 

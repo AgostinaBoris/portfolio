@@ -2,12 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    scroll-padding-top: 0;
   }
 
   body {
@@ -162,3 +160,43 @@
     transform: none !important;
   }
 }
+
+/* Home: project reel (ProjectReel.jsx).
+   The track is one viewport per project; the stage sticks to the viewport
+   while the track scrolls past, and projects swap with a scaleY wipe. */
+.reel-track {
+  height: calc(var(--reel-count, 1) * 100vh);
+}
+
+.reel-stage {
+  height: 100vh;
+}
+
+@supports (height: 100svh) {
+  .reel-track {
+    height: calc(var(--reel-count, 1) * 100svh);
+  }
+  .reel-stage {
+    height: 100svh;
+  }
+}
+
+@keyframes reelZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.reel-zoom {
+  animation: reelZoom 3100ms linear forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reel-zoom {
+    animation: none !important;
+  }
+}
+
