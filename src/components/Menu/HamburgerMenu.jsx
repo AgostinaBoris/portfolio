@@ -16,7 +16,7 @@ const links = [
 
 // White items; hovering one (or keyboard-focusing one) dims the others to 50%.
 const itemClass =
-  "pointer-events-auto inline-block text-[30px] md:text-[66px] font-normal leading-[1.05] tracking-tight text-white transition-opacity duration-200 group-hover/list:opacity-50 group-[:has(:focus-visible)]/list:opacity-50 hover:!opacity-100 focus-visible:!opacity-100 focus:outline-none focus-visible:underline underline-offset-8 decoration-2";
+  "pointer-events-auto inline-block text-[42px] md:text-[66px] font-normal leading-[1.05] tracking-tight text-white transition-opacity duration-200 group-hover/list:opacity-50 group-[:has(:focus-visible)]/list:opacity-50 hover:!opacity-100 focus-visible:!opacity-100 focus:outline-none focus-visible:underline underline-offset-8 decoration-2";
 
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 

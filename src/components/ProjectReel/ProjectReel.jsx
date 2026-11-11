@@ -202,6 +202,13 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
 
   const shown = animate ? current : 0;
   const cover = fullbleed || project.frameFit === "cover";
+  // Portrait screens (phones): a cover crop would keep only the middle strip
+  // of these wide slides, so the whole slide is shown (contain) over a
+  // blurred copy of itself. project.mobileFit === "cover" opts out (Bondly,
+  // whose middle phone makes a clean crop).
+  const portraitContain = cover && !fullbleed && project.mobileFit !== "cover";
+  const fitClass = `${cover ? "object-cover" : "object-contain"} ${portraitContain ? "reel-portrait-contain" : ""}`;
+  const backdropSrc = hasVideo ? project.video.poster || frames[0] : frames[0];
 
   // Two layers so the reveal is a pure transform: the outer box slides up
   // from the bottom (overflow hidden) while the inner layer counter-slides,
@@ -220,10 +227,20 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
         className={`${fullbleed ? "bg-black" : "bg-[#111]"} absolute inset-0 will-change-transform`}
         style={{ transformOrigin: "center center" }}
       >
+        {portraitContain && (
+          <img
+            src={backdropSrc}
+            alt=""
+            aria-hidden="true"
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
+            className="reel-backdrop absolute inset-0 w-full h-full object-cover"
+          />
+        )}
         {hasVideo ? (
           <video
             ref={videoRef}
-            className={`absolute inset-0 w-full h-full ${cover ? "object-cover" : "object-contain"}`}
+            className={`absolute inset-0 w-full h-full ${fitClass}`}
             autoPlay={animate}
             muted
             loop
@@ -256,7 +273,7 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
                   alt={project.frameAlts?.[i] ?? (i === 0 ? project.name : "")}
                   loading={index === 0 && i === 0 ? "eager" : "lazy"}
                   decoding="async"
-                  className={`w-full h-full ${cover ? "object-cover" : "object-contain"} ${zooming ? "reel-zoom" : ""}`}
+                  className={`w-full h-full ${fitClass} ${zooming ? "reel-zoom" : ""}`}
                   style={{ animationPlayState: active ? "running" : "paused" }}
                 />
               </div>

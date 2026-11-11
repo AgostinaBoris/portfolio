@@ -57,6 +57,8 @@ const data = [{
         'Bondly – after the meetup',
     ],
     frameFit: 'cover',
+    // Phones: keep the cover crop (the middle phone fills the screen cleanly).
+    mobileFit: 'cover',
     role: ['UX Research', 'Product Concept', 'UX/UI Design', 'Usability Testing'],
 },
 {

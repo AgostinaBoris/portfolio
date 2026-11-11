@@ -243,3 +243,26 @@
   .reel-line { transform: none; }
   [class*="reel-count-"] { animation: none !important; }
 }
+
+/* Home reel on portrait screens (phones). The slides are wide (3296x1516)
+   with the browser window in the middle 70% and plain brand gradient around
+   it. Instead of a cover crop (which cut the window), the slide is shown
+   whole and enlarged 1.38x, which trims only side background so the window
+   spans the screen. Behind it, the slide's top band (pure gradient, above
+   the window) is stretched and blurred to fill the screen in the same colour. */
+.reel-backdrop {
+  display: none;
+}
+@media (max-aspect-ratio: 1/1) {
+  .reel-portrait-contain {
+    object-fit: contain;
+    transform: scale(1.38);
+  }
+  .reel-backdrop {
+    display: block;
+    object-position: center top;
+    transform-origin: center top;
+    transform: scaleY(12);
+    filter: blur(12px);
+  }
+}
