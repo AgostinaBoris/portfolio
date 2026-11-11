@@ -26,8 +26,9 @@ import ninoFrame2 from '../assets/frames/nino-02.webp';
 import ninoFrame3 from '../assets/frames/nino-03.webp';
 import ninoFrame4 from '../assets/frames/nino-04.webp';
 import ninoFrame5 from '../assets/frames/nino-05.webp';
-import savergyFrame1 from '../assets/frames/savergy-01.webp';
-import savergyFrame2 from '../assets/frames/savergy-02.webp';
+import savergyMp4 from '../assets/frames/savergy.mp4';
+import savergyWebm from '../assets/frames/savergy.webm';
+import savergyPoster from '../assets/frames/savergy-poster.webp';
 import veloraFrame1 from '../assets/frames/velora-01.webp';
 import veloraFrame2 from '../assets/frames/velora-02.webp';
 import veloraFrame3 from '../assets/frames/velora-03.webp';
@@ -59,6 +60,23 @@ const data = [{
     role: ['UX Research', 'Product Concept', 'UX/UI Design', 'Usability Testing'],
 },
 {
+    name: 'Savergy',
+    id: 8,
+    category: 'Landing Page',
+    blurb: 'A scroll-driven landing page for an industrial energy orchestration company.',
+    caseStudy: savergyCaseStudy,
+    figmaPrototype: "https://www.figma.com/proto/XORHsaJjeIUDS3ZWyrvIYn/SAVERGY?node-id=2-2203&t=DNbpDE3vNg0rYeBE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2203",
+    deploy: "https://savergy-landing.vercel.app/",
+    tecnologias: "React Vite Full Responsive",
+    img: savergy,
+    number: '02',
+    // Home slide: looping walkthrough of the live landing page (replaces the image slideshow).
+    // img (above) is still the Work page card.
+    video: { mp4: savergyMp4, webm: savergyWebm, poster: savergyPoster, label: 'Savergy landing page walkthrough' },
+    frameFit: 'cover',
+    role: ['Product Design', 'UI Design', 'Front-End Development'],
+},
+{
     name: 'NINO',
     id: 7,
     category: 'Container Rental Management System',
@@ -67,7 +85,7 @@ const data = [{
     figmaPrototype: "https://www.figma.com/proto/xsqWpPyWprLwaPjA16RXfW/NINO?node-id=2-362&t=KkV2iGxJqqNnKuMW-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A362",
     tecnologias: "Figma Prototyping UX Research UI Design",
     img: nino,
-    number: '02',
+    number: '03',
     video: { mp4: null, webm: null, poster: null },
     frames: [ninoFrame1, ninoFrame2, ninoFrame3, ninoFrame4, ninoFrame5],
     // Order: 01 Dashboard, 02 Rentals list, 03 New rental, 04 Assign truck, 05 Register payment.
@@ -80,28 +98,6 @@ const data = [{
     ],
     frameFit: 'cover',
     role: ['Product Concept', 'UX/UI Design', 'Prototyping'],
-},
-{
-    name: 'Savergy',
-    id: 8,
-    category: 'Landing Page',
-    blurb: 'A scroll-driven landing page for an industrial energy orchestration company.',
-    caseStudy: savergyCaseStudy,
-    figmaPrototype: "https://www.figma.com/proto/XORHsaJjeIUDS3ZWyrvIYn/SAVERGY?node-id=2-2203&t=DNbpDE3vNg0rYeBE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2203",
-    deploy: "https://savergy-landing.vercel.app/",
-    tecnologias: "React Vite Full Responsive",
-    img: savergy,
-    number: '03',
-    video: { mp4: null, webm: null, poster: null },
-    frames: [savergy, savergyFrame1, savergyFrame2],
-    // Order: hero, 01 Platform, 02 Sectors.
-    frameAlts: [
-        'Savergy',
-        'Savergy – platform overview on the landing page',
-        'Savergy – industry sectors section',
-    ],
-    frameFit: 'cover',
-    role: ['Product Design', 'UI Design', 'Front-End Development'],
 },
 {
     name: 'Velora',

@@ -200,3 +200,46 @@
   }
 }
 
+
+/* Home reel motion (ProjectReel.jsx) — transform/opacity only. */
+
+/* Bottom-right label lines: slide up 12px + fade in (stagger set inline),
+   leave quickly. */
+.reel-line {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition: opacity 160ms ease-in, transform 160ms ease-in;
+}
+.reel-line.is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1), transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Counter number: quick vertical slide in the scroll direction. */
+@keyframes reelCountInDown { from { transform: translate3d(0, 100%, 0); } to { transform: none; } }
+@keyframes reelCountOutDown { from { transform: none; } to { transform: translate3d(0, -100%, 0); } }
+@keyframes reelCountInUp { from { transform: translate3d(0, -100%, 0); } to { transform: none; } }
+@keyframes reelCountOutUp { from { transform: none; } to { transform: translate3d(0, 100%, 0); } }
+.reel-count-in-down { animation: reelCountInDown 320ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.reel-count-out-down { animation: reelCountOutDown 320ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.reel-count-in-up { animation: reelCountInUp 320ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.reel-count-out-up { animation: reelCountOutUp 320ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Home intro (Intro.jsx). */
+@keyframes introLineIn { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: none; } }
+.intro-line { animation: introLineIn 600ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.intro-overlay {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.intro-overlay.is-leaving { clip-path: inset(0 0 100% 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reel-line,
+  .reel-line.is-in {
+    transition: none !important;
+  }
+  .reel-line { transform: none; }
+  [class*="reel-count-"] { animation: none !important; }
+}

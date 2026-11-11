@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ProjectReel from "../components/ProjectReel/ProjectReel";
+import Intro from "../components/Intro/Intro";
 
 export default function Home() {
   const location = useLocation();
@@ -21,6 +22,8 @@ export default function Home() {
 
   return (
     <div name="home" className="relative w-full bg-background">
+      {/* First visit per session: intro line, then a wipe up to the reel. */}
+      <Intro />
       {/* Selected work: the reel starts at the very top of the page */}
       <div id="work" className="w-full">
         <ProjectReel />

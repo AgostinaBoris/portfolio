@@ -1,23 +1,22 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { columnPad } from "../Layout/PageColumn";
 import { siteTextClass } from "./SiteName";
 import CV from "../../assets/cv/boris-agostina-cv.pdf";
 
 const EMAIL = "borisagostina@gmail.com";
 
-// No "Home": the site name (top-left) goes home. Contact is set apart below.
+// No "Home": the site name (top-left) goes home. All items evenly spaced.
 const links = [
   { label: "About", to: "/about" },
   { label: "Process", to: "/process" },
   { label: "Expertise", to: "/expertise" },
   { label: "Work", to: "/work" },
-  { label: "Contact", to: "/contact", apart: true },
+  { label: "Contact", to: "/contact" },
 ];
 
-// White items; hovering or focusing one dims the others to 50%.
+// White items; hovering one (or keyboard-focusing one) dims the others to 50%.
 const itemClass =
-  "inline-block text-[30px] md:text-[66px] font-normal leading-[1.05] tracking-tight text-white transition-opacity duration-200 group-hover/list:opacity-50 group-focus-within/list:opacity-50 hover:!opacity-100 focus-visible:!opacity-100 focus:outline-none focus-visible:underline underline-offset-8 decoration-2";
+  "pointer-events-auto inline-block text-[30px] md:text-[66px] font-normal leading-[1.05] tracking-tight text-white transition-opacity duration-200 group-hover/list:opacity-50 group-[:has(:focus-visible)]/list:opacity-50 hover:!opacity-100 focus-visible:!opacity-100 focus:outline-none focus-visible:underline underline-offset-8 decoration-2";
 
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -108,11 +107,11 @@ export default function HamburgerMenu() {
           aria-label="Menu"
           className="fixed inset-0 z-50 flex flex-col bg-[#111] text-white"
         >
-          {/* Items start on the same left edge as the inner pages' column. */}
-          <nav className={`flex flex-1 flex-col justify-center ${columnPad}`} aria-label="Main">
-            <ul className="group/list space-y-3 md:space-y-5">
+          {/* Items centred in the overlay, horizontally and vertically. */}
+          <nav className="flex flex-1 flex-col items-center justify-center px-6 text-center" aria-label="Main">
+            <ul className="group/list pointer-events-none space-y-3 md:space-y-5">
               {links.map((l, i) => (
-                <li key={l.label} className={l.apart ? "!mt-10 md:!mt-16" : ""}>
+                <li key={l.label}>
                   <Link
                     ref={i === 0 ? firstLinkRef : undefined}
                     to={l.to}

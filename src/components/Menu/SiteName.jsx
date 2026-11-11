@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// Small text style shared by the site name and the menu footer links.
+// Small text style for the menu footer links (the site name itself is 23px).
 export const siteTextClass = "text-[18px] leading-none";
 
 // Site name, fixed top-left on every page (outside the content column).
@@ -11,7 +11,7 @@ export default function SiteName() {
   return (
     <Link
       to="/"
-      className={`fixed top-6 left-6 z-[55] ${siteTextClass} whitespace-nowrap text-white mix-blend-difference hover:underline underline-offset-4`}
+      className={`fixed top-6 left-6 z-[55] text-[23px] leading-none whitespace-nowrap text-white mix-blend-difference hover:underline underline-offset-4`}
     >
       Agostina Boris
     </Link>
