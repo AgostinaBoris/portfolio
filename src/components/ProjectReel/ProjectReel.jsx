@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import data from "../../utils/data.js";
 
@@ -10,6 +10,32 @@ const REEL_COUNT = 4;
 const STEP_MS = 700;
 const easeInOutCubic = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const clamp01 = (v) => Math.min(1, Math.max(0, v));
+
+// Responsive fit for the wide project slides (all exported at 3296x1516).
+// A plain cover crop cuts the browser window (or Bondly's phones) on any
+// screen narrower than the slide. Instead: the slide is shown whole
+// (contain), anchored to the bottom so the window still runs off the screen
+// edge like on desktop, and enlarged until its subject (the middle
+// `focusWidth` of the slide) spans the screen, but never past a cover fit.
+// Any space left above is filled with the slide's own top band (brand
+// colour, .reel-backdrop), and the labels/counter move up into it.
+// `portraitCoverBelow`: on screens narrower than this aspect ratio, use a
+// plain cover crop instead (Bondly: the middle phone alone fills a phone).
+const SLIDE_RATIO = 3296 / 1516;
+const LABEL_GAP = 24;
+function fitSlide(project, W, H) {
+  const A = W / H;
+  const cover = { mode: "cover", scale: 1, imageH: H, labelsBottom: LABEL_GAP };
+  if (project.frameFit !== "cover") return null; // contain-on-#111 slides: untouched
+  if (A >= SLIDE_RATIO || (project.portraitCoverBelow && A <= project.portraitCoverBelow)) return cover;
+  const maxScale = 1 / (project.focusWidth || 0.74);
+  const toCover = SLIDE_RATIO / A;
+  if (maxScale >= toCover) return cover;
+  const imageH = (W / SLIDE_RATIO) * maxScale;
+  // Labels go above the image only when there's real room for them there.
+  const labelsBottom = H - imageH >= 220 ? imageH + LABEL_GAP : LABEL_GAP;
+  return { mode: "contain", scale: maxScale, imageH, labelsBottom };
+}
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(
@@ -116,7 +142,7 @@ function LabelStack({ project, showIn, allProjectsCount }) {
 
   return (
     <div className="pointer-events-none absolute inset-0 text-[18px] leading-none text-white mix-blend-difference">
-      <div className="absolute bottom-6 right-6 flex flex-col items-end gap-3">
+      <div className="reel-labels absolute bottom-6 right-6 flex flex-col items-end gap-3">
         {lines.map((el, i) =>
           React.cloneElement(el, {
             className: `${el.props.className || ""} reel-line ${showIn ? "is-in" : ""}`,
@@ -202,12 +228,10 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
 
   const shown = animate ? current : 0;
   const cover = fullbleed || project.frameFit === "cover";
-  // Portrait screens (phones): a cover crop would keep only the middle strip
-  // of these wide slides, so the whole slide is shown (contain) over a
-  // blurred copy of itself. project.mobileFit === "cover" opts out (Bondly,
-  // whose middle phone makes a clean crop).
-  const portraitContain = cover && !fullbleed && project.mobileFit !== "cover";
-  const fitClass = `${cover ? "object-cover" : "object-contain"} ${portraitContain ? "reel-portrait-contain" : ""}`;
+  // Slides that get the responsive fit (see fitSlide); the parent applies it
+  // to the .reel-media / .reel-backdrop / .reel-labels elements on resize.
+  const responsiveFit = !fullbleed && project.frameFit === "cover";
+  const fitClass = `${cover ? "object-cover" : "object-contain"} ${responsiveFit ? "reel-media" : ""}`;
   const backdropSrc = hasVideo ? project.video.poster || frames[0] : frames[0];
 
   // Two layers so the reveal is a pure transform: the outer box slides up
@@ -227,7 +251,7 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
         className={`${fullbleed ? "bg-black" : "bg-[#111]"} absolute inset-0 will-change-transform`}
         style={{ transformOrigin: "center center" }}
       >
-        {portraitContain && (
+        {responsiveFit && (
           <img
             src={backdropSrc}
             alt=""
@@ -235,6 +259,7 @@ function ReelItem({ project, index, total, reducedMotion, fullbleed, active, isC
             loading={index === 0 ? "eager" : "lazy"}
             decoding="async"
             className="reel-backdrop absolute inset-0 w-full h-full object-cover"
+            style={{ display: "none" }}
           />
         )}
         {hasVideo ? (
@@ -313,8 +338,8 @@ function Counter({ index, total, direction, visible, reducedMotion }) {
   return (
     <p
       aria-hidden="true"
-      className="pointer-events-none fixed bottom-6 left-6 z-[45] text-[18px] leading-none text-white mix-blend-difference transition-opacity duration-300"
-      style={{ opacity: visible ? 1 : 0 }}
+      className="pointer-events-none fixed left-6 z-[45] text-[18px] leading-none text-white mix-blend-difference transition-opacity duration-300"
+      style={{ opacity: visible ? 1 : 0, bottom: "var(--reel-labels-bottom, 24px)" }}
     >
       <span className="relative inline-block overflow-hidden align-bottom h-[1.15em] leading-[1.15em]">
         {!reducedMotion && prev !== null && (
@@ -354,6 +379,50 @@ export default function ProjectReel({ variant = "default" }) {
     window.addEventListener("ab:intro-done", done);
     return () => window.removeEventListener("ab:intro-done", done);
   }, [introDone]);
+
+  // Responsive fit: size each slide's media for the current screen, show the
+  // colour fill when there's space above it, and lift the labels into it.
+  const labelsBottomRef = useRef([]);
+  useLayoutEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const layout = () => {
+      const W = stage.offsetWidth;
+      const H = stage.offsetHeight;
+      data.slice(0, count).forEach((project, i) => {
+        const inner = innerRefs.current[i];
+        const fit = !fullbleed && inner ? fitSlide(project, W, H) : null;
+        if (!fit) return;
+        const contain = fit.mode === "contain";
+        inner.querySelectorAll(".reel-media").forEach((el) => {
+          el.style.objectFit = contain ? "contain" : "cover";
+          el.style.objectPosition = contain ? "center bottom" : "";
+          el.style.transformOrigin = contain ? "center bottom" : "";
+          el.style.transform = contain ? `scale(${fit.scale})` : "";
+        });
+        const backdrop = inner.querySelector(".reel-backdrop");
+        if (backdrop) backdrop.style.display = contain ? "block" : "none";
+        const labels = inner.querySelector(".reel-labels");
+        if (labels) labels.style.bottom = `${fit.labelsBottom}px`;
+        labelsBottomRef.current[i] = fit.labelsBottom;
+      });
+      const b = labelsBottomRef.current[indexRef.current];
+      document.documentElement.style.setProperty("--reel-labels-bottom", `${b || LABEL_GAP}px`);
+    };
+    layout();
+    window.addEventListener("resize", layout);
+    return () => {
+      window.removeEventListener("resize", layout);
+      document.documentElement.style.removeProperty("--reel-labels-bottom");
+    };
+  }, [count, fullbleed]);
+
+  // The counter follows the active project's label height.
+  useEffect(() => {
+    if (fullbleed) return;
+    const b = labelsBottomRef.current[index];
+    document.documentElement.style.setProperty("--reel-labels-bottom", `${b || LABEL_GAP}px`);
+  }, [index, fullbleed]);
 
   // Scroll-linked transition. p = how many viewports into the pinned track
   // (0 … count-1). Project i is revealed by r_i = p - (i-1) (0 → 1): it wipes

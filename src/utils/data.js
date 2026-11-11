@@ -57,8 +57,11 @@ const data = [{
         'Bondly – after the meetup',
     ],
     frameFit: 'cover',
-    // Phones: keep the cover crop (the middle phone fills the screen cleanly).
-    mobileFit: 'cover',
+    // Responsive fit (ProjectReel fitSlide): the three phones span the middle
+    // 66% of the slide; on narrow phones (aspect <= 0.6) the middle phone alone
+    // fills the screen as a clean cover crop.
+    focusWidth: 0.66,
+    portraitCoverBelow: 0.6,
     role: ['UX Research', 'Product Concept', 'UX/UI Design', 'Usability Testing'],
 },
 {
