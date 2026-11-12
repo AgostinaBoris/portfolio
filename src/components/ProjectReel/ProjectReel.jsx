@@ -80,6 +80,28 @@ function fitSlide(project, W, H, labels = DEFAULT_LABELS) {
   return place(fit) || { ...fit, labelsBottom: LABEL_GAP };
 }
 
+// Clip a slide to its subject (project.subject: the browser window or the
+// phones), so the coloured background around it is cut away and the slide
+// sits on black. (ix, iy, iw, ih): where the slide image is drawn inside the
+// clipped element, in px. Edges at the slide's bottom run past it, so a
+// window that runs off the screen keeps square bottom corners.
+function subjectClip(subject, ix, iy, iw, ih, frame = 0) {
+  if (Array.isArray(subject)) subject = subject[frame] || subject[0];
+  if (!subject) return "";
+  const r = subject.radius * iw;
+  const e = 0.0015 * iw; // inset, so no fringe of the background shows
+  const d = subject.rects
+    .map(([x0, y0, x1, y1]) => {
+      const l = ix + x0 * iw + e;
+      const t = iy + y0 * ih + e;
+      const rt = ix + x1 * iw - e;
+      const b = y1 >= 1 ? iy + ih + 2 * r : iy + y1 * ih - e;
+      return `M${l + r},${t} H${rt - r} A${r},${r} 0 0 1 ${rt},${t + r} V${b - r} A${r},${r} 0 0 1 ${rt - r},${b} H${l + r} A${r},${r} 0 0 1 ${l},${b - r} V${t + r} A${r},${r} 0 0 1 ${l + r},${t} Z`;
+    })
+    .join(" ");
+  return `path("${d}")`;
+}
+
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -471,6 +493,23 @@ function ReelCard({ project, index, isLast, reducedMotion }) {
     return () => clearInterval(t);
   }, [hasVideo, animate, onScreen, frames.length]);
 
+  // Cut each frame to its subject (see subjectClip); every frame fills the
+  // media box, which has the slide's ratio.
+  useEffect(() => {
+    const el = mediaRef.current;
+    if (!el || !project.subject) return;
+    const clip = () => {
+      el.querySelectorAll("img, video").forEach((media, frame) => {
+        media.style.clipPath = subjectClip(project.subject, 0, 0, el.offsetWidth, el.offsetHeight, frame);
+      });
+    };
+    clip();
+    if (!("ResizeObserver" in window)) return;
+    const ro = new ResizeObserver(clip);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [project.subject]);
+
   const shown = animate ? current : 0;
   const link = "inline-flex min-h-[44px] items-center hover:underline underline-offset-4";
   const ext = (href, label) => (
@@ -601,11 +640,17 @@ function ReelStage({ variant }) {
         const fit = !fullbleed && inner ? fitSlide(project, W, H, size) : null;
         if (!fit) return;
         const contain = fit.mode === "contain";
-        inner.querySelectorAll(".reel-media").forEach((el) => {
+        inner.querySelectorAll(".reel-media").forEach((el, frame) => {
           el.style.objectFit = contain ? "contain" : "cover";
           el.style.objectPosition = contain ? "center bottom" : "";
           el.style.transformOrigin = contain ? "center bottom" : "";
           el.style.transform = contain ? `scale(${fit.scale})` : "";
+          // Where the slide image is drawn in the element (before the
+          // scale, which the clip follows): contain = whole slide at the
+          // bottom, cover = filling the screen, centred.
+          const iw = contain ? Math.min(W, H * SLIDE_RATIO) : Math.max(W, H * SLIDE_RATIO);
+          const ih = iw / SLIDE_RATIO;
+          el.style.clipPath = subjectClip(project.subject, (W - iw) / 2, contain ? H - ih : (H - ih) / 2, iw, ih, frame);
         });
         if (labels) labels.style.bottom = `${fit.labelsBottom}px`;
         labelsBottomRef.current[i] = fit.labelsBottom;

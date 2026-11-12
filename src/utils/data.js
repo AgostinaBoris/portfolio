@@ -38,6 +38,28 @@ import veloraFrame3 from '../assets/frames/velora-03.webp';
 import veloraFrame4 from '../assets/frames/velora-04.webp';
 import veloraFrame5 from '../assets/frames/velora-05.webp';
 
+// Home reel: the part of each wide slide (3296x1516) that is shown; the
+// coloured background around it is cut away so the slide sits on black.
+// rects: [left, top, right, bottom] as fractions of the slide; radius: corner
+// radius as a fraction of the slide width. Measured from the frames.
+// A list gives one shape per frame, for frames whose subject moves.
+const BROWSER_WINDOW = { rects: [[0.1505, 0.1055, 0.8495, 1]], radius: 0.012 };
+const NINO_WINDOWS = [
+    { rects: [[0.1505, 0.1055, 0.8623, 1]], radius: 0.012 },
+    { rects: [[0.1541, 0.091, 0.8532, 1]], radius: 0.012 },
+    { rects: [[0.1505, 0.0884, 0.8495, 1]], radius: 0.012 },
+    BROWSER_WINDOW,
+    BROWSER_WINDOW,
+];
+const PHONES = {
+    rects: [
+        [0.1963, 0.0884, 0.3747, 0.9123],
+        [0.4108, 0.0884, 0.5895, 0.9123],
+        [0.6253, 0.0884, 0.8037, 0.9123],
+    ],
+    radius: 0.03,
+};
+
 const data = [{
     name: 'Bondly',
     id: 9,
@@ -63,6 +85,8 @@ const data = [{
     // Responsive fit (ProjectReel fitSlide): the three phones span the middle
     // 66% of the slide.
     focusWidth: 0.66,
+    // Home reel: only the phones show; the purple around them is cut to black.
+    subject: PHONES,
     role: ['UX Research', 'Product Concept', 'UX/UI Design', 'Usability Testing'],
 },
 {
@@ -80,6 +104,7 @@ const data = [{
     // img (above) is still the Work page card.
     video: { mp4: savergyMp4, webm: savergyWebm, poster: savergyPoster, label: 'Savergy landing page walkthrough' },
     frameFit: 'cover',
+    subject: BROWSER_WINDOW,
     role: ['Product Design', 'UI Design', 'Front-End Development'],
 },
 {
@@ -103,6 +128,7 @@ const data = [{
         'NINO – registering a payment',
     ],
     frameFit: 'cover',
+    subject: NINO_WINDOWS,
     role: ['Product Concept', 'UX/UI Design', 'Prototyping'],
 },
 {
@@ -126,6 +152,7 @@ const data = [{
         'Velora – available rooms with filters',
     ],
     frameFit: 'cover',
+    subject: BROWSER_WINDOW,
     role: ['UX Audit', 'Information Architecture', 'UI Redesign', 'Design System'],
 },
 {
