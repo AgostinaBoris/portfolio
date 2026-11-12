@@ -85,7 +85,9 @@ export default function HamburgerMenu() {
     };
   }, [open]);
 
-  const line = "absolute left-1/2 h-[1.5px] w-7 -translate-x-1/2 bg-white transition-all duration-300 ease-out";
+  // Three thin white lines (2px, 30px wide), centred on their own top value.
+  const line =
+    "absolute left-1/2 h-[2px] w-[30px] rounded-full -translate-x-1/2 -translate-y-1/2 bg-white transition-all duration-300 ease-out";
 
   return (
     <div ref={wrapRef}>
@@ -96,11 +98,11 @@ export default function HamburgerMenu() {
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         aria-controls="site-menu"
-        className="fixed top-[calc(1rem+env(safe-area-inset-top))] right-[max(1rem,env(safe-area-inset-right))] md:top-[calc(1.5rem+env(safe-area-inset-top))] md:right-[max(1.5rem,env(safe-area-inset-right))] z-[60] h-11 w-11 mix-blend-difference"
+        className={`fixed top-[calc(1rem+env(safe-area-inset-top))] right-[max(1rem,env(safe-area-inset-right))] md:top-[calc(14px+env(safe-area-inset-top))] md:right-[max(1rem,env(safe-area-inset-right))] z-[60] h-11 w-11 mix-blend-difference`}
       >
-        <span className={`${line} ${open ? "top-1/2 rotate-45" : "top-[14px]"}`} />
+        <span className={`${line} ${open ? "top-1/2 rotate-45" : "top-[13px]"}`} />
         <span className={`${line} top-1/2 ${open ? "opacity-0" : "opacity-100"}`} />
-        <span className={`${line} ${open ? "top-1/2 -rotate-45" : "top-[29px]"}`} />
+        <span className={`${line} ${open ? "top-1/2 -rotate-45" : "top-[31px]"}`} />
       </button>
 
       {open && (

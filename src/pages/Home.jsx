@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ProjectReel from "../components/ProjectReel/ProjectReel";
 import Intro from "../components/Intro/Intro";
+import Testimonials from "../components/Testimonials/Testimonials";
 
 export default function Home() {
   const location = useLocation();
@@ -28,6 +29,8 @@ export default function Home() {
       <div id="work" className="w-full">
         <ProjectReel />
       </div>
+      {/* After the last project (its "All projects" link is in its labels). */}
+      <Testimonials />
     </div>
   );
 }
