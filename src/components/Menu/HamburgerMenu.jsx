@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { siteTextClass } from "./SiteName";
+import useOverLightSection from "../../hooks/useOverLightSection";
 import CV from "../../assets/cv/boris-agostina-cv.pdf";
 
 const EMAIL = "borisagostina@gmail.com";
@@ -25,7 +26,8 @@ const footerLink = "inline-flex min-h-[44px] items-center hover:underline underl
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 // Site-wide menu: a single fixed hamburger (top-right, no bar) that opens a
-// full-screen overlay. White + mix-blend-difference so the button reads on
+// full-screen overlay. On the home it is plain white with a soft shadow; on
+// inner pages, white + mix-blend-difference so the button reads on
 // light pages, dark pages and over the reel images/videos.
 export default function HamburgerMenu() {
   const [open, setOpen] = useState(false);
@@ -35,6 +37,10 @@ export default function HamburgerMenu() {
 
   const close = useCallback(() => setOpen(false), []);
   const { pathname, key } = useLocation();
+  const isHome = pathname === "/";
+  // Home: black lines over the white testimonials section (white when open,
+  // over the dark overlay).
+  const dark = useOverLightSection(isHome) && !open;
 
   // Any navigation (including the site name link) closes the menu.
   useEffect(() => {
@@ -85,9 +91,10 @@ export default function HamburgerMenu() {
     };
   }, [open]);
 
-  // Three thin white lines (2px, 30px wide), centred on their own top value.
+  // Three thin lines (2px, 30px wide), centred on their own top value; white,
+  // or black over the home testimonials.
   const line =
-    "absolute left-1/2 h-[2px] w-[30px] rounded-full -translate-x-1/2 -translate-y-1/2 bg-white transition-all duration-300 ease-out";
+    `absolute left-1/2 h-[2px] w-[30px] rounded-full -translate-x-1/2 -translate-y-1/2 ${dark ? "bg-text" : "bg-white"} transition-all duration-300 ease-out`;
 
   return (
     <div ref={wrapRef}>
@@ -98,7 +105,7 @@ export default function HamburgerMenu() {
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         aria-controls="site-menu"
-        className={`fixed top-[calc(1rem+env(safe-area-inset-top))] right-[max(1rem,env(safe-area-inset-right))] md:top-[calc(14px+env(safe-area-inset-top))] md:right-[max(1rem,env(safe-area-inset-right))] z-[60] h-11 w-11 mix-blend-difference`}
+        className={`fixed top-[calc(1rem+env(safe-area-inset-top))] right-[max(1rem,env(safe-area-inset-right))] md:top-[calc(14px+env(safe-area-inset-top))] md:right-[max(1rem,env(safe-area-inset-right))] z-[60] h-11 w-11 ${!isHome ? "mix-blend-difference" : dark ? "" : "icon-on-media"}`}
       >
         <span className={`${line} ${open ? "top-1/2 rotate-45" : "top-[13px]"}`} />
         <span className={`${line} top-1/2 ${open ? "opacity-0" : "opacity-100"}`} />

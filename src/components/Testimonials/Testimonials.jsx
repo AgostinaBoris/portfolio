@@ -73,6 +73,7 @@ export default function Testimonials() {
       aria-roledescription="carousel"
       aria-label="Client testimonials"
       onKeyDown={onKeyDown}
+      data-header-light
       className="w-full bg-background py-24 md:py-40 pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] md:px-[8vw] text-center text-text"
     >
       <p className={eyebrowClass}>Testimonials</p>

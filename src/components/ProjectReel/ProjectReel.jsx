@@ -113,13 +113,13 @@ function FullbleedOverlay({ project, total }) {
   return (
     <>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" />
-      <p className="pointer-events-none absolute top-14 left-4 md:top-16 md:left-6 text-[13px] md:text-[15px] leading-[1.6] text-white mix-blend-difference">
+      <p className="pointer-events-none absolute top-14 left-4 md:top-16 md:left-6 text-[13px] md:text-[15px] leading-[1.6] text-on-media">
         {project.number} / {String(total).padStart(2, "0")}
       </p>
-      <p className="absolute bottom-4 right-4 md:bottom-6 md:right-6 text-[13px] md:text-[15px] leading-[1.6] text-white">
+      <p className="absolute bottom-4 right-4 md:bottom-6 md:right-6 text-[13px] md:text-[15px] leading-[1.6] text-on-media">
         {project.name}
       </p>
-      <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-[13px] md:text-[15px] leading-[1.6] font-normal text-white">
+      <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-[13px] md:text-[15px] leading-[1.6] font-normal text-on-media">
         <dl className="hidden md:block">
           {project.category && (
             <div className="mb-[1.6em]">
@@ -186,7 +186,7 @@ function LabelStack({ project, showIn, allProjectsCount }) {
   }
 
   return (
-    <div className="pointer-events-none absolute inset-0 text-[18px] leading-none text-white mix-blend-difference">
+    <div className="pointer-events-none absolute inset-0 text-[18px] leading-none text-on-media">
       <div className="reel-labels absolute bottom-6 right-6 flex flex-col items-end gap-3">
         {lines.map((el, i) =>
           React.cloneElement(el, {
@@ -373,7 +373,7 @@ function Counter({ index, total, direction, visible, reducedMotion }) {
   return (
     <p
       aria-hidden="true"
-      className="pointer-events-none fixed left-6 z-[45] text-[18px] leading-none text-white mix-blend-difference transition-opacity duration-300"
+      className="pointer-events-none fixed left-6 z-[45] text-[18px] leading-none text-on-media transition-opacity duration-300"
       style={{ opacity: visible ? 1 : 0, bottom: "var(--reel-labels-bottom, 24px)" }}
     >
       <span className="relative inline-block overflow-hidden align-bottom h-[1.15em] leading-[1.15em]">
