@@ -31,7 +31,9 @@ const SLIDE_W = 3296;
 const SLIDE_H = 1516;
 const SLIDE_RATIO = SLIDE_W / SLIDE_H;
 const LABEL_GAP = 24; // labels' distance from the screen edges / the subject
-const HEADER_H = 72; // fixed site name + menu button
+// Fixed site name + menu button (72px) plus a gap, so labels placed above
+// the subject never crowd the header.
+const HEADER_H = 72 + LABEL_GAP;
 const SIDE_GAP = 16; // min space between the labels and the subject, sideways
 const MIN_SCALE = 0.6;
 const DEFAULT_LABELS = { w: 180, h: 150 };
