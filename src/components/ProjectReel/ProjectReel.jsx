@@ -20,24 +20,62 @@ const clamp01 = (v) => Math.min(1, Math.max(0, v));
 // edge like on desktop, and enlarged until its subject (the middle
 // `focusWidth` of the slide) spans the screen, but never past a cover fit.
 // Any space left above stays black, and the labels/counter move up into it.
+//
+// The white labels must never sit on the subject (the white browser
+// windows would swallow them): they go above it when there's room under
+// the header, else beside it (bottom-right, on the slide's colour). If
+// neither fits, the slide is shrunk until one does.
 // Only used by the pinned reel (landscape screens >= 1024px wide); narrow or
 // portrait screens get ReelList instead.
 const SLIDE_W = 3296;
 const SLIDE_H = 1516;
 const SLIDE_RATIO = SLIDE_W / SLIDE_H;
-const LABEL_GAP = 24;
-function fitSlide(project, W, H) {
-  const A = W / H;
-  const cover = { mode: "cover", scale: 1, imageH: H, labelsBottom: LABEL_GAP };
+const LABEL_GAP = 24; // labels' distance from the screen edges / the subject
+const HEADER_H = 72; // fixed site name + menu button
+const SIDE_GAP = 16; // min space between the labels and the subject, sideways
+const MIN_SCALE = 0.6;
+const DEFAULT_LABELS = { w: 180, h: 150 };
+
+function fitSlide(project, W, H, labels = DEFAULT_LABELS) {
   if (project.frameFit !== "cover") return null; // contain-on-black slides: untouched
-  if (A >= SLIDE_RATIO) return cover;
-  const maxScale = 1 / (project.focusWidth || 0.74);
-  const toCover = SLIDE_RATIO / A;
-  if (maxScale >= toCover) return cover;
-  const imageH = (W / SLIDE_RATIO) * maxScale;
-  // Labels go above the image only when there's real room for them there.
-  const labelsBottom = H - imageH >= 220 ? imageH + LABEL_GAP : LABEL_GAP;
-  return { mode: "contain", scale: maxScale, imageH, labelsBottom };
+  const half = (project.focusWidth || 0.74) / 2; // subject half-width, of slide width
+  const top = project.focusTop ?? 0.1; // subject top, of slide height
+  const { w: Lw, h: Lh } = labels.w ? labels : DEFAULT_LABELS;
+  const baseW = Math.min(W, H * SLIDE_RATIO); // plain contain width
+
+  // Geometry of a fit: where the subject's right edge and top land on screen.
+  const cover = () => {
+    const dw = Math.max(W, H * SLIDE_RATIO);
+    const dh = dw / SLIDE_RATIO;
+    return { mode: "cover", scale: 1, imageH: H, right: W / 2 + half * dw, top: (H - dh) / 2 + top * dh };
+  };
+  const contain = (scale) => {
+    const dw = baseW * scale;
+    const dh = dw / SLIDE_RATIO;
+    return { mode: "contain", scale, imageH: dh, right: W / 2 + half * dw, top: H - (1 - top) * dh };
+  };
+  // Labels above the subject (preferred), beside it, or null if neither fits
+  // (1px slack so the shrunk fit below isn't rejected by rounding).
+  const place = (fit) => {
+    if (fit.top - LABEL_GAP - Lh >= HEADER_H - 1) return { ...fit, labelsBottom: H - fit.top + LABEL_GAP };
+    if (W - LABEL_GAP - Lw >= fit.right + SIDE_GAP - 1) return { ...fit, labelsBottom: LABEL_GAP };
+    return null;
+  };
+
+  // Preferred fit, as before: cover, or contain enlarged up to 1 / focusWidth.
+  const maxScale = 1 / (half * 2);
+  const toCover = Math.max(W, H * SLIDE_RATIO) / baseW;
+  const preferred = W / H >= SLIDE_RATIO || maxScale >= toCover ? cover() : contain(maxScale);
+  const placed = place(preferred);
+  if (placed) return placed;
+
+  // Shrink (bottom-anchored contain) to the largest scale that frees room
+  // above the subject or beside it.
+  const sAbove = ((H - HEADER_H - LABEL_GAP - Lh) * SLIDE_RATIO) / ((1 - top) * baseW);
+  const sBeside = (W / 2 - LABEL_GAP - Lw - SIDE_GAP) / (half * baseW);
+  const scale = Math.max(MIN_SCALE, Math.min(toCover, maxScale, Math.max(sAbove, sBeside)));
+  const fit = contain(scale);
+  return place(fit) || { ...fit, labelsBottom: LABEL_GAP };
 }
 
 function usePrefersReducedMotion() {
@@ -556,7 +594,9 @@ function ReelStage({ variant }) {
       const H = stage.offsetHeight;
       data.slice(0, count).forEach((project, i) => {
         const inner = innerRefs.current[i];
-        const fit = !fullbleed && inner ? fitSlide(project, W, H) : null;
+        const labels = inner && inner.querySelector(".reel-labels");
+        const size = labels ? { w: labels.offsetWidth, h: labels.offsetHeight } : undefined;
+        const fit = !fullbleed && inner ? fitSlide(project, W, H, size) : null;
         if (!fit) return;
         const contain = fit.mode === "contain";
         inner.querySelectorAll(".reel-media").forEach((el) => {
@@ -565,7 +605,6 @@ function ReelStage({ variant }) {
           el.style.transformOrigin = contain ? "center bottom" : "";
           el.style.transform = contain ? `scale(${fit.scale})` : "";
         });
-        const labels = inner.querySelector(".reel-labels");
         if (labels) labels.style.bottom = `${fit.labelsBottom}px`;
         labelsBottomRef.current[i] = fit.labelsBottom;
       });
