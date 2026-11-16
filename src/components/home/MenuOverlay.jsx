@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import CV from "../../assets/cv/boris-agostina-cv.pdf";
+import CV_ES from "../../assets/cv/boris-agostina-cv-es.pdf";
 
 const links = [
   { n: "01", label: "Work", to: "/work" },
@@ -48,15 +49,14 @@ export default function MenuOverlay({ open, onClose }) {
           </li>
         ))}
       </ul>
-      <a
-        href={CV}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={onClose}
-        className="mt-12 text-[15px] hover:underline underline-offset-4"
-      >
-        Resume →
-      </a>
+      <div className="mt-12 flex flex-wrap gap-6 text-[15px]">
+        <a href={CV} target="_blank" rel="noopener noreferrer" onClick={onClose} className="hover:underline underline-offset-4">
+          Resume →
+        </a>
+        <a href={CV_ES} target="_blank" rel="noopener noreferrer" onClick={onClose} className="hover:underline underline-offset-4">
+          CV Español →
+        </a>
+      </div>
     </nav>
   );
 }

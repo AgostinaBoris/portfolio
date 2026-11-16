@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { siteTextClass } from "./SiteName";
 import useOverLightSection from "../../hooks/useOverLightSection";
 import CV from "../../assets/cv/boris-agostina-cv.pdf";
+import CV_ES from "../../assets/cv/boris-agostina-cv-es.pdf";
 
 const EMAIL = "borisagostina@gmail.com";
 
@@ -146,9 +147,14 @@ export default function HamburgerMenu() {
           <div
             className={`flex flex-wrap items-end justify-between gap-x-6 pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] pb-[max(0.75rem,env(safe-area-inset-bottom))] ${siteTextClass}`}
           >
-            <a href={CV} target="_blank" rel="noopener noreferrer" className={footerLink}>
-              Resume
-            </a>
+            <div className="flex flex-wrap gap-x-6">
+              <a href={CV} target="_blank" rel="noopener noreferrer" className={footerLink}>
+                Resume
+              </a>
+              <a href={CV_ES} target="_blank" rel="noopener noreferrer" className={footerLink}>
+                CV Español
+              </a>
+            </div>
             <a href={`mailto:${EMAIL}`} className={footerLink}>
               {EMAIL}
             </a>

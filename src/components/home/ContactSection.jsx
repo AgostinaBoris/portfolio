@@ -1,5 +1,6 @@
 import React from "react";
 import CV from "../../assets/cv/boris-agostina-cv.pdf";
+import CV_ES from "../../assets/cv/boris-agostina-cv-es.pdf";
 
 export default function ContactSection() {
   return (
@@ -25,6 +26,11 @@ export default function ContactSection() {
         <li>
           <a href={CV} target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">
             Resume →
+          </a>
+        </li>
+        <li>
+          <a href={CV_ES} target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">
+            CV Español →
           </a>
         </li>
       </ul>

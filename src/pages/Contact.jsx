@@ -2,11 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import { HiOutlineDocumentDuplicate, HiCheck } from "react-icons/hi";
 import CV from "../assets/cv/boris-agostina-cv.pdf";
+import CV_ES from "../assets/cv/boris-agostina-cv-es.pdf";
 import PageColumn, { headingClass, pageY } from "../components/Layout/PageColumn";
 
 const EMAIL = "borisagostina@gmail.com";
 
-const contactLinks = [{ label: "Resume (PDF)", href: CV }];
+const contactLinks = [
+  { label: "Resume (PDF)", href: CV },
+  { label: "CV Español (PDF)", href: CV_ES },
+];
 
 const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/agostinaboris/" },
