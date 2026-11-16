@@ -2,6 +2,7 @@ import React from "react";
 import { HiOutlineDownload } from "react-icons/hi";
 import { bodyClass, closingClass, eyebrowClass, statementClass } from "../Layout/PageColumn";
 import CV from "../../assets/cv/boris-agostina-cv.pdf";
+import CV_ES from "../../assets/cv/boris-agostina-cv-es.pdf";
 import photo from "../../assets/yop.jpg";
 import useReveal from "../../hooks/useReveal";
 
@@ -33,15 +34,25 @@ export default function About() {
         Clear products, built the way they were designed. That is what I do.
       </p>
 
-      {/* Same button style as the old About hero. */}
-      <a
-        href={CV}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hero-btn mt-10 md:mt-12 inline-flex items-center gap-2 border border-text/20 text-text text-lg font-semibold px-9 py-4 rounded-full hover:border-text"
-      >
-        Resume <HiOutlineDownload className="hero-btn-icon" size={18} />
-      </a>
+      {/* Same button style as the old About hero: English resume and Spanish CV. */}
+      <div className="mt-10 md:mt-12 flex flex-wrap gap-4">
+        <a
+          href={CV}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hero-btn inline-flex items-center gap-2 border border-text/20 text-text text-lg font-semibold px-9 py-4 rounded-full hover:border-text"
+        >
+          Resume <HiOutlineDownload className="hero-btn-icon" size={18} />
+        </a>
+        <a
+          href={CV_ES}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hero-btn inline-flex items-center gap-2 border border-text/20 text-text text-lg font-semibold px-9 py-4 rounded-full hover:border-text"
+        >
+          CV Español <HiOutlineDownload className="hero-btn-icon" size={18} />
+        </a>
+      </div>
 
       <img
         src={photo}
